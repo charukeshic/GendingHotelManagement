@@ -44,7 +44,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.sign_in -> {
-                Toast.makeText(this,"{Sign in clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Sign in clicked",Toast.LENGTH_SHORT).show()
             }
 
         }
