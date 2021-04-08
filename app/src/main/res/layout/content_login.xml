@@ -29,7 +29,7 @@
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Login"
+                    android:text="@string/login"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -93,7 +93,7 @@
             android:paddingTop="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp"
-            android:text="@string/enter_your_staff_id_eg_s001"
+            android:text=""
             android:textColor="#939191"
             android:textColorHighlight="#6DFFFFFF"
             android:textIsSelectable="false"
@@ -122,46 +122,69 @@
             android:paddingTop="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp"
-            android:text="@string/cap_sensitive"
+            android:text=""
             android:textColor="#939191" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:linksClickable="true"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="15dp"
-            android:text="@string/forgot_password"
-            android:textColor="#2A9FFB"
-            android:textColorLink="#209BFD" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:cursorVisible="false"
-            android:minWidth="150dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="15dp"
-            android:text="@string/login"
-            android:textSize="18sp"
-            app:backgroundTint="#5C5C5C"
-            app:cornerRadius="@null" />
+            <TextView
+                android:id="@+id/forgotPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:linksClickable="true"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/forgot_password"
+                android:textColor="#2A9FFB"
+                android:textColorLink="#209BFD"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:cursorVisible="false"
+                android:minWidth="150dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/login"
+                android:textSize="18sp"
+                app:backgroundTint="#5C5C5C"
+                app:cornerRadius="@null" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/registerUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:linksClickable="true"
+        android:text="Don't have account yet ?"
+        android:textAlignment="center"
+        android:textColor="#2A9FFB"
+        android:textColorLink="#209BFD"
+        android:textSize="18sp" />
 
 </LinearLayout>
 </LinearLayout>

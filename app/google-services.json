@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "520827545705",
+    "project_id": "gending-hotel-management",
+    "storage_bucket": "gending-hotel-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520827545705:android:4d80cfeae741e6cdbc9af8",
+        "android_client_info": {
+          "package_name": "com.example.gendinghotelmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520827545705-ql6o61l9lgcl3vggrvn0vq6dems68uk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOARE20Kt5q6wAMVDuj7eZw5axzzqYCho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520827545705-ql6o61l9lgcl3vggrvn0vq6dems68uk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
