@@ -41,9 +41,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
     var progressDialog: ProgressDialog? = null
     private var mAuth: FirebaseAuth? = null
 
-    val register = registerUser
-    val forgotpwd = forgotPassword
-    val loginsubmit = btnLogin
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,38 +62,15 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
 
         txtStaffID = findViewById<EditText>(R.id.txtStaffID)
         txtPassword = findViewById<EditText>(R.id.txtPassword)
-        btnLogin = findViewById<Button>(R.id.btnLogin)
-        registerUser = findViewById<TextView>(R.id.registerUser)
-        forgotPassword = findViewById<TextView>(R.id.forgotPassword)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val registerUser = findViewById<TextView>(R.id.registerUser)
+        val forgotPassword = findViewById<TextView>(R.id.forgotPassword)
         mAuth = FirebaseAuth.getInstance()
         progressDialog = ProgressDialog(this)
 
-        if (register != null) {
-            register.setOnClickListener(View.OnClickListener {
-                startActivity(
-                    Intent(
-                        this@Login,
-                        SignUp::class.java
-                    )
-                )
-            })
-        }
-
-        if (forgotpwd != null) {
-            forgotpwd.setOnClickListener(View.OnClickListener {
-                startActivity(
-                    Intent(
-                        this@Login,
-                        ForgotPassword::class.java
-                    )
-                )
-            })
-        }
-
-        if (loginsubmit != null) {
-            loginsubmit.setOnClickListener(View.OnClickListener { LogInFun() })
-        }
-
+        registerUser.setOnClickListener(View.OnClickListener { startActivity(Intent(this@Login, SignUp::class.java)) })
+        forgotPassword.setOnClickListener(View.OnClickListener { startActivity(Intent(this@Login, ForgotPassword::class.java)) })
+        btnLogin.setOnClickListener(View.OnClickListener { LogInFun() })
     }
 
     fun isEmailValid(email: CharSequence?): Boolean {
