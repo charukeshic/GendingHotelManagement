@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_grey"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Confirmation"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="743dp">
+
+                <TextView
+                    android:id="@+id/txtOrderID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Order ID" />
+
+                <TextView
+                    android:id="@+id/txtPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrderID"
+                    tools:text="Staying Period" />
+
+                <TextView
+                    android:id="@+id/txtCustName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPeriod"
+                    tools:text="Customer Name" />
+
+                <TextView
+                    android:id="@+id/txtCustIC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCustName"
+                    tools:text="Customer IC" />
+
+                <TextView
+                    android:id="@+id/txtCustPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCustIC"
+                    tools:text="Customer Phone Number" />
+
+                <TextView
+                    android:id="@+id/txtRoomType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCustPhone"
+                    tools:text="Room Type" />
+
+                <TextView
+                    android:id="@+id/txtNoOfPax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRoomType"
+                    tools:text="Number Of Person" />
+
+                <TextView
+                    android:id="@+id/txtExtraServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNoOfPax"
+                    tools:text="Extra Services" />
+
+                <TextView
+                    android:id="@+id/txtToTal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExtraServices"
+                    tools:text="Total Amount" />
+
+                <TextView
+                    android:id="@+id/txtPaymentMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtToTal"
+                    tools:text="Payment Method" />
+
+                <TextView
+                    android:id="@+id/txtTransDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPaymentMethod"
+                    tools:text="Transaction Date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnOrderConfirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:cursorVisible="false"
+                        android:minWidth="150dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="Done"
+                        android:textSize="18sp"
+                        android:translationX="245dp"
+                        android:translationY="20dp"
+                        app:backgroundTint="#5C5C5C"
+                        app:cornerRadius="@null" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

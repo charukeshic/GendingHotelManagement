@@ -125,7 +125,6 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
         when (item.itemId) {
             R.id.sign_in -> {
                 Toast.makeText(this, "Sign in clicked", Toast.LENGTH_SHORT).show()

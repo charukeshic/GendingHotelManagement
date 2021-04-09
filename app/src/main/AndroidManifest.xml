@@ -9,7 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GendingHotelManagement">
-        <activity android:name=".SignUp"></activity>
+        <activity android:name=".Receipt"></activity>
+        <activity android:name=".Payment" />
+        <activity android:name=".OrderConfirmation" />
+        <activity android:name=".OrderDetails" />
+        <activity android:name=".DateSelection" />
+        <activity android:name=".ViewWorkingSchedule" />
+        <activity android:name=".ManageSchedule" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".RemoveStaff" />
+        <activity android:name=".CreateStaff" />
+        <activity android:name=".StaffManagement" />
+        <activity android:name=".NormalStaffPortal" />
+        <activity android:name=".ManagerStaffPortal" />
+        <activity
+            android:name=".SignUp"
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ForgotPassword"
             android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />

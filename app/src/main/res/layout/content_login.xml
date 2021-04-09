@@ -50,7 +50,7 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
+            android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/staff_login"
             android:paddingLeft="15dp"
@@ -60,8 +60,8 @@
             app:srcCompat="@drawable/ic_login" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:id="@+id/UserName"
+            android:layout_width="397dp"
             android:layout_height="wrap_content"
             android:text="@string/staff_login"
             android:textAlignment="center"
@@ -69,7 +69,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/TextView8"
             android:layout_width="411dp"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -77,7 +77,7 @@
             android:paddingTop="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp"
-            android:text="@string/staff_id"
+            android:text="@string/staff_email"
             android:textAlignment="textStart"
             android:textSize="18sp" />
 
@@ -88,7 +88,7 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textLongMessage|textPersonName"
-            android:labelFor="@id/textView2"
+            android:labelFor="@id/TextView8"
             android:paddingLeft="15dp"
             android:paddingTop="15dp"
             android:paddingRight="15dp"
