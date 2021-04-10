@@ -60,7 +60,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        txtStaffID = findViewById<EditText>(R.id.txtStaffID)
+        txtStaffID = findViewById<EditText>(R.id.txtOrderNo)
         txtPassword = findViewById<EditText>(R.id.txtPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val registerUser = findViewById<TextView>(R.id.registerUser)

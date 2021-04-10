@@ -92,12 +92,11 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnCheckOccupancy"
+                        android:id="@+id/btnManageSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="15dp"
-                        android:cursorVisible="True"
                         android:minWidth="150dp"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"

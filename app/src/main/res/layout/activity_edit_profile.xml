@@ -82,7 +82,7 @@
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/txtStaffID"
+                    android:id="@+id/txtOrderNo"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:autofillHints=""
@@ -302,12 +302,11 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnCheckOccupancy"
+                        android:id="@+id/btnUpdateProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="15dp"
-                        android:cursorVisible="True"
                         android:minWidth="150dp"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"

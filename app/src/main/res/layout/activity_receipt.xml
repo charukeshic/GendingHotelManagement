@@ -53,7 +53,7 @@
                 android:layout_height="743dp">
 
                 <TextView
-                    android:id="@+id/txtOrderID"
+                    android:id="@+id/txtBookingID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -68,7 +68,7 @@
                     tools:text="Order ID" />
 
                 <TextView
-                    android:id="@+id/txtPeriod"
+                    android:id="@+id/txtOrderStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="54dp"
                     android:layout_marginStart="30dp"
@@ -79,7 +79,7 @@
                     android:paddingBottom="15sp"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrderID"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBookingID"
                     tools:text="Staying Period" />
 
                 <TextView
@@ -94,7 +94,7 @@
                     android:paddingBottom="15sp"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPeriod"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrderStatus"
                     tools:text="Customer Name" />
 
                 <TextView
@@ -143,7 +143,7 @@
                     tools:text="Room Type" />
 
                 <TextView
-                    android:id="@+id/txtNoOfPax"
+                    android:id="@+id/txtHandlePerson"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -169,7 +169,7 @@
                     android:paddingBottom="15sp"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNoOfPax"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHandlePerson"
                     tools:text="Extra Services" />
 
                 <TextView
@@ -230,7 +230,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnOrderConfirm"
+                        android:id="@+id/btnReceipt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"

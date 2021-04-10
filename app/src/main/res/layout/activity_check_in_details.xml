@@ -29,7 +29,7 @@
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order Confirmation"
+                    android:text="Room Details"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -50,7 +50,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="631dp">
+                android:layout_height="437dp">
 
                 <TextView
                     android:id="@+id/txtBookingID"
@@ -68,21 +68,6 @@
                     tools:text="Order ID" />
 
                 <TextView
-                    android:id="@+id/txtOrderStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="15sp"
-                    android:paddingTop="15sp"
-                    android:paddingRight="15sp"
-                    android:paddingBottom="15sp"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtBookingID"
-                    tools:text="Staying Period" />
-
-                <TextView
                     android:id="@+id/txtCustName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +79,7 @@
                     android:paddingBottom="15sp"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrderStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBookingID"
                     tools:text="Customer Name" />
 
                 <TextView
@@ -155,37 +140,7 @@
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtRoomType"
-                    tools:text="Number Of Person" />
-
-                <TextView
-                    android:id="@+id/txtExtraServices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="15sp"
-                    android:paddingTop="15sp"
-                    android:paddingRight="15sp"
-                    android:paddingBottom="15sp"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtHandlePerson"
-                    tools:text="Extra Services" />
-
-                <TextView
-                    android:id="@+id/txtToTal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="15sp"
-                    android:paddingTop="15sp"
-                    android:paddingRight="15sp"
-                    android:paddingBottom="15sp"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtExtraServices"
-                    tools:text="Total Amount" />
+                    tools:text="Room Status" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -200,7 +155,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnOrderCons"
+                        android:id="@+id/btnCheckInRoomDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"

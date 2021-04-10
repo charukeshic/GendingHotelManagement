@@ -29,7 +29,7 @@
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order Details"
+                    android:text="Arrange Staff Shift"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -46,14 +46,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="422dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_height="665dp"
                 android:orientation="vertical">
-
 
                 <TextView
                     android:id="@+id/textView"
@@ -63,180 +62,137 @@
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
-                    android:text="Order Details"
                     android:textAlignment="center"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="Staff Name" />
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="380dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text="Full Name"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/txtOrderNo"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:inputType="textLongMessage|textPersonName"
-                    android:labelFor="@id/TextView8"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text=""
-                    android:textColor="#939191"
-                    android:textColorHighlight="#6DFFFFFF"
-                    android:textIsSelectable="false"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textview6"
-                    android:layout_width="411dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text="Identity Number"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/txtIC"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:inputType="textLongMessage|textPersonName"
-                    android:labelFor="@id/TextView8"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text=""
-                    android:textColor="#939191"
-                    android:textColorHighlight="#6DFFFFFF"
-                    android:textIsSelectable="false"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="380dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:inputType="textLongMessage|textPostalAddress"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text="Phone Number"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/txtStaffName"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:inputType="textLongMessage|textPersonName"
-                    android:labelFor="@id/TextView8"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text=""
-                    android:textColor="#939191"
-                    android:textColorHighlight="#6DFFFFFF"
-                    android:textIsSelectable="false"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/TextView8"
-                    android:layout_width="380dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text="Address"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/txtStaffAddress"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:inputType="textLongMessage|textPersonName"
-                    android:labelFor="@id/TextView8"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text=""
-                    android:textColor="#939191"
-                    android:textColorHighlight="#6DFFFFFF"
-                    android:textIsSelectable="false"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView12"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
-                    android:text="Number of Person"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/txtPassword"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:inputType="number"
-                    android:labelFor="@id/textView4"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text=""
-                    android:textColor="#939191"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="15dp"
-                    android:text="Extra Service"
+                    android:text="Monday"
                     android:textSize="15sp" />
 
                 <Spinner
-                    android:id="@+id/extraService"
+                    android:id="@+id/Monday"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Tuesday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Tuesday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Wednesday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Wednesday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Thursday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Thursday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Friday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Friday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Saturday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Saturday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="380dp"
+                    android:layout_height="65dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Sunday"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/Sunday"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
 
             </LinearLayout>
 
@@ -247,24 +203,23 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="119dp"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnUpdateOrder"
+                        android:id="@+id/btnArrangeStaffSchedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="15dp"
-                        android:cursorVisible="false"
                         android:minWidth="150dp"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="15dp"
-                        android:text="Submit"
+                        android:text="Check Occupancy"
                         android:textSize="18sp"
-                        android:translationX="245dp"
+                        android:translationX="160dp"
                         android:translationY="20dp"
                         app:backgroundTint="#5C5C5C"
                         app:cornerRadius="@null" />

@@ -67,7 +67,7 @@
                     android:textSize="15sp" />
 
                 <Spinner
-                    android:id="@+id/checkInDate"
+                    android:id="@+id/ddlRoomType"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
@@ -85,7 +85,7 @@
                     android:textSize="15sp" />
 
                 <Spinner
-                    android:id="@+id/checkOutDate"
+                    android:id="@+id/ddlTimeRange"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"

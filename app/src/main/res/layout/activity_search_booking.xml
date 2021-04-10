@@ -29,7 +29,7 @@
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View Working Schedule"
+                    android:text="Online Booking"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -51,54 +51,53 @@
             <LinearLayout
                 android:layout_width="422dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:orientation="vertical">
 
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:srcCompat="@drawable/ic_profile" />
-
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="match_parent"
+                    android:layout_width="393dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
+                    android:text="Search Booking"
                     android:textAlignment="center"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:text="UserName"/>
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:layout_width="380dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
-                    android:textSize="15dp"
-                    tools:text="Time Range Weekly" />
+                    android:text="Order Number"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/txtOrderNo"
+                    android:layout_width="380dp"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:inputType="textLongMessage|textPersonName"
+                    android:labelFor="@id/TextView8"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
-                    android:textSize="15sp"
-                    tools:text="Off Day Period" />
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
+                    android:text=""
+                    android:textColor="#939191"
+                    android:textColorHighlight="#6DFFFFFF"
+                    android:textIsSelectable="false"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -113,20 +112,21 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnViewSchedule"
+                        android:id="@+id/btnSearchNewBooking"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="15dp"
-                        android:cursorVisible="True"
+                        android:cursorVisible="false"
                         android:minWidth="150dp"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="15dp"
-                        android:text="Submit"
+                        android:text="Check"
                         android:textSize="18sp"
                         android:translationX="245dp"
+                        android:translationY="20dp"
                         app:backgroundTint="#5C5C5C"
                         app:cornerRadius="@null" />
 

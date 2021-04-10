@@ -50,7 +50,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="631dp">
+                android:layout_height="731dp">
 
                 <TextView
                     android:id="@+id/txtBookingID"
@@ -187,6 +187,32 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtExtraServices"
                     tools:text="Total Amount" />
 
+                <TextView
+                    android:id="@+id/TextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="15sp"
+                    android:text="Add on Extra Services :"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtToTal" />
+
+                <Spinner
+                    android:id="@+id/extraService"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextView11" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -200,7 +226,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnOrderCons"
+                        android:id="@+id/btnOnlineOrderCons"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"

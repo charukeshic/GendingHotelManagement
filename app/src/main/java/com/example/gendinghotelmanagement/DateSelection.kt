@@ -3,7 +3,6 @@ package com.example.gendinghotelmanagement
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Spinner
 
 class DateSelection : AppCompatActivity() {
@@ -12,7 +11,7 @@ class DateSelection : AppCompatActivity() {
         setContentView(R.layout.activity_date_selection)
 
         //get the spinner from the xml.
-        val dropdown = findViewById<Spinner>(R.id.checkInDate)
+        val dropdown = findViewById<Spinner>(R.id.ddlRoomType)
         //create a list of items for the spinner.
 //create a list of items for the spinner.
         val items = arrayOf("1", "2", "three")
@@ -26,7 +25,7 @@ class DateSelection : AppCompatActivity() {
 //set the spinners adapter to the previously created one.
         dropdown.adapter = adapter
 
-        val dropdown1 = findViewById<Spinner>(R.id.checkOutDate)
+        val dropdown1 = findViewById<Spinner>(R.id.ddlTimeRange)
         val items1 = arrayOf("1", "2", "three")
         val adapter1 = ArrayAdapter (this,android.R.layout.simple_spinner_dropdown_item,items1)
         dropdown.adapter = adapter1

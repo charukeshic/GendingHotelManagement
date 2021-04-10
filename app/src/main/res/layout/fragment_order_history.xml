@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderHistory">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/light_grey"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Order History"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active Order" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Past Order" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <TextView
+                        android:id="@+id/txtBookingID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                        tools:text="Order ID" />
+
+                    <TextView
+                        android:id="@+id/txtOrderStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtBookingID"
+                        tools:text="Staying Period" />
+
+                    <TextView
+                        android:id="@+id/txtCustName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderStatus"
+                        tools:text="Customer Name" />
+
+                    <TextView
+                        android:id="@+id/txtHandlePerson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRoomType"
+                        tools:text="Handle By Who" />
+
+                    <TextView
+                        android:id="@+id/txtRoomType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustName"
+                        tools:text="Room Type" />
+
+                    <TextView
+                        android:id="@+id/txtOrderStatus1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textColor="@color/teal_700"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                        tools:text="Order Status" />
+
+                    <TextView
+                        android:id="@+id/txtTotalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="136dp"
+                        android:layout_marginEnd="30dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderStatus1"
+                        tools:text="Total Amount" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="28dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTotalAmount"
+                        app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
