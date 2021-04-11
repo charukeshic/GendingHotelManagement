@@ -10,9 +10,6 @@
     tools:openDrawer="start">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -214,9 +211,9 @@
 
                     <Spinner
                         android:id="@+id/extraService"
-                        android:layout_width="360dp"
+                        android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:background="@android:drawable/btn_dropdown"
                         android:spinnerMode="dropdown"
@@ -249,7 +246,7 @@
                             android:paddingBottom="15dp"
                             android:text="Confirm"
                             android:textSize="18sp"
-                            android:translationX="245dp"
+                            android:translationX="180dp"
                             android:translationY="20dp"
                             app:backgroundTint="#5C5C5C"
                             app:cornerRadius="@null" />

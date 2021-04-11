@@ -10,9 +10,6 @@
     tools:openDrawer="start">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -63,21 +60,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="382dp"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/staff_login"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingBottom="15dp"
-                        app:srcCompat="@drawable/ic_login" />
-
                     <TextView
                         android:id="@+id/UserName"
-                        android:layout_width="382dp"
+                        android:layout_width="360dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:paddingTop="15dp"
                         android:text="@string/staff_sign_up"
                         android:textAlignment="center"
                         android:textSize="24sp"
@@ -86,9 +74,9 @@
 
                     <ImageView
                         android:id="@+id/userImage"
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
-                        android:translationX="450px"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
+                        android:translationX="440px"
                         app:srcCompat="@drawable/ic_profile" />
 
 

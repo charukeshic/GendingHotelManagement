@@ -239,7 +239,7 @@
 
                     <Spinner
                         android:id="@+id/extraService"
-                        android:layout_width="380dp"
+                        android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/btn_dropdown"
                         android:spinnerMode="dropdown" />
@@ -270,7 +270,7 @@
                             android:paddingBottom="15dp"
                             android:text="Submit"
                             android:textSize="18sp"
-                            android:translationX="245dp"
+                            android:translationX="180dp"
                             android:translationY="20dp"
                             app:backgroundTint="#5C5C5C"
                             app:cornerRadius="@null" />

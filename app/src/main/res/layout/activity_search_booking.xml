@@ -131,10 +131,11 @@
                             android:paddingBottom="15dp"
                             android:text="Check"
                             android:textSize="18sp"
-                            android:translationX="245dp"
+                            android:translationX="180dp"
                             android:translationY="20dp"
                             app:backgroundTint="#5C5C5C"
                             app:cornerRadius="@null" />
+
 
                     </LinearLayout>
 

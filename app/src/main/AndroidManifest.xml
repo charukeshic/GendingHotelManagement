@@ -79,6 +79,9 @@
             android:name=".NormalStaffPortal"
             android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
+            android:name=".StaffManagement"
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
+        <activity
             android:name=".ManagerStaffPortal"
             android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity

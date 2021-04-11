@@ -10,9 +10,6 @@
     tools:openDrawer="start">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -63,7 +60,7 @@
                     android:layout_width="377dp"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/staff_login"
-                    android:paddingLeft="15dp"
+                    android:paddingLeft="0dp"
                     android:paddingTop="15dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="15dp"
@@ -71,7 +68,7 @@
 
                 <TextView
                     android:id="@+id/UserName"
-                    android:layout_width="397dp"
+                    android:layout_width="360dp"
                     android:layout_height="wrap_content"
                     android:text="@string/staff_login"
                     android:textAlignment="center"
