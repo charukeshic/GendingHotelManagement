@@ -52,18 +52,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.ic_profile -> {
+                val intent = Intent (this@MainActivity,ManagerStaffPortal::class.java)
+                startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
+                val intent = Intent (this@MainActivity,DateSelection::class.java)
+                startActivity(intent);
                 Toast.makeText(this,"{Messages clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
+                val intent = Intent (this@MainActivity,CustomerActivity::class.java)
+                startActivity(intent);
                 Toast.makeText(this,"{Friends clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
+                val intent = Intent (this@MainActivity,AllOrderHistory::class.java)
+                startActivity(intent);
                 Toast.makeText(this,"{Update clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
+                val intent = Intent (this@MainActivity,Login::class.java)
+                startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
             }
         }

@@ -34,6 +34,8 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
 
+    lateinit var btnSignUp: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -50,6 +52,12 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+
+        btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener { // Do some work here
+            val intent = Intent (this@SignUp,Login::class.java)
+            startActivity(intent);
+        }
 
     }
 

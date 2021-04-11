@@ -12,7 +12,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class RoomOccupancyStatus : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class AllOrderHistory : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
@@ -20,7 +20,7 @@ class RoomOccupancyStatus : AppCompatActivity(), NavigationView.OnNavigationItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_room_occupancy_status)
+        setContentView(R.layout.activity_all_order_history)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -34,32 +34,33 @@ class RoomOccupancyStatus : AppCompatActivity(), NavigationView.OnNavigationItem
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.ic_profile -> {
-                val intent = Intent (this@RoomOccupancyStatus,ManagerStaffPortal::class.java)
+                val intent = Intent (this@AllOrderHistory,ManagerStaffPortal::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@RoomOccupancyStatus,DateSelection::class.java)
+                val intent = Intent (this@AllOrderHistory,DateSelection::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
-                val intent = Intent (this@RoomOccupancyStatus,CustomerActivity::class.java)
+                val intent = Intent (this@AllOrderHistory,CustomerActivity::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@RoomOccupancyStatus,AllOrderHistory::class.java)
+                val intent = Intent (this@AllOrderHistory,AllOrderHistory::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
-                val intent = Intent (this@RoomOccupancyStatus,Login::class.java)
+                val intent = Intent (this@AllOrderHistory,Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
             }

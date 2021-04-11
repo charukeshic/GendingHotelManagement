@@ -10,74 +10,77 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GendingHotelManagement">
         <activity
+            android:name=".AllOrderHistory"
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
+        <activity
             android:name=".RoomOccupancyStatus"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CheckRoomOccupancy"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ArrangeStaffSchedule"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ArrangeShift"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CheckOutDetails"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CheckOutForm"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CheckInDetails"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CheckInForm"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CustomerActivity"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".OnlineOrderConfirmation"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".SearchBooking"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".Receipt"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".Payment"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".OrderConfirmation"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".OrderDetails"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".DateSelection"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ViewWorkingSchedule"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ManageSchedule"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".EditProfile"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".RemoveStaff"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".CreateStaff"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".NormalStaffPortal"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".ManagerStaffPortal"
-            android:theme="@style/Theme.GendingHotelManagement.NoActionBar"/>
+            android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
         <activity
             android:name=".SignUp"
             android:theme="@style/Theme.GendingHotelManagement.NoActionBar" />
@@ -92,6 +95,7 @@
             android:theme="@style/Theme.GendingHotelManagement.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
