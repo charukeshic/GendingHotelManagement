@@ -51,16 +51,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
-            R.id.nav_profile -> {
+            R.id.ic_profile -> {
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_messages -> {
+            R.id.nav_booking -> {
                 Toast.makeText(this,"{Messages clicked",Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_friends -> {
+            R.id.nav_activity -> {
                 Toast.makeText(this,"{Friends clicked",Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_update -> {
+            R.id.nav_operation -> {
                 Toast.makeText(this,"{Update clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
