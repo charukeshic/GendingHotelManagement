@@ -1,32 +1,18 @@
 package com.example.gendinghotelmanagement
 
-import android.app.Activity
-import android.app.Instrumentation
-import android.app.ProgressDialog
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Patterns
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
 class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,13 +20,19 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
 
-    lateinit var btnSignUp: Button
-    lateinit var txtStaffID: EditText
-    lateinit var txtPassword: EditText
-    lateinit var txtConPassword: EditText
-    lateinit var staffRole: RadioGroup
-    lateinit var signin: TextView
-    lateinit var databaseUser: DatabaseReference
+    var btnSignUp: Button? = null
+    var txtStaffID: EditText? = null
+    var txtPassword: EditText? = null
+    var txtConPassword: EditText? = null
+    var staffRole: RadioGroup? = null
+//    private lateinit var txtStaffID:EditText
+//    private lateinit var txtPassword:EditText
+//    private lateinit var txtConPassword:EditText
+//    private lateinit var staffRole:RadioGroup
+    private lateinit var mAuth:FirebaseAuth
+    private lateinit var refUsers:DatabaseReference
+    private var firebaseUserID:String = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,45 +54,81 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        val btnSignUp = findViewById<Button>(R.id.btnSignUp)
 
-        staffRole = findViewById<RadioGroup>(R.id.staffRole)
-        txtStaffID = findViewById<EditText>(R.id.txtStaffID)
-        txtPassword = findViewById<EditText>(R.id.txtPassword)
-        txtConPassword = findViewById<EditText>(R.id.txtConPassword)
-        signin = findViewById<TextView>(R.id.signin)
 
-        btnSignUp = findViewById(R.id.btnSignUp);
+        mAuth = FirebaseAuth.getInstance()
 
-        btnSignUp.setOnClickListener { // Do some work here
-            SignupFun()
+        btnSignUp.setOnClickListener{
+            signUpUser()
+
         }
     }
 
-                private fun SignupFun(){
-            val email = txtStaffID.getText().toString().trim();
-            val password = txtPassword.getText().toString().trim();
-            val conPassword = txtConPassword.getText().toString().trim();
-            val role = staffRole.getCheckedRadioButtonId().toString().trim();
-
-        if(email.isEmpty()){
-
-            txtStaffID.error ="Please enter an email"
-            return
-
-        }
+                private fun signUpUser(){
+                    //val email:String = txtStaffID?.text.toString();
+                    val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
+                    val txtPassword = findViewById<TextView>(R.id.txtPassword)
+                    val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
+                    val staffRole = findViewById<RadioGroup>(R.id.staffRole)
+                    val email = txtStaffID?.getText().toString().trim();
+                    val pwd = txtPassword?.getText().toString().trim();
+                    val conPwd = txtConPassword?.getText().toString().trim();
+                    val role = staffRole?.getCheckedRadioButtonId().toString().trim();
 
 
-                    databaseUser = FirebaseDatabase.getInstance().getReference("User");
 
-                    val userID = databaseUser.push().key
+                    if(email.equals("")){
+                        Toast.makeText(this@SignUp, "Email is required!", Toast.LENGTH_LONG)
+                                .show()
 
-                    val user = UserModel(userID,email,password,conPassword, role)
-                    if (userID != null) {
-                        databaseUser.child(userID).setValue(user).addOnCompleteListener{
-                            Toast.makeText(applicationContext,"Account is successfully created",Toast.LENGTH_LONG).show()
-                        }
+                    }else if (pwd.equals("")){
+                        Toast.makeText(this@SignUp, "pwd is required!", Toast.LENGTH_LONG)
+                                .show()
+
+                    }else if (conPwd.equals("")){
+                        Toast.makeText(this@SignUp, "con pwd is required!", Toast.LENGTH_LONG)
+                                .show()
+
+                    }else if (role.equals("")){
+                        Toast.makeText(this@SignUp, "role is required!", Toast.LENGTH_LONG)
+                                .show()
+
+                    }else{
+                        mAuth.createUserWithEmailAndPassword(email, pwd)
+                                .addOnCompleteListener{task ->
+                                    if (task.isSuccessful){
+
+                                        firebaseUserID = mAuth.currentUser!!.uid
+                                        refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
+                                        val userHashMap = HashMap<String,Any>()
+                                        userHashMap["uid"] = firebaseUserID
+                                        userHashMap["email"] = txtStaffID
+                                        userHashMap["pwd"] = txtPassword
+                                        userHashMap["conPwd"] = txtConPassword
+                                        userHashMap["role"] = staffRole
+
+                                        refUsers.updateChildren(userHashMap)
+                                                .addOnCompleteListener{
+                                                    if (task.isSuccessful){
+                                                        val intent = Intent (this@SignUp,Login::class.java)
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                        startActivity(intent)
+                                                        finish()
+                                                    }
+
+                                                }
+
+                                    }else{
+                                        Toast.makeText(this@SignUp, "Error Message:"+ task.exception!!.message.toString(), Toast.LENGTH_LONG)
+                                                .show()
+                                    }
+                                }
+
                     }
-}
+
+
+                }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         TODO("Not yet implemented")

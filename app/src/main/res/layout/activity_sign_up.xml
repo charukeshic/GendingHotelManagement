@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:ems="10"
-                        android:inputType="textLongMessage|textPersonName"
+                        android:inputType="textEmailAddress"
                         android:labelFor="@id/TextView8"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"

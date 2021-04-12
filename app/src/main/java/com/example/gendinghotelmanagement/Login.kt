@@ -31,15 +31,20 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
 
-    private var txtStaffID: EditText? = null;
-    private var txtPassword: EditText? = null;
-    private var txtstaffID: String? = null;
-    private var txtpassword: String? = null;
-    private var btnLogin: Button? = null
-    private var registerUser: TextView? = null;
+
+    private var registerUser: TextView? = null
     private var forgotPassword: TextView? = null
     var progressDialog: ProgressDialog? = null
-    private var mAuth: FirebaseAuth? = null
+    private lateinit var mAuth:FirebaseAuth
+//    private lateinit var txtStaffID: EditText
+//    private lateinit var txtPassword: EditText
+    //private lateinit var registerUser: TextView
+    //private lateinit var forgotPassword: TextView
+    //lateinit var btnLogin: Button
+//    var mAuth:FirebaseAuth? = null
+    var btnLogin: Button? = null
+    var txtStaffID: Button? = null
+    var txtPassword: Button? = null
 
 
 
@@ -60,67 +65,58 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        txtStaffID = findViewById<EditText>(R.id.txtOrderNo)
-        txtPassword = findViewById<EditText>(R.id.txtPassword)
+
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val registerUser = findViewById<TextView>(R.id.registerUser)
         val forgotPassword = findViewById<TextView>(R.id.forgotPassword)
+
         mAuth = FirebaseAuth.getInstance()
-        progressDialog = ProgressDialog(this)
 
         registerUser.setOnClickListener(View.OnClickListener { startActivity(Intent(this@Login, SignUp::class.java)) })
         forgotPassword.setOnClickListener(View.OnClickListener { startActivity(Intent(this@Login, ForgotPassword::class.java)) })
-        btnLogin.setOnClickListener(View.OnClickListener { LogInFun() })
-    }
-
-    fun isEmailValid(email: CharSequence?): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    fun LogInFun() {
-        progressDialog?.setTitle("Login Account")
-        progressDialog?.setMessage("Please wait Signing !!!")
-        progressDialog?.show()
-        txtstaffID = txtStaffID?.getText().toString()
-        txtpassword = txtPassword?.getText().toString()
-        if (txtstaffID == "" || !isEmailValid(txtstaffID)) {
-            txtStaffID?.setError("Enter the Valid Email")
-            progressDialog?.dismiss()
-            return
+        btnLogin.setOnClickListener{
+            loginUser()
         }
-        if (txtpassword == "") {
-            txtPassword?.setError("Password Required")
-            progressDialog?.dismiss()
-            return
-        }
-        LogInUser(txtstaffID!!, txtpassword!!)
+
+
     }
 
-    open fun LogInUser(txtstaffID: String, txtpassword: String) {
-        mAuth?.signInWithEmailAndPassword(txtstaffID, txtpassword)
-            ?.addOnSuccessListener(OnSuccessListener<AuthResult> { authResult ->
-                if (authResult.user != null) {
-                    val Key = authResult.user!!.uid
-                    startActivity(Intent(this@Login, MainActivity::class.java))
-                    finish()
-                    progressDialog?.dismiss()
-                }
-            })?.addOnFailureListener(OnFailureListener { e ->
-                if (e is FirebaseAuthInvalidCredentialsException) {
-                    txtPassword?.setError("Invalid Password")
-                    progressDialog?.dismiss()
-                } else if (e is FirebaseAuthEmailException) {
-                    txtStaffID?.setError("Invalid Email")
-                    progressDialog?.dismiss()
-                } else if (e is NetworkErrorException) {
-                    Toast.makeText(this@Login, "Network Error", Toast.LENGTH_SHORT).show()
-                    progressDialog?.dismiss()
-                }
-                Toast.makeText(this@Login, "Network Error" + e.message, Toast.LENGTH_SHORT)
+
+    fun loginUser() {
+
+        val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
+        val txtPassword = findViewById<TextView>(R.id.txtPassword)
+        val email:String = txtStaffID?.text.toString();
+        val pwd:String = txtPassword?.text.toString();
+
+        if(email.equals("")){
+            Toast.makeText(this@Login, "Email is required!", Toast.LENGTH_LONG)
                     .show()
-                progressDialog?.dismiss()
-            })
 
+        }else if (pwd.equals("")){
+            Toast.makeText(this@Login, "pwd is required!", Toast.LENGTH_LONG)
+                    .show()
+
+        }else{
+            mAuth.signInWithEmailAndPassword(email,pwd)
+                .addOnCompleteListener{ task ->
+                    if (task.isSuccessful){
+                        val intent = Intent (this@Login,MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
+                            .show()
+                        finish()
+
+
+                    }else{
+                        Toast.makeText(this@Login, "Error Message:"+ task.exception!!.message.toString(), Toast.LENGTH_LONG)
+                            .show()
+                    }
+
+                }
+
+        }
 
     }
 
