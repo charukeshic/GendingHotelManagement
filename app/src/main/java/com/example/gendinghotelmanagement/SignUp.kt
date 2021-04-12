@@ -35,10 +35,19 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     lateinit var navView: NavigationView
 
     lateinit var btnSignUp: Button
+    lateinit var txtStaffID: EditText
+    lateinit var txtPassword: EditText
+    lateinit var txtConPassword: EditText
+    lateinit var staffRole: RadioGroup
+    lateinit var signin: TextView
+    lateinit var databaseUser: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -47,19 +56,51 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         navView = findViewById(R.id.nav_view)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0, 0
+                this, drawerLayout, toolbar, 0, 0
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+
+        staffRole = findViewById<RadioGroup>(R.id.staffRole)
+        txtStaffID = findViewById<EditText>(R.id.txtStaffID)
+        txtPassword = findViewById<EditText>(R.id.txtPassword)
+        txtConPassword = findViewById<EditText>(R.id.txtConPassword)
+        signin = findViewById<TextView>(R.id.signin)
+
         btnSignUp = findViewById(R.id.btnSignUp);
+
         btnSignUp.setOnClickListener { // Do some work here
-            val intent = Intent (this@SignUp,Login::class.java)
-            startActivity(intent);
+            SignupFun()
+        }
+    }
+
+                private fun SignupFun(){
+            val email = txtStaffID.getText().toString().trim();
+            val password = txtPassword.getText().toString().trim();
+            val conPassword = txtConPassword.getText().toString().trim();
+            val role = staffRole.getCheckedRadioButtonId().toString().trim();
+
+        if(email.isEmpty()){
+
+            txtStaffID.error ="Please enter an email"
+            return
+
         }
 
-    }
+
+                    databaseUser = FirebaseDatabase.getInstance().getReference("User");
+
+                    val userID = databaseUser.push().key
+
+                    val user = UserModel(userID,email,password,conPassword, role)
+                    if (userID != null) {
+                        databaseUser.child(userID).setValue(user).addOnCompleteListener{
+                            Toast.makeText(applicationContext,"Account is successfully created",Toast.LENGTH_LONG).show()
+                        }
+                    }
+}
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         TODO("Not yet implemented")

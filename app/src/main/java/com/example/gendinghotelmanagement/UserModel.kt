@@ -8,6 +8,8 @@ class UserModel : Parcelable {
     var password: String? = null
     var conPassword: String? = null
     var role: String? = null
+    var userID: String? = null
+
     //var userImage: String? = null
 
     constructor() {}
@@ -16,7 +18,8 @@ class UserModel : Parcelable {
         email: String?,
         password: String?,
         conPassword: String?,
-        role: String?
+        role: String?,
+        userID: String?
        // userImage: String?
 
     ) {
@@ -24,6 +27,7 @@ class UserModel : Parcelable {
         this.password = password
         this.conPassword = conPassword
         this.role = role
+        this.userID = userID
         //this.userImage = userImage
     }
 
@@ -32,6 +36,7 @@ class UserModel : Parcelable {
         password = `in`.readString()
         conPassword = `in`.readString()
         role = `in`.readString()
+        userID = `in`.readString()
        // userImage = `in`.readString()
     }
 
@@ -40,6 +45,7 @@ class UserModel : Parcelable {
         dest.writeString(password)
         dest.writeString(conPassword)
         dest.writeString(role)
+        dest.writeString(userID)
        // dest.writeString(userImage)
     }
 
