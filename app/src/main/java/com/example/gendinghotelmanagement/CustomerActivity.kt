@@ -68,7 +68,7 @@ class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@CustomerActivity,AllOrderHistory::class.java)
+                val intent = Intent (this@CustomerActivity,CheckRoomOccupancy::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }

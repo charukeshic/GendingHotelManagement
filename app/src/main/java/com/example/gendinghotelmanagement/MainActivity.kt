@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"{Friends clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@MainActivity,AllOrderHistory::class.java)
+                val intent = Intent (this@MainActivity,CheckRoomOccupancy::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Update clicked",Toast.LENGTH_SHORT).show()
             }
