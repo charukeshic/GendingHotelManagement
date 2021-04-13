@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -73,6 +74,7 @@ class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
+                FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@CustomerActivity,Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()

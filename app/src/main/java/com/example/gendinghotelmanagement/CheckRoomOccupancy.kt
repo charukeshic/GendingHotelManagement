@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class CheckRoomOccupancy : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
@@ -68,6 +69,7 @@ class CheckRoomOccupancy : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
+                FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@CheckRoomOccupancy,Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()

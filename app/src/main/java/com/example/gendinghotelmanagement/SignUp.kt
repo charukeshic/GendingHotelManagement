@@ -26,7 +26,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     var txtPassword: EditText? = null
     var txtConPassword: EditText? = null
     var staffRole: RadioGroup? = null
-//    private lateinit var txtStaffID:EditText
+    //    private lateinit var txtStaffID:EditText
 //    private lateinit var txtPassword:EditText
 //    private lateinit var txtConPassword:EditText
 //    private lateinit var staffRole:RadioGroup
@@ -69,70 +69,70 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         }
     }
 
-                private fun signUpUser(){
-                    //val email:String = txtStaffID?.text.toString();
-                    val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
-                    val txtPassword = findViewById<TextView>(R.id.txtNumOfPeople)
-                    val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
-                    val staffRole = findViewById<RadioGroup>(R.id.staffRole)
-                    val email = txtStaffID?.getText().toString().trim();
-                    val pwd = txtPassword?.getText().toString().trim();
-                    val conPwd = txtConPassword?.getText().toString().trim();
-                    val role = staffRole?.getCheckedRadioButtonId().toString().trim();
+    private fun signUpUser(){
+        //val email:String = txtStaffID?.text.toString();
+        val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
+        val txtPassword = findViewById<TextView>(R.id.txtPassword)
+        val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
+        val staffRole = findViewById<RadioGroup>(R.id.staffRole)
+        val email = txtStaffID?.getText().toString().trim();
+        val pwd = txtPassword?.getText().toString().trim();
+        val conPwd = txtConPassword?.getText().toString().trim();
+        val role = staffRole?.getCheckedRadioButtonId().toString().trim();
 
 
 
-                    if(email.equals("")){
-                        Toast.makeText(this@SignUp, "Email is required!", Toast.LENGTH_LONG)
-                                .show()
+        if(email.equals("")){
+            Toast.makeText(this@SignUp, "Email is required!", Toast.LENGTH_LONG)
+                    .show()
 
-                    }else if (pwd.equals("")){
-                        Toast.makeText(this@SignUp, "pwd is required!", Toast.LENGTH_LONG)
-                                .show()
+        }else if (pwd.equals("")){
+            Toast.makeText(this@SignUp, "pwd is required!", Toast.LENGTH_LONG)
+                    .show()
 
-                    }else if (conPwd.equals("")){
-                        Toast.makeText(this@SignUp, "con pwd is required!", Toast.LENGTH_LONG)
-                                .show()
+        }else if (conPwd.equals("")){
+            Toast.makeText(this@SignUp, "con pwd is required!", Toast.LENGTH_LONG)
+                    .show()
 
-                    }else if (role.equals("")){
-                        Toast.makeText(this@SignUp, "role is required!", Toast.LENGTH_LONG)
-                                .show()
+        }else if (role.equals("")){
+            Toast.makeText(this@SignUp, "role is required!", Toast.LENGTH_LONG)
+                    .show()
 
-                    }else{
-                        mAuth.createUserWithEmailAndPassword(email, pwd)
-                                .addOnCompleteListener{task ->
-                                    if (task.isSuccessful){
+        }else{
+            mAuth.createUserWithEmailAndPassword(email, pwd)
+                    .addOnCompleteListener{task ->
+                        if (task.isSuccessful){
 
-                                        firebaseUserID = mAuth.currentUser!!.uid
-                                        refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
-                                        val userHashMap = HashMap<String,Any>()
-                                        userHashMap["uid"] = firebaseUserID
-                                        userHashMap["email"] = txtStaffID
-                                        userHashMap["pwd"] = txtPassword
-                                        userHashMap["conPwd"] = txtConPassword
-                                        userHashMap["role"] = staffRole
+                            firebaseUserID = mAuth.currentUser!!.uid
+                            refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
+                            val userHashMap = HashMap<String,Any>()
+                            userHashMap["uid"] = firebaseUserID
+                            userHashMap["email"] = txtStaffID
+                            userHashMap["pwd"] = txtPassword
+                            userHashMap["conPwd"] = txtConPassword
+                            userHashMap["role"] = staffRole
 
-                                        refUsers.updateChildren(userHashMap)
-                                                .addOnCompleteListener{
-                                                    if (task.isSuccessful){
-                                                        val intent = Intent (this@SignUp,Login::class.java)
-                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                                                        startActivity(intent)
-                                                        finish()
-                                                    }
+                            refUsers.updateChildren(userHashMap)
+                                    .addOnCompleteListener{
+                                        if (task.isSuccessful){
+                                            val intent = Intent (this@SignUp, Login::class.java)
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                            startActivity(intent)
+                                            finish()
+                                        }
 
-                                                }
-
-                                    }else{
-                                        Toast.makeText(this@SignUp, "Error Message:"+ task.exception!!.message.toString(), Toast.LENGTH_LONG)
-                                                .show()
                                     }
-                                }
 
+                        }else{
+                            Toast.makeText(this@SignUp, "Error Message:"+ task.exception!!.message.toString(), Toast.LENGTH_LONG)
+                                    .show()
+                        }
                     }
 
+        }
 
-                }
+
+    }
     private fun saveUser(){
         val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
@@ -158,7 +158,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val user = UserModel(conPassword,email,password,role,userID)
         if (userID != null) {
             databaseUser.child(userID).setValue(user).addOnCompleteListener{
-                Toast.makeText(applicationContext,"Account is successfully created",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@SignUp,"Account is successfully created",Toast.LENGTH_LONG).show()
             }
         }
     }
