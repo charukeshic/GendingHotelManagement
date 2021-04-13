@@ -1,26 +1,25 @@
 package com.example.gendinghotelmanagement
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.content.Intent
+import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import java.util.*
+
 
 class DateSelection : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-
     lateinit var btnCheckOccupancy: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +44,33 @@ class DateSelection : AppCompatActivity() , NavigationView.OnNavigationItemSelec
             startActivity(intent);
         }
 
+        val datePicker = findViewById<DatePicker>(R.id.dpCheckInDate)
+        val today = Calendar.getInstance()
+        datePicker.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
+                today.get(Calendar.DAY_OF_MONTH)
+
+        ) { view, year, month, day ->
+            val month = month + 1
+            val msg = "You Selected: $day/$month/$year as check in date"
+            Toast.makeText(this@DateSelection, msg, Toast.LENGTH_SHORT).show()
+        }
+
+        val datePicker1 = findViewById<DatePicker>(R.id.dpCheckOutDate)
+        val today1 = Calendar.getInstance()
+        datePicker1.init(today1.get(Calendar.YEAR), today1.get(Calendar.MONTH),
+                today1.get(Calendar.DAY_OF_MONTH)
+
+        ) { view, year, month, day ->
+            val month = month + 1
+            val msg = "You Selected: $day/$month/$year as check out date"
+            Toast.makeText(this@DateSelection, msg, Toast.LENGTH_SHORT).show()
+        }
+
         //get the spinner from the xml.
-        val dropdown = findViewById<Spinner>(R.id.ddlRoomType)
+        val dropdown = findViewById<Spinner>(R.id.roomType)
         //create a list of items for the spinner.
 //create a list of items for the spinner.
-        val items = arrayOf("1", "2", "three")
+        val items = arrayOf("Single Room", "Double Room", "Suite", "Villa")
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -60,16 +81,7 @@ class DateSelection : AppCompatActivity() , NavigationView.OnNavigationItemSelec
 //set the spinners adapter to the previously created one.
         dropdown.adapter = adapter
 
-        val dropdown1 = findViewById<Spinner>(R.id.ddlTimeRange)
-        val items1 = arrayOf("1", "2", "three")
-        val adapter1 = ArrayAdapter (this,android.R.layout.simple_spinner_dropdown_item,items1)
-        dropdown.adapter = adapter1
 
-        val dropdown2 = findViewById<Spinner>(R.id.roomType)
-        val items2 = arrayOf("1", "2", "three")
-        val adapter2 =
-            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items2)
-        dropdown.adapter = adapter2
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
