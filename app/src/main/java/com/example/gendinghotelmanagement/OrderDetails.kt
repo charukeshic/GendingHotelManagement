@@ -2,12 +2,9 @@ package com.example.gendinghotelmanagement
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.content.Intent
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -21,6 +18,13 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var navView: NavigationView
 
     lateinit var btnUpdateOrder: Button
+
+    lateinit var txtName: EditText
+    lateinit var txtIC: EditText
+    lateinit var txtPhone: EditText
+    lateinit var txtAddress: EditText
+    lateinit var txtNumOfPeople: EditText
+    lateinit var extraService: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,22 +47,40 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnUpdateOrder.setOnClickListener { // Do some work here
             val intent = Intent (this@OrderDetails,OrderConfirmation::class.java)
             startActivity(intent);
+            saveOrder()
         }
 
         //get the spinner from the xml.
         val dropdown = findViewById<Spinner>(R.id.extraService)
         //create a list of items for the spinner.
-//create a list of items for the spinner.
+        //create a list of items for the spinner.
         val items = arrayOf("Include Breakfast", "Laundry Services", "Airport Pick Up/ Drop Off")
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
+        //There are multiple variations of this, but this is the basic variant.
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
         val adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-//set the spinners adapter to the previously created one.
-//set the spinners adapter to the previously created one.
+            //set the spinners adapter to the previously created one.
+            //set the spinners adapter to the previously created one.
         dropdown.adapter = adapter
+
+        txtName = findViewById(R.id.txtName)
+        txtIC = findViewById(R.id.txtIC)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtNumOfPeople = findViewById(R.id.txtNumOfPeople)
+        extraService = findViewById(R.id.extraService)
+
+    }
+
+    private fun saveOrder() {
+        val name = txtName.text.toString().trim()
+
+        if(name.isEmpty()){
+            txtName.error = "Please enter a name"
+            return
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{

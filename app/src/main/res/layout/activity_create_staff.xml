@@ -89,7 +89,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/txtOrderNo"
+                        android:id="@+id/txtName"
                         android:layout_width="380dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
@@ -163,7 +163,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/txtStaffName"
+                        android:id="@+id/txtPhone"
                         android:layout_width="380dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
@@ -194,7 +194,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/txtStaffAddress"
+                        android:id="@+id/txtAddress"
                         android:layout_width="380dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
@@ -223,7 +223,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/txtPassword"
+                        android:id="@+id/txtNumOfPeople"
                         android:layout_width="380dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -19,6 +20,10 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     lateinit var navView: NavigationView
 
     lateinit var btnCheckInForm: Button
+
+    lateinit var txtName: EditText
+    lateinit var txtIC: EditText
+    lateinit var txtPhone: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +46,25 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         btnCheckInForm.setOnClickListener { // Do some work here
             val intent = Intent (this@CheckInForm,CheckInDetails::class.java)
             startActivity(intent);
+
         }
+
+        txtName = findViewById(R.id.txtName)
+        txtIC = findViewById(R.id.txtIC)
+        txtPhone = findViewById(R.id.txtPhone)
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
