@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
 
 class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -19,15 +21,17 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
     lateinit var navView: NavigationView
 
     lateinit var btnCreateOrder: Button
-    lateinit var btnSearchBooking: Button
+    lateinit var btnCheckRoom: Button
     lateinit var btnManageProfile: Button
     lateinit var btnOrderHistory: Button
     lateinit var btnCustomerActivity: Button
     lateinit var btnManageStaff: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manager_staff_portal)
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -42,14 +46,16 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+
+
         btnCreateOrder = findViewById(R.id.btnCreateOrder);
         btnCreateOrder.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,DateSelection::class.java)
             startActivity(intent);
         }
-        btnSearchBooking = findViewById(R.id.btnSearchBooking);
-        btnSearchBooking.setOnClickListener { // Do some work here
-            val intent = Intent (this@ManagerStaffPortal,SearchBooking::class.java)
+        btnCheckRoom = findViewById(R.id.btnCheckRoom);
+        btnCheckRoom.setOnClickListener { // Do some work here
+            val intent = Intent (this@ManagerStaffPortal,CheckRoomOccupancy::class.java)
             startActivity(intent);
         }
         btnManageProfile = findViewById(R.id.btnManageProfile);

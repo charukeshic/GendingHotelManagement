@@ -19,7 +19,7 @@ class NormalStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var navView: NavigationView
 
     lateinit var btnCreateOrder: Button
-    lateinit var btnSearchBooking: Button
+    lateinit var btnCheckRoom: Button
     lateinit var btnManageProfile: Button
     lateinit var btnOrderHistory: Button
     lateinit var btnCustomerActivity: Button
@@ -47,9 +47,9 @@ class NormalStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSe
             val intent = Intent (this@NormalStaffPortal,DateSelection::class.java)
             startActivity(intent);
         }
-        btnSearchBooking = findViewById(R.id.btnSearchBooking);
-        btnSearchBooking.setOnClickListener { // Do some work here
-            val intent = Intent (this@NormalStaffPortal,SearchBooking::class.java)
+        btnCheckRoom = findViewById(R.id.btnCheckRoom);
+        btnCheckRoom.setOnClickListener { // Do some work here
+            val intent = Intent (this@NormalStaffPortal,CheckRoomOccupancy::class.java)
             startActivity(intent);
         }
         btnManageProfile = findViewById(R.id.btnManageProfile);

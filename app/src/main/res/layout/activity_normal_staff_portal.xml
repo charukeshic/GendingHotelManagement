@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:orientation="vertical"
@@ -89,7 +89,7 @@
 
                     <Button
                         android:id="@+id/btnCreateOrder"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="52dp"
@@ -100,12 +100,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/btnSearchBooking"
-                        android:layout_width="150dp"
+                        android:id="@+id/btnChekRoom"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="52dp"
                         android:layout_marginEnd="20dp"
-                        android:text="Search Booking"
+                        android:text="Room Occupancy"
                         android:textAlignment="center"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +113,7 @@
 
                     <Button
                         android:id="@+id/btnManageProfile"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
@@ -125,7 +125,7 @@
 
                     <Button
                         android:id="@+id/btnOrderHistory"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
@@ -137,7 +137,7 @@
 
                     <Button
                         android:id="@+id/btnCustomerActivity"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
@@ -149,7 +149,7 @@
 
                     <Button
                         android:id="@+id/btnViewShift"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
