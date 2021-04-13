@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.FirebaseDatabase
 
 class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,12 +76,27 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun saveOrder() {
+        var checkIn = "2/3/2020"
+        val checkOut = "2/3/2020"
         val name = txtName.text.toString().trim()
+        val ic = txtIC.text.toString().trim()
+        val phone = txtPhone.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
+        val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
+        val extraServices = extraService.toString().trim()
+
 
         if(name.isEmpty()){
             txtName.error = "Please enter a name"
             return
         }
+
+        //val order = OrderModel(checkIn, checkOut, ic, extraServices, noOfPeople, orderID, status, qtyOfRooms, roomNO, roomType)
+
+        val ref = FirebaseDatabase.getInstance().getReference("orders")
+
+        val orderID = ref.push().key
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
