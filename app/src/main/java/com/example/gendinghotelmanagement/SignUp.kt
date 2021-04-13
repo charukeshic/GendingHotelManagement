@@ -72,7 +72,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
                 private fun signUpUser(){
                     //val email:String = txtStaffID?.text.toString();
                     val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
-                    val txtPassword = findViewById<TextView>(R.id.txtPassword)
+                    val txtPassword = findViewById<TextView>(R.id.txtNumOfPeople)
                     val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
                     val staffRole = findViewById<RadioGroup>(R.id.staffRole)
                     val email = txtStaffID?.getText().toString().trim();
