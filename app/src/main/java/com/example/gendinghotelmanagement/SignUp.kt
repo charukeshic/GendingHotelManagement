@@ -3,6 +3,7 @@ package com.example.gendinghotelmanagement
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,8 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     private lateinit var mAuth:FirebaseAuth
     private lateinit var refUsers:DatabaseReference
     private var firebaseUserID:String = ""
+    lateinit var databaseUser: DatabaseReference
+    lateinit var signin: TextView
 
 
 
@@ -55,12 +58,13 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         navView.setNavigationItemSelectedListener(this)
 
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
-
+        val signin = findViewById<TextView>(R.id.signin)
 
         mAuth = FirebaseAuth.getInstance()
-
+        signin.setOnClickListener(View.OnClickListener { startActivity(Intent(this@SignUp, Login::class.java)) })
         btnSignUp.setOnClickListener{
             signUpUser()
+            saveUser()
 
         }
     }
@@ -129,6 +133,35 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
 
                 }
+    private fun saveUser(){
+        val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
+        val txtPassword = findViewById<TextView>(R.id.txtPassword)
+        val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
+        val staffRole = findViewById<RadioGroup>(R.id.staffRole)
+        val email = txtStaffID.text.toString().trim();
+        val password = txtPassword.text.toString().trim();
+        val conPassword = txtConPassword.text.toString().trim();
+        val role = staffRole.checkedRadioButtonId.toString().trim();
+
+        if(email.isEmpty()){
+
+            txtStaffID.error ="Please enter an email"
+            return
+
+        }
+
+
+        databaseUser = FirebaseDatabase.getInstance().getReference("User");
+
+        val userID = databaseUser.push().key
+
+        val user = UserModel(conPassword,email,password,role,userID)
+        if (userID != null) {
+            databaseUser.child(userID).setValue(user).addOnCompleteListener{
+                Toast.makeText(applicationContext,"Account is successfully created",Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         TODO("Not yet implemented")

@@ -4,9 +4,10 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class UserModel : Parcelable {
+
+    var conPassword: String? = null
     var email: String? = null
     var password: String? = null
-    var conPassword: String? = null
     var role: String? = null
     var userID: String? = null
 
@@ -14,36 +15,36 @@ class UserModel : Parcelable {
 
     constructor() {}
     constructor(
-
-        email: String?,
-        password: String?,
-        conPassword: String?,
-        role: String?,
-        userID: String?
+            conPassword: String?,
+            email: String?,
+            password: String?,
+            role: String?,
+            userID: String?
        // userImage: String?
 
+
     ) {
+        this.conPassword = conPassword
         this.email = email
         this.password = password
-        this.conPassword = conPassword
         this.role = role
         this.userID = userID
         //this.userImage = userImage
     }
 
     protected constructor(`in`: Parcel) {
+        conPassword = `in`.readString()
         email = `in`.readString()
         password = `in`.readString()
-        conPassword = `in`.readString()
         role = `in`.readString()
         userID = `in`.readString()
        // userImage = `in`.readString()
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(conPassword)
         dest.writeString(email)
         dest.writeString(password)
-        dest.writeString(conPassword)
         dest.writeString(role)
         dest.writeString(userID)
        // dest.writeString(userImage)
