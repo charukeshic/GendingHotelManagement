@@ -8,6 +8,7 @@ class OrderModel : Parcelable {
     var CheckInDate: String? = null
     var CheckOutDate: String? = null
     var CustomerID: String? = null
+    var CustomerName: String? = null
     var ExtraServices: String? = null
     var NoOfPerson: Int? = null
     var OrderID: String? = null
@@ -23,6 +24,7 @@ class OrderModel : Parcelable {
     constructor(
             CheckInDate: String?,
             CheckOutDate: String?,
+            CustomerName: String?,
             CustomerID: String?,
             ExtraServices: String?,
             NoOfPerson: Int?,
@@ -39,6 +41,7 @@ class OrderModel : Parcelable {
     ) {
         this.CheckInDate= CheckInDate
         this.CheckOutDate= CheckOutDate
+        this.CustomerName= CustomerName
         this.CustomerID= CustomerID
         this.ExtraServices= ExtraServices
         this.NoOfPerson= NoOfPerson
@@ -56,6 +59,7 @@ class OrderModel : Parcelable {
         CheckInDate = `in`.readString()
         CheckOutDate = `in`.readString()
         CustomerID = `in`.readString()
+        CustomerName = `in`.readString()
         ExtraServices = `in`.readString()
         NoOfPerson = `in`.readInt()
         OrderID = `in`.readString()
@@ -71,6 +75,7 @@ class OrderModel : Parcelable {
         dest.writeString(CheckInDate)
         dest.writeString(CheckOutDate)
         dest.writeString(CustomerID)
+        dest.writeString(CustomerName)
         dest.writeString(ExtraServices)
         NoOfPerson?.let { dest.writeInt(it) }
         dest.writeString(OrderID)

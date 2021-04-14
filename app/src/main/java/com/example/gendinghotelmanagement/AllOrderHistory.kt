@@ -45,7 +45,7 @@ class AllOrderHistory : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@AllOrderHistory, DateSelection::class.java)
+                val intent = Intent (this@AllOrderHistory, OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

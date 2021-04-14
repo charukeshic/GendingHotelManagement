@@ -55,7 +55,7 @@ class CheckOutForm : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@CheckOutForm,DateSelection::class.java)
+                val intent = Intent (this@CheckOutForm,OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

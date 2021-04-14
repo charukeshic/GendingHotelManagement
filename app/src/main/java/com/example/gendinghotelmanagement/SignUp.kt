@@ -26,7 +26,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     var txtStaffID: EditText? = null
     var txtPassword: EditText? = null
     var txtConPassword: EditText? = null
-    var staffRole: RadioGroup? = null
+    var staffRole: EditText? = null
     //    private lateinit var txtStaffID:EditText
 //    private lateinit var txtPassword:EditText
 //    private lateinit var txtConPassword:EditText
@@ -75,11 +75,11 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
-        val staffRole = findViewById<RadioGroup>(R.id.staffRole)
+        val staffRole = findViewById<TextView>(R.id.staffRole)
         val email = txtStaffID?.getText().toString().trim();
         val pwd = txtPassword?.getText().toString().trim();
         val conPwd = txtConPassword?.getText().toString().trim();
-        val role = staffRole?.getCheckedRadioButtonId().toString().trim();
+        val role = staffRole?.getText().toString().trim();
 
 
 
@@ -139,11 +139,11 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
-        val staffRole = findViewById<RadioGroup>(R.id.staffRole)
+        val staffRole = findViewById<TextView>(R.id.staffRole)
         val email = txtStaffID.text.toString().trim();
         val password = txtPassword.text.toString().trim();
         val conPassword = txtConPassword.text.toString().trim();
-        val role = staffRole.checkedRadioButtonId.toString().trim();
+        val role = staffRole.text.toString().trim();
 
         if(email.isEmpty()){
 

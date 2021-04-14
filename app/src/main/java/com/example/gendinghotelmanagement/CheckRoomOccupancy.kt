@@ -54,7 +54,7 @@ class CheckRoomOccupancy : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@CheckRoomOccupancy,DateSelection::class.java)
+                val intent = Intent (this@CheckRoomOccupancy,OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

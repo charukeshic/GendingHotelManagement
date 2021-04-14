@@ -45,7 +45,7 @@ class ViewWorkingSchedule : AppCompatActivity(), NavigationView.OnNavigationItem
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@ViewWorkingSchedule,DateSelection::class.java)
+                val intent = Intent (this@ViewWorkingSchedule,OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

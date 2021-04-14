@@ -53,7 +53,7 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@OrderConfirmation,DateSelection::class.java)
+                val intent = Intent (this@OrderConfirmation,OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

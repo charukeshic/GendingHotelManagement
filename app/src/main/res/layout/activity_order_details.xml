@@ -75,6 +75,62 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="Check In Date"
+                        android:textSize="15sp" />
+
+                    <DatePicker
+                        android:id="@+id/dpCheckInDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner"
+                        android:paddingLeft="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="Check Out Date"
+                        android:textSize="15sp" />
+
+                    <DatePicker
+                        android:id="@+id/dpCheckOutDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner"
+                        android:paddingLeft="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="Room Type"
+                        android:textSize="15sp" />
+
+                    <Spinner
+                        android:id="@+id/roomType"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown" />
+
+                    <TextView
                         android:id="@+id/textView3"
                         android:layout_width="380dp"
                         android:layout_height="0dp"

@@ -49,7 +49,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         btnCreateOrder = findViewById(R.id.btnCreateOrder);
         btnCreateOrder.setOnClickListener { // Do some work here
-            val intent = Intent (this@ManagerStaffPortal,DateSelection::class.java)
+            val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
             startActivity(intent);
         }
         btnCheckRoom = findViewById(R.id.btnCheckRoom);
@@ -87,7 +87,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@ManagerStaffPortal,DateSelection::class.java)
+                val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }

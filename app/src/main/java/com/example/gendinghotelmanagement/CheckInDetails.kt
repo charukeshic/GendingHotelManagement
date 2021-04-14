@@ -53,7 +53,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@CheckInDetails, DateSelection::class.java)
+                val intent = Intent (this@CheckInDetails, OrderDetails::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
