@@ -2,6 +2,7 @@ package com.example.gendinghotelmanagement.Model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.database.FirebaseDatabase
 
 class OrderModel : Parcelable {
 
@@ -104,6 +105,8 @@ class OrderModel : Parcelable {
             }
         }
     }
+
+
 
 }
 

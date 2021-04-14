@@ -123,14 +123,6 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
 
-
-//        txtName = findViewById(R.id.txtName)
-//        txtIC = findViewById(R.id.txtIC)
-//        txtPhone = findViewById(R.id.txtPhone)
-//        txtAddress = findViewById(R.id.txtAddress)
-//        txtNumOfPeople = findViewById(R.id.txtNumOfPeople)
-//        extraService = findViewById(R.id.extraService)
-
     }
 
     // saving order in database
@@ -156,7 +148,6 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return
         }
 
-        //val order = OrderModel(checkIn, checkOut, ic, extraServices, noOfPeople, orderID, status, qtyOfRooms, roomNO, roomType)
 
         databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
 

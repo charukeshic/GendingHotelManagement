@@ -12,6 +12,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
@@ -43,6 +47,13 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
             startActivity(intent);
         }
+
+
+
+
+
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
