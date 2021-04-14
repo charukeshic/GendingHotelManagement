@@ -13,8 +13,12 @@ class CreateOrderModel : Parcelable {
     var NoOfPerson: Int? = null
     var ExtraServices: String? = null
     var RoomType: String? = null
-    var CheckInDate: String? = null
-    var CheckOutDate: String? = null
+    var CheckInDay: String? = null
+    var CheckInMonth: String? = null
+    var CheckInYear: String? = null
+    var CheckOutDay: String? = null
+    var CheckOutMonth: String? = null
+    var CheckOutYear: String? = null
 
 
 
@@ -27,8 +31,12 @@ class CreateOrderModel : Parcelable {
             NoOfPerson: Int?,
             ExtraServices: String?,
             RoomType: String?,
-            CheckInDate: String?,
-            CheckOutDate: String?
+            CheckInDay: String?,
+            CheckInMonth: String?,
+            CheckInYear: String?,
+            CheckOutDay: String?,
+            CheckOutMonth: String?,
+            CheckOutYear: String?
 
 
 
@@ -43,8 +51,12 @@ class CreateOrderModel : Parcelable {
         this.NoOfPerson= NoOfPerson
         this.ExtraServices= ExtraServices
         this.RoomType= RoomType
-        this.CheckInDate=  CheckInDate
-        this.CheckOutDate= CheckOutDate
+        this.CheckInDay=  CheckInDay
+        this.CheckInMonth=  CheckInMonth
+        this.CheckInYear=  CheckInYear
+        this.CheckOutDay= CheckOutDay
+        this.CheckOutMonth= CheckOutMonth
+        this.CheckOutYear= CheckOutYear
 
 
     }
@@ -58,8 +70,12 @@ class CreateOrderModel : Parcelable {
         NoOfPerson = `in`.readInt()
         ExtraServices = `in`.readString()
         RoomType = `in`.readString()
-        CheckInDate = `in`.readString()
-        CheckOutDate = `in`.readString()
+        CheckInDay = `in`.readString()
+        CheckInMonth = `in`.readString()
+        CheckInYear = `in`.readString()
+        CheckOutDay = `in`.readString()
+        CheckOutMonth = `in`.readString()
+        CheckOutYear = `in`.readString()
 
 
     }
@@ -73,8 +89,12 @@ class CreateOrderModel : Parcelable {
         NoOfPerson?.let { dest.writeInt(it) }
         dest.writeString(ExtraServices)
         dest.writeString(RoomType)
-        dest.writeString(CheckInDate)
-        dest.writeString(CheckOutDate)
+        dest.writeString(CheckInDay)
+        dest.writeString(CheckInMonth)
+        dest.writeString(CheckInYear)
+        dest.writeString(CheckOutDay)
+        dest.writeString(CheckOutMonth)
+        dest.writeString(CheckOutYear)
 
 
 

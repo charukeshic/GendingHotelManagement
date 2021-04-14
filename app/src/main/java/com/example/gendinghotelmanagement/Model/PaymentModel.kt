@@ -2,26 +2,27 @@ package com.example.gendinghotelmanagement.Model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.database.DataSnapshot
 
 class PaymentModel : Parcelable {
 
-    var OrderID: String? = null
-    var OrderStatus: String? = null
+//   var OrderID: String? = null
+//    var OrderStatus: String? = null
     var PayID: String? = null
     var PaymentMethod: String? = null
 
 
     constructor() {}
     constructor(
-            OrderID: String?,
-            OrderStatus: String?,
+//           OrderID: String?,
+//            OrderStatus: String?,
             PayID: String?,
             PaymentMethod: String?
 
 
     ) {
-        this.OrderID= OrderID
-        this.OrderStatus= OrderStatus
+ //      this.OrderID= OrderID
+//        this.OrderStatus= OrderStatus
         this.PayID= PayID
         this.PaymentMethod= PaymentMethod
 
@@ -29,8 +30,8 @@ class PaymentModel : Parcelable {
 
     protected constructor(`in`: Parcel) {
 
-        OrderID = `in`.readString()
-        OrderStatus = `in`.readString()
+ //       OrderID = `in`.readString()
+//        OrderStatus = `in`.readString()
         PayID = `in`.readString()
         PaymentMethod = `in`.readString()
 
@@ -38,8 +39,8 @@ class PaymentModel : Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
 
-        dest.writeString(OrderID)
-        dest.writeString(OrderStatus)
+ //       dest.writeString(OrderID)
+//        dest.writeString(OrderStatus)
         dest.writeString(PayID)
         dest.writeString(PaymentMethod)
 

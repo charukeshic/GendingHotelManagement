@@ -104,7 +104,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val dropdown1 = findViewById<Spinner>(R.id.extraService)
         //create a list of items for the spinner.
         //create a list of items for the spinner.
-        val items1 = arrayOf("Include Breakfast", "Laundry Services", "Airport Pick Up/ Drop Off")
+        val items1 = arrayOf("No Need","Include Breakfast", "Laundry Services", "Airport Pick Up/ Drop Off")
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -135,14 +135,19 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // saving order in database
     private fun UpdateOrder() {
+
         val name = txtName.text.toString().trim()
         val ic = txtIC.text.toString().trim()
         val phone = txtPhone.text.toString().trim()
         val address = txtAddress.text.toString().trim()
         val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
         val extraServices = extraService.selectedItem.toString().trim()
-        val checkInDate = checkInDate.minDate.toString().trim()
-        val checkOutDate = checkOutDate.minDate.toString().trim()
+        val checkInDay = checkInDate.dayOfMonth.toString().trim()
+        val checkInMonth = checkInDate.month.toString().trim()
+        val checkInYear = checkInDate.year.toString().trim()
+        val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
+        val checkOutMonth = checkOutDate.month.toString().trim()
+        val checkOutYear = checkOutDate.year.toString().trim()
         val roomType = roomType.selectedItem.toString().trim()
 
 
@@ -158,7 +163,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val orderNO = databaseOrder.push().key
 
         //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-        val order = CreateOrderModel(name,ic,phone,address,noOfPeople,extraServices,roomType,checkInDate,checkOutDate)
+        val order = CreateOrderModel(name,ic,phone,address,noOfPeople,extraServices,roomType,checkInDay,checkInMonth,checkInYear,checkOutDay,checkOutMonth,checkOutYear)
         if (orderNO != null) {
             databaseOrder.child(orderNO).setValue(order).addOnCompleteListener{
                 Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
