@@ -133,6 +133,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
 
     }
+    //use for saving data in realtime database
     private fun saveUser(){
         val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
