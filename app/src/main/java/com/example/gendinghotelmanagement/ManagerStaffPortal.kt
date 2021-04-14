@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -12,6 +13,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,7 +30,8 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
     lateinit var btnOrderHistory: Button
     lateinit var btnCustomerActivity: Button
     lateinit var btnManageStaff: Button
-
+    lateinit var UserName: TextView
+    private lateinit var mAuth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,23 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        UserName = findViewById(R.id.UserName)
+
+        //val userID = mAuth!!.currentUser!!.uid
+        FirebaseDatabase.getInstance().reference.child("User").child("-MYE8B3y7DZlAQtqGzI0")
+                .addValueEventListener(object:ValueEventListener{
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val userName = snapshot.child("email").getValue().toString();
+//                        val userName = snapshot.value.toString()
+                        UserName.text = userName
+                    }
+
+
+                })
 
 
         btnCreateOrder = findViewById(R.id.btnCreateOrder);

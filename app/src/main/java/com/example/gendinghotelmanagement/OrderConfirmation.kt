@@ -1,17 +1,21 @@
 package com.example.gendinghotelmanagement
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+
 
 class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -19,7 +23,11 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
 
+
     lateinit var btnOrderCons: Button
+    lateinit var txtBookingID: TextView
+    lateinit var txtOrderStatus: TextView
+    lateinit var reff: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +46,35 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+
+        txtBookingID=findViewById(R.id.txtBookingID);
+        txtOrderStatus=findViewById(R.id.txtOrderStatus);
+
+        reff = FirebaseDatabase.getInstance().getReference("Order").child("-MYFr6C8vqJxagYrJTbV");
+        reff.addValueEventListener(object: ValueEventListener {
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.child("customerName").getValue().toString();
+                val roomType = snapshot.child("roomType").getValue().toString();
+//                    val Newname = snapshot.child("customerName").value.toString()
+//                    txtBookingID.text = Newname
+                txtBookingID.setText(name);
+                txtOrderStatus.setText(roomType);
+            }
+
+
+//            val intent = Intent (this@OrderConfirmation,Payment::class.java)
+//            startActivity(intent);
+        });
+
         btnOrderCons = findViewById(R.id.btnOrderCons);
         btnOrderCons.setOnClickListener { // Do some work here
-            val intent = Intent (this@OrderConfirmation,Payment::class.java)
-            startActivity(intent);
+
+
         }
     }
 
