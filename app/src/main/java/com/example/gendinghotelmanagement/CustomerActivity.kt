@@ -41,7 +41,7 @@ class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         btnCheckIn = findViewById(R.id.btnCheckIn);
         btnCheckIn.setOnClickListener { // Do some work here
-            val intent = Intent (this@CustomerActivity,CheckInForm::class.java)
+            val intent = Intent (this@CustomerActivity, CheckInForm::class.java)
             startActivity(intent);
         }
         btnCheckOut = findViewById(R.id.btnCheckOut);

@@ -41,7 +41,7 @@ class ArrangeStaffSchedule : AppCompatActivity(), NavigationView.OnNavigationIte
 
         btnArrangeStaffSchedule = findViewById(R.id.btnArrangeStaffSchedule);
         btnArrangeStaffSchedule.setOnClickListener { // Do some work here
-            val intent = Intent (this@ArrangeStaffSchedule,ManagerStaffPortal::class.java)
+            val intent = Intent (this@ArrangeStaffSchedule, ManagerStaffPortal::class.java)
             startActivity(intent);
         }
     }
@@ -49,28 +49,28 @@ class ArrangeStaffSchedule : AppCompatActivity(), NavigationView.OnNavigationIte
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.ic_profile -> {
-                val intent = Intent (this@ArrangeStaffSchedule,ManagerStaffPortal::class.java)
+                val intent = Intent (this@ArrangeStaffSchedule, ManagerStaffPortal::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@ArrangeStaffSchedule,DateSelection::class.java)
+                val intent = Intent (this@ArrangeStaffSchedule, DateSelection::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
-                val intent = Intent (this@ArrangeStaffSchedule,CustomerActivity::class.java)
+                val intent = Intent (this@ArrangeStaffSchedule, CustomerActivity::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@ArrangeStaffSchedule,CheckRoomOccupancy::class.java)
+                val intent = Intent (this@ArrangeStaffSchedule, CheckRoomOccupancy::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
-                val intent = Intent (this@ArrangeStaffSchedule,Login::class.java)
+                val intent = Intent (this@ArrangeStaffSchedule, Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
             }

@@ -60,7 +60,7 @@ class NormalStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         btnOrderHistory = findViewById(R.id.btnOrderHistory);
         btnOrderHistory.setOnClickListener { // Do some work here
-            val intent = Intent (this@NormalStaffPortal,AllOrderHistory::class.java)
+            val intent = Intent (this@NormalStaffPortal, AllOrderHistory::class.java)
             startActivity(intent);
         }
         btnCustomerActivity = findViewById(R.id.btnCustomerActivity);

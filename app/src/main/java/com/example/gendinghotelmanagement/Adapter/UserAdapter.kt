@@ -1,4 +1,4 @@
-package com.example.gendinghotelmanagement
+package com.example.gendinghotelmanagement.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

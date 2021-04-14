@@ -40,7 +40,7 @@ class ManageSchedule : AppCompatActivity() , NavigationView.OnNavigationItemSele
 
         btnManageSchedule = findViewById(R.id.btnManageSchedule);
         btnManageSchedule.setOnClickListener { // Do some work here
-            val intent = Intent (this@ManageSchedule,ArrangeShift::class.java)
+            val intent = Intent (this@ManageSchedule, ArrangeShift::class.java)
             startActivity(intent);
         }
     }

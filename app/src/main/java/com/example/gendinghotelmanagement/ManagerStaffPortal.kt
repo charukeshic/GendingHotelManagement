@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -13,7 +12,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 
 class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -66,7 +64,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         }
         btnOrderHistory = findViewById(R.id.btnOrderHistory);
         btnOrderHistory.setOnClickListener { // Do some work here
-            val intent = Intent (this@ManagerStaffPortal,AllOrderHistory::class.java)
+            val intent = Intent (this@ManagerStaffPortal, AllOrderHistory::class.java)
             startActivity(intent);
         }
         btnCustomerActivity = findViewById(R.id.btnCustomerActivity);

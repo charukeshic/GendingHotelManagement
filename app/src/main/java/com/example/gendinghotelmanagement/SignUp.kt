@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.gendinghotelmanagement.Model.UserModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -156,7 +157,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
         val userID = databaseUser.push().key
 
-        val user = UserModel(conPassword,email,password,role,userID)
+        val user = UserModel(conPassword, email, password, role, userID)
         if (userID != null) {
             databaseUser.child(userID).setValue(user).addOnCompleteListener{
                 Toast.makeText(this@SignUp,"Account is successfully created",Toast.LENGTH_LONG).show()

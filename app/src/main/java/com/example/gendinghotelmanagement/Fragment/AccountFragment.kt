@@ -1,4 +1,4 @@
-package com.example.gendinghotelmanagement
+package com.example.gendinghotelmanagement.Fragment
 
 import android.content.Intent
 import android.os.Bundle

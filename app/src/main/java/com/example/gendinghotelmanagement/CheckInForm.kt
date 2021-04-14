@@ -45,7 +45,7 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         btnCheckInForm = findViewById(R.id.btnCheckInForm);
         btnCheckInForm.setOnClickListener { // Do some work here
-            val intent = Intent (this@CheckInForm,CheckInDetails::class.java)
+            val intent = Intent (this@CheckInForm, CheckInDetails::class.java)
             startActivity(intent);
 
         }
@@ -71,28 +71,28 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.ic_profile -> {
-                val intent = Intent (this@CheckInForm,ManagerStaffPortal::class.java)
+                val intent = Intent (this@CheckInForm, ManagerStaffPortal::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@CheckInForm,DateSelection::class.java)
+                val intent = Intent (this@CheckInForm, DateSelection::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
-                val intent = Intent (this@CheckInForm,CustomerActivity::class.java)
+                val intent = Intent (this@CheckInForm, CustomerActivity::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@CheckInForm,CheckRoomOccupancy::class.java)
+                val intent = Intent (this@CheckInForm, CheckRoomOccupancy::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
-                val intent = Intent (this@CheckInForm,Login::class.java)
+                val intent = Intent (this@CheckInForm, Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
             }

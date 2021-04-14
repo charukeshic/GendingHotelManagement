@@ -1,8 +1,7 @@
-package com.example.gendinghotelmanagement
+package com.example.gendinghotelmanagement.Model
 
 import android.os.Parcel
 import android.os.Parcelable
-import org.intellij.lang.annotations.JdkConstants
 
 class ScheduleModel : Parcelable {
 

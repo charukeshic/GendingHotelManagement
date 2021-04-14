@@ -39,7 +39,7 @@ class ArrangeShift : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         btnArrangeShift = findViewById(R.id.btnArrangeShift);
         btnArrangeShift.setOnClickListener { // Do some work here
-            val intent = Intent (this@ArrangeShift,ArrangeStaffSchedule::class.java)
+            val intent = Intent (this@ArrangeShift, ArrangeStaffSchedule::class.java)
             startActivity(intent);
         }
     }
@@ -47,28 +47,28 @@ class ArrangeShift : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
             R.id.ic_profile -> {
-                val intent = Intent (this@ArrangeShift,ManagerStaffPortal::class.java)
+                val intent = Intent (this@ArrangeShift, ManagerStaffPortal::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
-                val intent = Intent (this@ArrangeShift,DateSelection::class.java)
+                val intent = Intent (this@ArrangeShift, DateSelection::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
-                val intent = Intent (this@ArrangeShift,CustomerActivity::class.java)
+                val intent = Intent (this@ArrangeShift, CustomerActivity::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
-                val intent = Intent (this@ArrangeShift,CheckRoomOccupancy::class.java)
+                val intent = Intent (this@ArrangeShift, CheckRoomOccupancy::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
-                val intent = Intent (this@ArrangeShift,Login::class.java)
+                val intent = Intent (this@ArrangeShift, Login::class.java)
                 startActivity(intent);
                 Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
             }
