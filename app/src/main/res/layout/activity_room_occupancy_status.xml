@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:orientation="vertical"
@@ -61,7 +61,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/txtRoom"
                         android:layout_width="393dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
@@ -81,6 +81,7 @@
                             android:id="@+id/textView8"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
                             android:paddingLeft="15dp"
                             android:paddingTop="15dp"
@@ -95,6 +96,7 @@
                             android:id="@+id/textView9"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
                             android:paddingLeft="15dp"
                             android:paddingTop="15dp"
@@ -105,64 +107,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:text="Reserved :"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
                         <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:text="Cleaning :"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:text="Damaged :"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:text="Total :"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-                        <TextView
-                            android:id="@+id/textView14"
+                            android:id="@+id/availableUnit"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -176,8 +123,9 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:text="available units" />
 
+
                         <TextView
-                            android:id="@+id/textView15"
+                            android:id="@+id/OccupiedUnit"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -188,26 +136,11 @@
                             android:paddingBottom="15dp"
                             android:textSize="18sp"
                             app:layout_constraintStart_toEndOf="@+id/textView9"
-                            app:layout_constraintTop_toBottomOf="@+id/textView14"
+                            app:layout_constraintTop_toBottomOf="@+id/availableUnit"
                             tools:text="occupied units" />
 
                         <TextView
-                            android:id="@+id/textView16"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toEndOf="@+id/textView10"
-                            app:layout_constraintTop_toBottomOf="@+id/textView15"
-                            tools:text="reserved units" />
-
-                        <TextView
-                            android:id="@+id/textView17"
+                            android:id="@+id/CleaningUnit"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -218,12 +151,12 @@
                             android:paddingBottom="15dp"
                             android:textSize="18sp"
                             app:layout_constraintStart_toEndOf="@+id/textView11"
-                            app:layout_constraintTop_toBottomOf="@+id/textView16"
+                            app:layout_constraintTop_toBottomOf="@+id/OccupiedUnit"
                             tools:text="cleaning units" />
 
                         <TextView
-                            android:id="@+id/textView18"
-                            android:layout_width="180dp"
+                            android:id="@+id/textView13"
+                            android:layout_width="120dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
@@ -231,13 +164,43 @@
                             android:paddingTop="15dp"
                             android:paddingRight="15dp"
                             android:paddingBottom="15dp"
+                            android:text="Total :"
                             android:textSize="18sp"
-                            app:layout_constraintStart_toEndOf="@+id/textView12"
-                            app:layout_constraintTop_toBottomOf="@+id/textView17"
-                            tools:text="damaged units" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/textView12"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="Damaged :"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="Cleaning :"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                        <TextView
+                            android:id="@+id/TotalUnit"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -248,8 +211,23 @@
                             android:paddingBottom="15dp"
                             android:textSize="18sp"
                             app:layout_constraintStart_toEndOf="@+id/textView13"
-                            app:layout_constraintTop_toBottomOf="@+id/textView18"
+                            app:layout_constraintTop_toBottomOf="@+id/DamagedUnit"
                             tools:text="total units" />
+
+                        <TextView
+                            android:id="@+id/DamagedUnit"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="15dp"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toEndOf="@+id/textView12"
+                            app:layout_constraintTop_toBottomOf="@+id/CleaningUnit"
+                            tools:text="damaged units" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

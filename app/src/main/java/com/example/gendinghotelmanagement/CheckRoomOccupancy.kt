@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -20,6 +22,9 @@ class CheckRoomOccupancy : AppCompatActivity(), NavigationView.OnNavigationItemS
     lateinit var navView: NavigationView
 
     lateinit var btnCheckRoomOccupancy: Button
+    lateinit var roomType: Spinner
+    var roomtype: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +43,30 @@ class CheckRoomOccupancy : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        roomType = findViewById<Spinner>(R.id.roomType)
+        //get the spinner from the xml.
+        val dropdown = findViewById<Spinner>(R.id.roomType)
+        //create a list of items for the spinner.
+//create a list of items for the spinner.
+        val items = arrayOf("Single Room", "Double Room", "Suite", "Villa")
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        val adapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+//set the spinners adapter to the previously created one.
+//set the spinners adapter to the previously created one.
+        dropdown.adapter = adapter
+
+//        roomtype = dropdown.selectedItem.toString().trim();
+
+
+
         btnCheckRoomOccupancy = findViewById(R.id.btnCheckRoomOccupancy);
         btnCheckRoomOccupancy.setOnClickListener { // Do some work here
             val intent = Intent (this@CheckRoomOccupancy,RoomOccupancyStatus::class.java)
+            intent.putExtra("RoomType", roomType.selectedItem.toString())
             startActivity(intent);
         }
 
