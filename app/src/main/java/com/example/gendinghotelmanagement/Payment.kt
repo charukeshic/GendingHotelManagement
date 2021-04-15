@@ -122,25 +122,26 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
         btnPayment.setOnClickListener { // Do some work here
             UpdatePayment()
             val intent = Intent (this@Payment,Receipt::class.java)
+            intent.putExtra("OrderNO", orderID)
             startActivity(intent);
         }
     }
     private fun UpdatePayment() {
 
         val PaymentMethod = paymentMethod.selectedItem.toString().trim()
-
+        val orderID=intent.getStringExtra("OrderNO")
 
         //val order = OrderModel(checkIn, checkOut, ic, extraServices, noOfPeople, orderID, status, qtyOfRooms, roomNO, roomType)
 
         databasePayment = FirebaseDatabase.getInstance().getReference("Payment");
 
-        val payID = databasePayment.push().key
+        //val payID = databasePayment.push().key
 
         //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-        val payment = PaymentModel(payID,PaymentMethod)
-        if (payID != null) {
+        val payment = PaymentModel(orderID,PaymentMethod)
+        if (orderID != null) {
 
-            databasePayment.child(payID).setValue(payment).addOnCompleteListener{
+            databasePayment.child(orderID).setValue(payment).addOnCompleteListener{
                 Toast.makeText(applicationContext,"Payment Data is saved",Toast.LENGTH_LONG).show()
             }
         }

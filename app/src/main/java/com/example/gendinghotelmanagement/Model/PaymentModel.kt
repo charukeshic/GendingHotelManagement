@@ -8,7 +8,7 @@ class PaymentModel : Parcelable {
 
 //   var OrderID: String? = null
 //    var OrderStatus: String? = null
-    var PayID: String? = null
+    var OrderID: String? = null
     var PaymentMethod: String? = null
 
 
@@ -16,14 +16,14 @@ class PaymentModel : Parcelable {
     constructor(
 //           OrderID: String?,
 //            OrderStatus: String?,
-            PayID: String?,
+            OrderID: String?,
             PaymentMethod: String?
 
 
     ) {
  //      this.OrderID= OrderID
 //        this.OrderStatus= OrderStatus
-        this.PayID= PayID
+        this.OrderID= OrderID
         this.PaymentMethod= PaymentMethod
 
     }
@@ -32,7 +32,7 @@ class PaymentModel : Parcelable {
 
  //       OrderID = `in`.readString()
 //        OrderStatus = `in`.readString()
-        PayID = `in`.readString()
+        OrderID = `in`.readString()
         PaymentMethod = `in`.readString()
 
     }
@@ -41,7 +41,7 @@ class PaymentModel : Parcelable {
 
  //       dest.writeString(OrderID)
 //        dest.writeString(OrderStatus)
-        dest.writeString(PayID)
+        dest.writeString(OrderID)
         dest.writeString(PaymentMethod)
 
     }

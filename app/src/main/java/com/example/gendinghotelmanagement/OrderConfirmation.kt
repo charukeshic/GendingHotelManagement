@@ -77,10 +77,10 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
         txtNoOfRoom=findViewById(R.id.txtNoOfRoom);
         txtExtraServices=findViewById(R.id.txtExtraServices);
         txtToTal=findViewById(R.id.txtToTal);
-        val orderID=intent.getStringExtra("OrderNO")
+        val maxid=intent.getStringExtra("OrderNO")
 
 
-        reff = orderID?.let { FirebaseDatabase.getInstance().getReference("Order").child(it) }!!;
+        reff = maxid?.let { FirebaseDatabase.getInstance().getReference("Order").child(it) }!!;
         reff.addValueEventListener(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
@@ -108,7 +108,7 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
 //                val ToTal = snapshot.child("roomType").getValue().toString();
 //                    val Newname = snapshot.child("customerName").value.toString()
 //                    txtBookingID.text = Newname
-                txtBookingID.setText("Order ID : "+orderID);
+                txtBookingID.setText("Order ID : "+maxid);
                 txtCheckInDay.setText("Check In Date : "+checkInDay);
                 txtCheckInMonth.setText(checkInMonth);
                 txtCheckInYear.setText(checkInYear);
@@ -133,7 +133,7 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
         btnOrderCons = findViewById(R.id.btnOrderCons);
         btnOrderCons.setOnClickListener { // Do some work here
             val intent = Intent(this@OrderConfirmation, Payment::class.java)
-            intent.putExtra("OrderNO", orderID)
+            intent.putExtra("OrderNO", maxid)
             startActivity(intent);
 
         }

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:orientation="vertical"
@@ -57,14 +57,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="743dp">
+                    android:layout_height="778dp">
 
                     <TextView
                         android:id="@+id/txtBookingID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
@@ -75,56 +75,56 @@
                         tools:text="Order ID" />
 
                     <TextView
-                        android:id="@+id/txtOrderStatus"
+                        android:id="@+id/txtCheckInDay"
                         android:layout_width="wrap_content"
-                        android:layout_height="54dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
-                        android:paddingRight="15sp"
+                        android:paddingRight="5sp"
                         android:paddingBottom="15sp"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtBookingID"
-                        tools:text="Staying Period" />
+                        tools:text="Check In Day" />
+
+                    <TextView
+                        android:id="@+id/txtCheckOutDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="5sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckInDay"
+                        tools:text="Check Out Day" />
 
                     <TextView
                         android:id="@+id/txtCustName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
                         android:paddingBottom="15sp"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtOrderStatus"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckOutDay"
                         tools:text="Customer Name" />
-
-                    <TextView
-                        android:id="@+id/txtCustIC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:paddingLeft="15sp"
-                        android:paddingTop="15sp"
-                        android:paddingRight="15sp"
-                        android:paddingBottom="15sp"
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtCustName"
-                        tools:text="Customer IC" />
 
                     <TextView
                         android:id="@+id/txtCustPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
@@ -135,26 +135,41 @@
                         tools:text="Customer Phone Number" />
 
                     <TextView
-                        android:id="@+id/txtRoomType"
+                        android:id="@+id/txtCustIC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
                         android:paddingBottom="15sp"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtCustPhone"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustName"
+                        tools:text="Customer IC" />
+
+                    <TextView
+                        android:id="@+id/txtRoomType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustAddress"
                         tools:text="Room Type" />
 
                     <TextView
-                        android:id="@+id/txtHandlePerson"
+                        android:id="@+id/txtNoOfPerson"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
@@ -165,26 +180,41 @@
                         tools:text="Number Of Person" />
 
                     <TextView
-                        android:id="@+id/txtExtraServices"
+                        android:id="@+id/txtNoOfRoom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
                         android:paddingBottom="15sp"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtHandlePerson"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNoOfPerson"
+                        tools:text="Number Of Room" />
+
+                    <TextView
+                        android:id="@+id/txtExtraServices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNoOfRoom"
                         tools:text="Extra Services" />
 
                     <TextView
                         android:id="@+id/txtToTal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
@@ -195,11 +225,82 @@
                         tools:text="Total Amount" />
 
                     <TextView
+                        android:id="@+id/txtCustAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustPhone"
+                        tools:text="Customer Address" />
+
+                    <TextView
+                        android:id="@+id/txtCheckInMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="64dp"
+                        android:paddingLeft="0sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="5sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtCheckInDay"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Check In Month" />
+
+                    <TextView
+                        android:id="@+id/txtCheckInYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="64dp"
+                        android:paddingLeft="0sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtCheckInMonth"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Check In Year" />
+
+                    <TextView
+                        android:id="@+id/txtCheckOutMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="0sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="5sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtCheckOutDay"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckInMonth"
+                        tools:text="Check Out Month" />
+
+                    <TextView
+                        android:id="@+id/txtCheckOutYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="0sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtCheckOutMonth"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCheckInYear"
+                        tools:text="Check Out Year" />
+
+                    <TextView
                         android:id="@+id/txtPaymentMethod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
                         android:paddingLeft="15sp"
                         android:paddingTop="15sp"
                         android:paddingRight="15sp"
@@ -208,21 +309,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtToTal"
                         tools:text="Payment Method" />
-
-                    <TextView
-                        android:id="@+id/txtTransDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:paddingLeft="15sp"
-                        android:paddingTop="15sp"
-                        android:paddingRight="15sp"
-                        android:paddingBottom="15sp"
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtPaymentMethod"
-                        tools:text="Transaction Date" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

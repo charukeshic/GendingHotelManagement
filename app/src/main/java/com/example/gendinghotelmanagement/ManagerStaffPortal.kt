@@ -1,13 +1,13 @@
 package com.example.gendinghotelmanagement
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +17,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+
 
 class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -32,6 +34,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
     lateinit var btnManageStaff: Button
     lateinit var UserName: TextView
     private lateinit var mAuth:FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +58,15 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         val username=intent.getStringExtra("Username")
         UserName.text = username
 
-        //val userID = mAuth!!.currentUser!!.uid
-//        if (username != null) {
-//            FirebaseDatabase.getInstance().reference.child("User").child(username)
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if (user != null) {
+//            // User is signed in
+//            UserName.text = user.toString()
+//            // No user is signed in
+//        }
+//        val userID = mAuth!!.currentUser!!.uid
+//        if (userID != null) {
+//            FirebaseDatabase.getInstance().reference.child("User").child(userID)
 //                    .addValueEventListener(object:ValueEventListener{
 //                        override fun onCancelled(error: DatabaseError) {
 //
@@ -65,7 +74,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
 //
 //                        override fun onDataChange(snapshot: DataSnapshot) {
 //                            val userName = snapshot.child("email").getValue().toString();
-////                        val userName = snapshot.value.toString()
+//                        //val userName1 = snapshot.value.toString()
 //                            UserName.text = userName
 //                        }
 //

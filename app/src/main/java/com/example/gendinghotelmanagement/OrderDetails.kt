@@ -11,7 +11,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.gendinghotelmanagement.Model.CheckInModel
 import com.example.gendinghotelmanagement.Model.CreateOrderModel
-import com.example.gendinghotelmanagement.Model.OrderModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -137,37 +136,38 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val phone = txtPhone.text.toString().trim()
         val address = txtAddress.text.toString().trim()
         val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
+        val noOfRoom = txtNumOfPeople.text.toString().trim().toInt()
         val extraServices = extraService.selectedItem.toString().trim()
         val checkInDay = checkInDate.dayOfMonth.toString().trim()
         val checkInMonth = checkInDate.month.toString().trim()
         val checkInYear = checkInDate.year.toString().trim()
         val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
-        val checkOutMonth = (checkOutDate.month+1).toString().trim()
+        val checkOutMonth = (checkOutDate.month + 1).toString().trim()
         val checkOutYear = checkOutDate.year.toString().trim()
         val roomType = roomType.selectedItem.toString().trim()
 
-
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             txtName.error = "Please enter a name"
             return
         }
 
+            databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
 
-        databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
+            //var i: Int? = null
 
-        val orderNO = databaseOrder.push().key
+            val orderNO = databaseOrder.push().key
 
-        //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-        val order = CreateOrderModel(name,ic,phone,address,noOfPeople,noOfRoom,extraServices,roomType,checkInDay,checkInMonth,checkInYear,checkOutDay,checkOutMonth,checkOutYear)
-        if (orderNO != null) {
-            databaseOrder.child(orderNO).setValue(order).addOnCompleteListener{
-                Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
+            //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
+            val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
+            if (orderNO != null) {
+                databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
+                    Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
+                }
             }
+            val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
+            intent.putExtra("OrderNO", orderNO)
+            startActivity(intent);
         }
-        val intent = Intent (this@OrderDetails,OrderConfirmation::class.java)
-        intent.putExtra("OrderNO", orderNO)
-        startActivity(intent);
-    }
 
     private fun UpdateCheckIn() {
 

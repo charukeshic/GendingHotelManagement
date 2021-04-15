@@ -71,7 +71,7 @@
                     android:layout_width="397dp"
                     android:layout_height="50dp"
                     android:textAlignment="center"
-                    android:textSize="28sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="User Name (Staff)" />
 
