@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:orientation="vertical"
@@ -268,6 +268,33 @@
 
                     <EditText
                         android:id="@+id/txtNumOfPeople"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:ems="10"
+                        android:inputType="number"
+                        android:labelFor="@id/textView4"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text=""
+                        android:textColor="#939191"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="Number of Rooms"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/txtNumOfRoom"
                         android:layout_width="380dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""

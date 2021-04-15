@@ -95,6 +95,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
                     if (task.isSuccessful){
                         val intent = Intent (this@Login,ManagerStaffPortal::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        intent.putExtra("Username",email)
                         startActivity(intent)
                         Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
                             .show()

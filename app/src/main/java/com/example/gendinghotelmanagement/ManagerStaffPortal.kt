@@ -52,22 +52,26 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         navView.setNavigationItemSelectedListener(this)
 
         UserName = findViewById(R.id.UserName)
+        val username=intent.getStringExtra("Username")
+        UserName.text = username
 
         //val userID = mAuth!!.currentUser!!.uid
-        FirebaseDatabase.getInstance().reference.child("User").child("-MYE8B3y7DZlAQtqGzI0")
-                .addValueEventListener(object:ValueEventListener{
-                    override fun onCancelled(error: DatabaseError) {
-
-                    }
-
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val userName = snapshot.child("email").getValue().toString();
-//                        val userName = snapshot.value.toString()
-                        UserName.text = userName
-                    }
-
-
-                })
+//        if (username != null) {
+//            FirebaseDatabase.getInstance().reference.child("User").child(username)
+//                    .addValueEventListener(object:ValueEventListener{
+//                        override fun onCancelled(error: DatabaseError) {
+//
+//                        }
+//
+//                        override fun onDataChange(snapshot: DataSnapshot) {
+//                            val userName = snapshot.child("email").getValue().toString();
+////                        val userName = snapshot.value.toString()
+//                            UserName.text = userName
+//                        }
+//
+//
+//                    })
+//        }
 
 
         btnCreateOrder = findViewById(R.id.btnCreateOrder);

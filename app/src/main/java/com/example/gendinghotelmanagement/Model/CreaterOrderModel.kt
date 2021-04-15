@@ -12,6 +12,7 @@ class CreateOrderModel : Parcelable {
     var Phone: String? = null
     var Address: String? = null
     var NoOfPerson: Int? = null
+    var NoOfRoom: Int? = null
     var ExtraServices: String? = null
     var RoomType: String? = null
     var CheckInDay: String? = null
@@ -30,6 +31,7 @@ class CreateOrderModel : Parcelable {
             Phone: String?,
             Address: String?,
             NoOfPerson: Int?,
+            NoOfRoom: Int?,
             ExtraServices: String?,
             RoomType: String?,
             CheckInDay: String?,
@@ -50,6 +52,7 @@ class CreateOrderModel : Parcelable {
         this.Phone= Phone
         this.Address= Address
         this.NoOfPerson= NoOfPerson
+        this.NoOfRoom= NoOfPerson
         this.ExtraServices= ExtraServices
         this.RoomType= RoomType
         this.CheckInDay=  CheckInDay
@@ -69,6 +72,7 @@ class CreateOrderModel : Parcelable {
         Phone = `in`.readString()
         Address = `in`.readString()
         NoOfPerson = `in`.readInt()
+        NoOfRoom = `in`.readInt()
         ExtraServices = `in`.readString()
         RoomType = `in`.readString()
         CheckInDay = `in`.readString()
@@ -88,6 +92,7 @@ class CreateOrderModel : Parcelable {
         dest.writeString(Phone)
         dest.writeString(Address)
         NoOfPerson?.let { dest.writeInt(it) }
+        NoOfRoom?.let { dest.writeInt(it) }
         dest.writeString(ExtraServices)
         dest.writeString(RoomType)
         dest.writeString(CheckInDay)

@@ -3,10 +3,7 @@ package com.example.gendinghotelmanagement
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,8 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.gendinghotelmanagement.Model.PaymentModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
 
@@ -27,6 +23,17 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
     lateinit var btnPayment: Button
     lateinit var paymentMethod: Spinner
     lateinit var databasePayment: DatabaseReference
+
+    lateinit var txtBookingID: TextView
+    lateinit var txtCheckInDay: TextView
+    lateinit var txtCheckInMonth: TextView
+    lateinit var txtCheckInYear: TextView
+    lateinit var txtCheckOutDay: TextView
+    lateinit var txtCheckOutMonth: TextView
+    lateinit var txtCheckOutYear: TextView
+    lateinit var txtCustName: TextView
+    lateinit var txtToTal: TextView
+    lateinit var reff: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +52,18 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        txtBookingID=findViewById(R.id.txtBookingID);
+        txtCheckInDay=findViewById(R.id.txtCheckInDay);
+        txtCheckInMonth=findViewById(R.id.txtCheckInMonth);
+        txtCheckInYear=findViewById(R.id.txtCheckInYear);
+        txtCheckOutDay=findViewById(R.id.txtCheckOutDay);
+        txtCheckOutMonth=findViewById(R.id.txtCheckOutMonth);
+        txtCheckOutYear=findViewById(R.id.txtCheckOutYear);
+        txtCustName=findViewById(R.id.txtCustName);
+        txtToTal=findViewById(R.id.txtToTal);
         paymentMethod = findViewById<Spinner>(R.id.paymentMethod)
+
+        val orderID=intent.getStringExtra("OrderNO")
 
         val dropdown = findViewById<Spinner>(R.id.paymentMethod)
         //create a list of items for the spinner.
@@ -60,6 +78,45 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
 //set the spinners adapter to the previously created one.
 //set the spinners adapter to the previously created one.
         dropdown.adapter = adapter
+
+        reff = orderID?.let { FirebaseDatabase.getInstance().getReference("Order").child(it) }!!;
+        reff.addValueEventListener(object: ValueEventListener {
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+//                val orderID = snapshot.child("customerName").getValue().toString();
+                val checkInDay = snapshot.child("checkInDay" ).getValue().toString();
+                val checkInMonth = snapshot.child("checkInMonth").getValue().toString();
+                val checkInYear = snapshot.child("checkInYear").getValue().toString();
+                val checkOutDay = snapshot.child("checkOutDay" ).getValue().toString();
+                val checkOutMonth = snapshot.child("checkOutMonth").getValue().toString();
+                val checkOutYear = snapshot.child("checkOutYear").getValue().toString();
+                val CustName = snapshot.child("customerName").getValue().toString();
+
+//                Total = 1 * NoOfRoom;
+
+//                val ToTal = snapshot.child("roomType").getValue().toString();
+//                    val Newname = snapshot.child("customerName").value.toString()
+//                    txtBookingID.text = Newname
+                txtBookingID.setText("Order ID : "+orderID);
+                txtCheckInDay.setText("Check In Date : "+checkInDay);
+                txtCheckInMonth.setText(checkInMonth);
+                txtCheckInYear.setText(checkInYear);
+                txtCheckOutDay.setText("Check Out Date : "+checkOutDay);
+                txtCheckOutMonth.setText(checkOutMonth);
+                txtCheckOutYear.setText(checkOutYear);
+                txtCustName.setText("Customer Name : "+CustName);
+
+            }
+
+
+
+        });
+
+
 
         btnPayment = findViewById(R.id.btnPayment);
         btnPayment.setOnClickListener { // Do some work here

@@ -31,6 +31,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var txtPhone: EditText
     lateinit var txtAddress: EditText
     lateinit var txtNumOfPeople: EditText
+    lateinit var txtNumOfRoom: EditText
     lateinit var extraService: Spinner
     lateinit var checkInDate: DatePicker
     lateinit var checkOutDate: DatePicker
@@ -60,6 +61,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         txtPhone = findViewById<EditText>(R.id.txtPhone)
         txtAddress = findViewById<EditText>(R.id.txtAddress)
         txtNumOfPeople = findViewById<EditText>(R.id.txtNumOfPeople)
+        txtNumOfRoom = findViewById<EditText>(R.id.txtNumOfRoom)
         extraService = findViewById<Spinner>(R.id.extraService)
         checkInDate = findViewById<DatePicker>(R.id.dpCheckInDate)
         checkOutDate = findViewById<DatePicker>(R.id.dpCheckOutDate)
@@ -121,8 +123,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnUpdateOrder.setOnClickListener { // Do some work here
             UpdateOrder()
             UpdateCheckIn()
-            val intent = Intent (this@OrderDetails,OrderConfirmation::class.java)
-            startActivity(intent);
+
         }
 
 
@@ -141,7 +142,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val checkInMonth = checkInDate.month.toString().trim()
         val checkInYear = checkInDate.year.toString().trim()
         val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
-        val checkOutMonth = checkOutDate.month.toString().trim()
+        val checkOutMonth = (checkOutDate.month+1).toString().trim()
         val checkOutYear = checkOutDate.year.toString().trim()
         val roomType = roomType.selectedItem.toString().trim()
 
@@ -157,12 +158,15 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val orderNO = databaseOrder.push().key
 
         //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-        val order = CreateOrderModel(name,ic,phone,address,noOfPeople,extraServices,roomType,checkInDay,checkInMonth,checkInYear,checkOutDay,checkOutMonth,checkOutYear)
+        val order = CreateOrderModel(name,ic,phone,address,noOfPeople,noOfRoom,extraServices,roomType,checkInDay,checkInMonth,checkInYear,checkOutDay,checkOutMonth,checkOutYear)
         if (orderNO != null) {
             databaseOrder.child(orderNO).setValue(order).addOnCompleteListener{
                 Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
             }
         }
+        val intent = Intent (this@OrderDetails,OrderConfirmation::class.java)
+        intent.putExtra("OrderNO", orderNO)
+        startActivity(intent);
     }
 
     private fun UpdateCheckIn() {
@@ -172,9 +176,10 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val phone = txtPhone.text.toString().trim()
         val address = txtAddress.text.toString().trim()
         val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
+        val noOfRoom = txtNumOfRoom.text.toString().trim().toInt()
         val extraServices = extraService.selectedItem.toString().trim()
         val checkInDay = checkInDate.dayOfMonth.toString().trim()
-        val checkInMonth = checkInDate.month.toString().trim()
+        val checkInMonth = (checkInDate.month+1).toString().trim()
         val checkInYear = checkInDate.year.toString().trim()
         val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
         val checkOutMonth = checkOutDate.month.toString().trim()
