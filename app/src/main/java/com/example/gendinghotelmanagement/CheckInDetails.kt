@@ -1,14 +1,17 @@
 package com.example.gendinghotelmanagement
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -50,18 +53,35 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         btnCheckInRoomDetails = findViewById(R.id.btnCheckInRoomDetails);
         btnCheckInRoomDetails.setOnClickListener { // Do some work here
-            val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
-            startActivity(intent);
+            //val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
+            //startActivity(intent);
+
+            val dialog = AlertDialog.Builder(this)
+            val dialogView = layoutInflater.inflate(R.layout.check_in_dialog,null)
+            val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName)
+            val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey)
+            dialog.setView(dialogView)
+            dialog.setCancelable(false)
+            dialog.setPositiveButton("Confirm",{dialogInterface: DialogInterface, i:Int -> })
+            val customDialog = dialog.create()
+            customDialog.show()
+            customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
+                customDialog.dismiss()
+            }
+
         }
 
-        txtCustName=findViewById(R.id.txtCustName)
-        txtCustIC=findViewById(R.id.txtCustIC)
-        txtCustPhone = findViewById(R.id.txtCustPhone)
-        txtRoomType = findViewById(R.id.txtRoomType)
 
 
+        txtCustName = findViewById<EditText>(R.id.txtCustName)
+        txtCustIC = findViewById<EditText>(R.id.txtCustIC)
+        txtCustPhone = findViewById<EditText>(R.id.txtCustPhone)
+        txtRoomType = findViewById<EditText>(R.id.txtRoomType)
 
-        checkInData = FirebaseDatabase.getInstance().getReference("CheckIn").child(1211.toString());
+        val customer = txtCustIC.text.toString().trim()
+
+        checkInData = FirebaseDatabase.getInstance().getReference("CheckIn").child(customer)
         checkInData.addValueEventListener(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
@@ -84,7 +104,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 //            val intent = Intent (this@OrderConfirmation,Payment::class.java)
 //            startActivity(intent);
-        });
+        })
 
 
 
