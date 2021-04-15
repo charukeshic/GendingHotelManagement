@@ -48,9 +48,10 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         btnCheckInForm = findViewById(R.id.btnCheckInForm);
         btnCheckInForm.setOnClickListener { // Do some work here
+            //CheckOrder()
             val intent = Intent (this@CheckInForm, CheckInDetails::class.java)
             startActivity(intent);
-            CheckOrder()
+
 
         }
 
@@ -62,6 +63,8 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun CheckOrder() {
+
+        //val dbOrder
 
         val name = txtName.text.toString().trim()
         val ic = txtIC.text.toString().trim()
@@ -76,6 +79,8 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
 
     }
+
+
 
 
 

@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.gendinghotelmanagement.Model.CheckInModel
 import com.example.gendinghotelmanagement.Model.CreateOrderModel
 import com.example.gendinghotelmanagement.Model.OrderModel
 import com.google.android.material.navigation.NavigationView
@@ -35,6 +36,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var checkOutDate: DatePicker
     lateinit var roomType: Spinner
     lateinit var databaseOrder: DatabaseReference
+    lateinit var databaseCheckIn: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,6 +120,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnUpdateOrder = findViewById(R.id.btnUpdateOrder);
         btnUpdateOrder.setOnClickListener { // Do some work here
             UpdateOrder()
+            UpdateCheckIn()
             val intent = Intent (this@OrderDetails,OrderConfirmation::class.java)
             startActivity(intent);
         }
@@ -161,6 +164,49 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
     }
+
+    private fun UpdateCheckIn() {
+
+        val name = txtName.text.toString().trim()
+        val ic = txtIC.text.toString().trim()
+        val phone = txtPhone.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
+        val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
+        val extraServices = extraService.selectedItem.toString().trim()
+        val checkInDay = checkInDate.dayOfMonth.toString().trim()
+        val checkInMonth = checkInDate.month.toString().trim()
+        val checkInYear = checkInDate.year.toString().trim()
+        val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
+        val checkOutMonth = checkOutDate.month.toString().trim()
+        val checkOutYear = checkOutDate.year.toString().trim()
+        val roomType = roomType.selectedItem.toString().trim()
+        val staffName = "testing"
+        val roomKey = "101"
+
+
+        if(name.isEmpty()){
+            txtName.error = "Please enter a name"
+            return
+        }
+
+
+        databaseCheckIn = FirebaseDatabase.getInstance().getReference("CheckIn");
+
+        //val orderNO = databaseOrder.push().key
+
+        val order = CheckInModel(name,ic,phone,address,noOfPeople,extraServices,roomType,checkInDay,checkInMonth,
+                checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey)
+        if (ic != null) {
+            databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
+                Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+
+
+
+
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         when (item.itemId){
