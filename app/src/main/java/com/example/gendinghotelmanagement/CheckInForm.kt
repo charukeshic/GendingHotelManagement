@@ -48,40 +48,24 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         btnCheckInForm = findViewById(R.id.btnCheckInForm);
         btnCheckInForm.setOnClickListener { // Do some work here
-            //CheckOrder()
+
             val intent = Intent (this@CheckInForm, CheckInDetails::class.java)
+
+            txtName = findViewById(R.id.txtName)
+            txtIC = findViewById(R.id.txtIC)
+            txtPhone = findViewById(R.id.txtPhone)
+            val custIC = txtIC.text.toString()
+
+            intent.putExtra("CustomerID", custIC)
             startActivity(intent);
 
 
         }
 
-        txtName = findViewById<EditText>(R.id.txtName)
-        txtIC = findViewById<EditText>(R.id.txtIC)
-        txtPhone = findViewById<EditText>(R.id.txtPhone)
-
-
-    }
-
-    private fun CheckOrder() {
-
-        //val dbOrder
-
-        val name = txtName.text.toString().trim()
-        val ic = txtIC.text.toString().trim()
-        val phone = txtPhone.text.toString().trim()
-
-        databaseOrder = FirebaseDatabase.getInstance().getReference("Order")
-
-        FirebaseDatabase.getInstance().getReference("Order")
-                .orderByChild("customerID")
-                .equalTo(ic)
 
 
 
     }
-
-
-
 
 
 

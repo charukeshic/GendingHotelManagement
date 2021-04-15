@@ -136,7 +136,7 @@
                         tools:text="Room Type" />
 
                     <TextView
-                        android:id="@+id/txtHandlePerson"
+                        android:id="@+id/txtNoOfRoom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -148,6 +148,21 @@
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtRoomType"
+                        tools:text="Room Type" />
+
+                    <TextView
+                        android:id="@+id/txtExtraServices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNoOfRoom"
                         tools:text="Room Status" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

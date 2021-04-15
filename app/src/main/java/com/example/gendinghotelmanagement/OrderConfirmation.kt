@@ -144,28 +144,28 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.ic_profile -> {
                 val intent = Intent (this@OrderConfirmation,ManagerStaffPortal::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@OrderConfirmation,OrderDetails::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@OrderConfirmation,CustomerActivity::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@OrderConfirmation,CheckRoomOccupancy::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@OrderConfirmation,Login::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Sign out clicked",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

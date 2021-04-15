@@ -30,6 +30,8 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var txtCustIC: TextView
     lateinit var txtCustPhone: TextView
     lateinit var txtRoomType: TextView
+    lateinit var txtNoOfRoom: TextView
+    lateinit var txtExtraServices: TextView
 
     lateinit var btnCheckInRoomDetails: Button
     lateinit var checkInData: DatabaseReference
@@ -74,18 +76,22 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
 
-        txtCustName = findViewById<EditText>(R.id.txtCustName)
-        txtCustIC = findViewById<EditText>(R.id.txtCustIC)
-        txtCustPhone = findViewById<EditText>(R.id.txtCustPhone)
-        txtRoomType = findViewById<EditText>(R.id.txtRoomType)
+        txtCustName = findViewById(R.id.txtCustName)
+        txtCustIC = findViewById(R.id.txtCustIC)
+        txtCustPhone = findViewById(R.id.txtCustPhone)
+        txtRoomType = findViewById(R.id.txtRoomType)
+        txtNoOfRoom = findViewById(R.id.txtNoOfRoom);
+        txtExtraServices = findViewById(R.id.txtExtraServices);
 
-        val customer = txtCustIC.text.toString().trim()
+        val customer = intent.getStringExtra("CustomerID")
 
-        checkInData = FirebaseDatabase.getInstance().getReference("CheckIn").child(customer)
+        //checkInData = FirebaseDatabase.getInstance().getReference("CheckIn").child(customer)
+
+        checkInData = customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it) }!!;
         checkInData.addValueEventListener(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
-
+                Toast.makeText(baseContext, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -93,12 +99,16 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val ic = snapshot.child("customerID").getValue().toString()
                 val phone = snapshot.child("phone").getValue().toString()
                 val roomType = snapshot.child("roomType").getValue().toString()
-//                    val Newname = snapshot.child("customerName").value.toString()
-//                    txtBookingID.text = Newname
-                txtCustName.setText(name)
-                txtCustIC.setText(ic)
-                txtCustPhone.setText(phone)
-                txtRoomType.setText(roomType)
+                val noOfRoom = snapshot.child("noOfRoom").getValue().toString();
+                val extraServices = snapshot.child("extraServices").getValue().toString()
+
+                txtCustName.setText("Customer Name : " + name)
+                txtCustIC.setText("Customer ID : " +  ic)
+                txtCustPhone.setText("Contact No. : " + phone)
+                txtRoomType.setText("Room Type : " + roomType)
+                txtNoOfRoom.setText("No Of Room : "+ noOfRoom)
+                txtExtraServices.setText("Extra Services : "+ extraServices)
+
             }
 
 
@@ -117,28 +127,28 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.ic_profile -> {
                 val intent = Intent (this@CheckInDetails, ManagerStaffPortal::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@CheckInDetails, OrderDetails::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@CheckInDetails, CheckRoomOccupancy::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@CheckInDetails, Login::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Sign out clicked",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

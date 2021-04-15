@@ -199,7 +199,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //val orderNO = databaseOrder.push().key
 
-        val order = CheckInModel(name,ic,phone,address,noOfPeople,extraServices,roomType,checkInDay,checkInMonth,
+        val order = CheckInModel(name,ic,phone,address,noOfPeople, noOfRoom, extraServices,roomType,checkInDay,checkInMonth,
                 checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey)
         if (ic != null) {
             databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
@@ -218,28 +218,28 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.ic_profile -> {
                 val intent = Intent (this@OrderDetails,ManagerStaffPortal::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@OrderDetails,OrderDetails::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@OrderDetails,CustomerActivity::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@OrderDetails,CheckRoomOccupancy::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@OrderDetails,Login::class.java)
                 startActivity(intent);
-                Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Sign out clicked",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
