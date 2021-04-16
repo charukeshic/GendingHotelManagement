@@ -100,7 +100,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/btnChekRoom"
+                        android:id="@+id/btnCheckRoom"
                         android:layout_width="155dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="52dp"
@@ -133,7 +133,7 @@
                         android:textAlignment="center"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btnChekRoom" />
+                        app:layout_constraintTop_toBottomOf="@+id/btnCheckRoom" />
 
                     <Button
                         android:id="@+id/btnCustomerActivity"

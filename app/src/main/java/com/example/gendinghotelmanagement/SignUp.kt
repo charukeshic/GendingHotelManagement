@@ -76,10 +76,10 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
         val staffRole = findViewById<TextView>(R.id.staffRole)
-        val email = txtStaffID?.getText().toString().trim();
-        val pwd = txtPassword?.getText().toString().trim();
-        val conPwd = txtConPassword?.getText().toString().trim();
-        val role = staffRole?.getText().toString().trim();
+        val email = txtStaffID.text.toString().trim();
+        val pwd = txtPassword.text.toString().trim();
+        val conPwd = txtConPassword.text.toString().trim();
+        val role = staffRole.text.toString().trim();
 
 
         if(email.equals("")){
@@ -98,7 +98,11 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             Toast.makeText(this@SignUp, "role is required!", Toast.LENGTH_LONG)
                     .show()
 
-        }else{
+        }else if (pwd != conPwd) {
+            txtConPassword.error = "Confirm password must same with password"
+            return
+        }
+        else{
             mAuth.createUserWithEmailAndPassword(email, pwd)
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful){
@@ -139,7 +143,8 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
         val staffRole = findViewById<TextView>(R.id.staffRole)
-        val email = txtStaffID.text.toString().replace('.', '-').trim();
+        val email = txtStaffID.text.toString().trim();
+        val emailID = txtStaffID.text.toString().replace('.', '-').trim();
         val password = txtPassword.text.toString().trim();
         val conPassword = txtConPassword.text.toString().trim();
         val role = staffRole.text.toString().trim();
@@ -160,13 +165,10 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         } else if (conPassword.isEmpty()) {
             txtConPassword.error = "Please retype password"
             return
-        } else if (txtPassword.text != txtConPassword.text) {
+        } else if (password != conPassword) {
             txtConPassword.error = "Confirm password must same with password"
             return
-        } else if (staffRole.text != "Manager" || staffRole.text != "Staff") {
-            staffRole.error = "Please type in 'Manager' or 'Staff' "
-            return
-        } else {
+        }else {
             //val currentFirebaseUser = mAuth.getCurrentUser().getUid();
 
             databaseUser = FirebaseDatabase.getInstance().getReference("User");
@@ -176,7 +178,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             //val user = UserModel(conPassword, email, password, role, userID)
             val user = UserModel(email, role, name, address, password, conPassword, phone, userID)
             if (userID != null) {
-                databaseUser.child(email).setValue(user).addOnCompleteListener {
+                databaseUser.child(emailID).setValue(user).addOnCompleteListener {
                     Toast.makeText(this@SignUp, "Account is successfully created", Toast.LENGTH_LONG).show()
                 }
             }

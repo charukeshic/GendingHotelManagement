@@ -45,10 +45,6 @@ class CheckInModel : Parcelable {
             StaffName: String?,
             RoomKey: String?
 
-
-
-
-
     ) {
 
         this.CustomerName= CustomerName

@@ -151,7 +151,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:text="Manage Staff"
+                        android:text="Manage Schedule"
                         android:textAlignment="center"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"

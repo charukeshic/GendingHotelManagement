@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,7 +39,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
     var txtStaffID: Button? = null
     var txtPassword: Button? = null
 
-
+    lateinit var reff: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+
 
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
@@ -81,6 +83,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
         val email:String = txtStaffID?.text.toString();
         val pwd:String = txtPassword?.text.toString();
 
+
         if(email.equals("")){
             Toast.makeText(this@Login, "Email is required!", Toast.LENGTH_LONG)
                     .show()
@@ -93,13 +96,48 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
             mAuth.signInWithEmailAndPassword(email,pwd)
                 .addOnCompleteListener{ task ->
                     if (task.isSuccessful){
-                        val intent = Intent (this@Login,ManagerStaffPortal::class.java)
+
+                        val findUser = email.replace('.', '-')
+
+                        reff = findUser?.let { FirebaseDatabase.getInstance().getReference("User").child(it) }!!;
+
+                        reff.addValueEventListener(object : ValueEventListener {
+
+                            override fun onCancelled(error: DatabaseError) {
+
+                            }
+
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                val role = snapshot.child("role").getValue().toString();
+
+                                if(role.equals("Manager")){
+                                    val intent = Intent (this@Login,ManagerStaffPortal::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    intent.putExtra("Username",email)
+                                    startActivity(intent)
+                                    Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
+                                        .show()
+                                    finish()
+                                }else{
+                                    val intent = Intent (this@Login,NormalStaffPortal::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    intent.putExtra("Username",email)
+                                    startActivity(intent)
+                                    Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
+                                        .show()
+                                    finish()
+                                }
+
+                            }
+                        });
+
+                        /*val intent = Intent (this@Login,ManagerStaffPortal::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         intent.putExtra("Username",email)
                         startActivity(intent)
                         Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
                             .show()
-                        finish()
+                        finish()*/
 
 
                     }else{
