@@ -3,9 +3,11 @@ package com.example.gendinghotelmanagement
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -15,7 +17,12 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.time.DurationUnit
+import kotlin.time.ExperimentalTime
 
 class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,6 +31,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var navView: NavigationView
 
     lateinit var btnUpdateOrder: Button
+    lateinit var txtStayingPeriod: TextView
 
     lateinit var txtName: EditText
     lateinit var txtIC: EditText
@@ -38,6 +46,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var databaseOrder: DatabaseReference
     lateinit var databaseCheckIn: DatabaseReference
 
+    @ExperimentalTime
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_details)
@@ -67,6 +76,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         checkOutDate = findViewById<DatePicker>(R.id.dpCheckOutDate)
         roomType = findViewById<Spinner>(R.id.roomType)
 
+
         val datePicker = findViewById<DatePicker>(R.id.dpCheckInDate)
         val today = Calendar.getInstance()
         datePicker.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
@@ -74,9 +84,10 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         ) { view, year, month, day ->
             val month = month + 1
+            val Indate = "$month/$day/$year"
             val msg = "You Selected: $day/$month/$year as check in date"
             Toast.makeText(this@OrderDetails, msg, Toast.LENGTH_SHORT).show()
-        }
+
 
         val datePicker1 = findViewById<DatePicker>(R.id.dpCheckOutDate)
         val today1 = Calendar.getInstance()
@@ -85,9 +96,11 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         ) { view, year, month, day ->
             val month = month + 1
+            val Outdate = "$month/$day/$year"
             val msg = "You Selected: $day/$month/$year as check out date"
             Toast.makeText(this@OrderDetails, msg, Toast.LENGTH_SHORT).show()
-        }
+
+
 
         //get the spinner from the xml.
         val dropdown = findViewById<Spinner>(R.id.roomType)
@@ -121,6 +134,13 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         btnUpdateOrder = findViewById(R.id.btnUpdateOrder);
         btnUpdateOrder.setOnClickListener { // Do some work here
+            val format = SimpleDateFormat("MM/dd/yyyy")
+            val days = DurationUnit.DAYS.convert(
+                    format.parse(Outdate).time - format.parse(Indate).time,
+                    DurationUnit.MILLISECONDS
+            )
+            txtStayingPeriod = findViewById(R.id.txtStayingPeriod)
+            txtStayingPeriod.text= days.toString()
             UpdateOrder()
             UpdateCheckIn()
 
@@ -128,7 +148,8 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
-
+        }
+    }
     // saving order in database
     private fun UpdateOrder() {
 
@@ -137,10 +158,10 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val phone = txtPhone.text.toString().trim()
         val address = txtAddress.text.toString().trim()
         val noOfPeople = txtNumOfPeople.text.toString().trim().toInt()
-        val noOfRoom = txtNumOfPeople.text.toString().trim().toInt()
+        val noOfRoom = txtNumOfRoom.text.toString().trim().toInt()
         val extraServices = extraService.selectedItem.toString().trim()
         val checkInDay = checkInDate.dayOfMonth.toString().trim()
-        val checkInMonth = checkInDate.month.toString().trim()
+        val checkInMonth = (checkInDate.month+ 1).toString().trim()
         val checkInYear = checkInDate.year.toString().trim()
         val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
         val checkOutMonth = (checkOutDate.month + 1).toString().trim()
@@ -154,6 +175,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return
         }
 
+
             databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
 
             //var i: Int? = null
@@ -161,18 +183,39 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val orderNO = databaseOrder.push().key
 
             //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-            val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
-            if (orderNO != null) {
-                databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
-                    Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
+
+
+            val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog,null)
+            val mBuilder = AlertDialog.Builder(this)
+                    .setView(mDialogView)
+                    .setTitle("Confirmation")
+                    .setCancelable(false)
+            val mAlertDialog = mBuilder.show()
+            val dialogConfirmBtn = mDialogView.findViewById<Button>(R.id.dialogConfirmBtn)
+            val dialogCancelBtn = mDialogView.findViewById<Button>(R.id.dialogCancelBtn)
+
+            dialogConfirmBtn.setOnClickListener {
+
+                val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
+                if (orderNO != null) {
+                    databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
+                        Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
+                    }
                 }
+                val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
+                intent.putExtra("Username",username)
+                intent.putExtra("OrderNO", orderNO)
+                intent.putExtra("RoomType", roomType)
+                intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
+                intent.putExtra("StayingPeriod",txtStayingPeriod.text)
+                startActivity(intent);
+                mAlertDialog.dismiss()
+
             }
-            val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
-            intent.putExtra("Username",username)
-            intent.putExtra("OrderNO", orderNO)
-            intent.putExtra("RoomType", roomType)
-            intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
-            startActivity(intent);
+            dialogCancelBtn.setOnClickListener{
+            mAlertDialog.dismiss()
+
+            }
         }
 
     private fun UpdateCheckIn() {
@@ -209,7 +252,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey)
         if (ic != null) {
             databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
-                Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
             }
         }
     }
