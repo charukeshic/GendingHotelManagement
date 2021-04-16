@@ -116,7 +116,7 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
             txtAddress.error ="Please enter a address"
             return
         }else if(phone.isEmpty()){
-            txtPhone.error ="Please enter a phone numberca"
+            txtPhone.error ="Please enter a phone number"
             return
         }else{
             val username=intent.getStringExtra("Username")

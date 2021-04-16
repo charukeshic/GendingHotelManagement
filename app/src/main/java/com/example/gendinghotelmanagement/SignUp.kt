@@ -134,12 +134,12 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
     }
     //use for saving data in realtime database
-    private fun saveUser(){
+    private fun saveUser() {
         val txtStaffID = findViewById<TextView>(R.id.txtStaffID)
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
         val staffRole = findViewById<TextView>(R.id.staffRole)
-        val email = txtStaffID.text.toString().replace('.','-').trim();
+        val email = txtStaffID.text.toString().replace('.', '-').trim();
         val password = txtPassword.text.toString().trim();
         val conPassword = txtConPassword.text.toString().trim();
         val role = staffRole.text.toString().trim();
@@ -150,27 +150,38 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 //        firebaseUserID = mAuth.currentUser!!.uid
 //        val currentFirebaseUser = firebaseUserID
         //firebaseUserID = uid
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
 
-            txtStaffID.error ="Please enter an email"
+            txtStaffID.error = "Please enter an email"
             return
+        } else if (password.isEmpty()) {
+            txtPassword.error = "Please enter a password"
+            return
+        } else if (conPassword.isEmpty()) {
+            txtConPassword.error = "Please retype password"
+            return
+        } else if (txtPassword.text != txtConPassword.text) {
+            txtConPassword.error = "Confirm password must same with password"
+            return
+        } else if (staffRole.text != "Manager" || staffRole.text != "Staff") {
+            staffRole.error = "Please type in 'Manager' or 'Staff' "
+            return
+        } else {
+            //val currentFirebaseUser = mAuth.getCurrentUser().getUid();
 
-        }
-        //val currentFirebaseUser = mAuth.getCurrentUser().getUid();
+            databaseUser = FirebaseDatabase.getInstance().getReference("User");
 
-        databaseUser = FirebaseDatabase.getInstance().getReference("User");
+            val userID = databaseUser.push().key
 
-        val userID = databaseUser.push().key
-
-        //val user = UserModel(conPassword, email, password, role, userID)
-        val user = UserModel(email, role, name, address, password, conPassword, phone, userID)
-        if (userID != null) {
-            databaseUser.child(email).setValue(user).addOnCompleteListener{
-                Toast.makeText(this@SignUp,"Account is successfully created",Toast.LENGTH_LONG).show()
+            //val user = UserModel(conPassword, email, password, role, userID)
+            val user = UserModel(email, role, name, address, password, conPassword, phone, userID)
+            if (userID != null) {
+                databaseUser.child(email).setValue(user).addOnCompleteListener {
+                    Toast.makeText(this@SignUp, "Account is successfully created", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.sign_in -> {

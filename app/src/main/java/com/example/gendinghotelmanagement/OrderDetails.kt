@@ -196,7 +196,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             dialogConfirmBtn.setOnClickListener {
 
-                val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
+                val order = CreateOrderModel(orderNO,name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
                 if (orderNO != null) {
                     databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
                         Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()

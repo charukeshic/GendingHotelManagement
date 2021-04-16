@@ -6,7 +6,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class CreateOrderModel : Parcelable {
 
-
+    var OrderID: String? = null
     var CustomerName: String? = null
     var CustomerID: String? = null
     var Phone: String? = null
@@ -26,6 +26,7 @@ class CreateOrderModel : Parcelable {
 
     constructor() {}
     constructor(
+            OrderID: String?,
             CustomerName: String?,
             CustomerID: String?,
             Phone: String?,
@@ -47,6 +48,7 @@ class CreateOrderModel : Parcelable {
 
     ) {
 
+        this.OrderID= OrderID
         this.CustomerName= CustomerName
         this.CustomerID= CustomerID
         this.Phone= Phone
@@ -67,6 +69,7 @@ class CreateOrderModel : Parcelable {
 
     protected constructor(`in`: Parcel) {
 
+        OrderID = `in`.readString()
         CustomerName = `in`.readString()
         CustomerID = `in`.readString()
         Phone = `in`.readString()
@@ -87,6 +90,7 @@ class CreateOrderModel : Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
 
+        dest.writeString(OrderID)
         dest.writeString(CustomerName)
         dest.writeString(CustomerID)
         dest.writeString(Phone)
