@@ -28,12 +28,8 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
     lateinit var txtRole: EditText
     lateinit var txtName: EditText
     lateinit var txtAddress: EditText
-    lateinit var txtPassword: EditText
-    lateinit var txtConPassword: EditText
     lateinit var txtPhone: EditText
 
-
-    lateinit var databaseUser: DatabaseReference
     lateinit var reff: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,8 +72,6 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
                 val name = snapshot.child("name").getValue().toString();
                 val address = snapshot.child("address").getValue().toString();
                 val phone = snapshot.child("phone").getValue().toString();
-                val password = snapshot.child("password").getValue().toString();
-                val userID = snapshot.child("userID").getValue().toString();
 
                 txtEmail.setText(email);
                 txtRole.setText(role);
@@ -103,46 +97,36 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
         val txtRole = findViewById<EditText>(R.id.txtRole)
         val txtName = findViewById<TextView>(R.id.txtName)
         val txtAddress = findViewById<TextView>(R.id.txtAddress)
-        val txtPassword = findViewById<TextView>(R.id.txtPassword)
-        val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
         val txtPhone = findViewById<TextView>(R.id.txtPhone)
 
         val email = txtEmail.text.toString().trim();
         val role = txtRole.text.toString().trim();
         val name = txtName.text.toString().trim();
         val address = txtAddress.text.toString().trim();
-        val password = txtPassword.text.toString().trim();
-        val conPassword = txtConPassword.text.toString().trim();
         val phone = txtPhone.text.toString().trim();
 
         if(email.isEmpty()){
             txtEmail.error ="Please enter an email"
             return
-        }
-        if(role.isEmpty()){
+        }else if(role.isEmpty()){
             txtRole.error ="Please enter an email"
             return
-        }
-        if(name.isEmpty()){
+        }else if(name.isEmpty()){
             txtName.error ="Please enter an email"
             return
-        }
-        if(address.isEmpty()){
+        }else if(address.isEmpty()){
             txtAddress.error ="Please enter an email"
             return
-        }
-        if(phone.isEmpty()){
+        }else if(phone.isEmpty()){
             txtPhone.error ="Please enter an email"
             return
+        }else{
+            reff.child("email").setValue(email)
+            reff.child("role").setValue(role)
+            reff.child("name").setValue(name)
+            reff.child("address").setValue(address)
+            reff.child("phone").setValue(phone)
         }
-
-
-
-        reff.child("email").setValue(email)
-        reff.child("role").setValue(role)
-        reff.child("name").setValue(name)
-        reff.child("address").setValue(address)
-        reff.child("phone").setValue(phone)
 
     }
 
