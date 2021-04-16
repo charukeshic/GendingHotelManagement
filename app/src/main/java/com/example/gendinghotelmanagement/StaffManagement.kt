@@ -39,50 +39,60 @@ class StaffManagement : AppCompatActivity(), NavigationView.OnNavigationItemSele
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+        val username=intent.getStringExtra("Username")
 
         btnCreateStaff = findViewById(R.id.btnCreateStaff);
         btnCreateStaff.setOnClickListener { // Do some work here
             val intent = Intent (this@StaffManagement,CreateStaff::class.java)
+            intent.putExtra("Username",username)
             startActivity(intent);
         }
         btnRemoveStaff = findViewById(R.id.btnRemoveStaff);
         btnRemoveStaff.setOnClickListener { // Do some work here
             val intent = Intent (this@StaffManagement,RemoveStaff::class.java)
+            intent.putExtra("Username",username)
             startActivity(intent);
         }
         btnManageShift = findViewById(R.id.btnManageShift);
         btnManageShift.setOnClickListener { // Do some work here
             val intent = Intent (this@StaffManagement,ManageSchedule::class.java)
+            intent.putExtra("Username",username)
             startActivity(intent);
         }
     }
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
+        val username=intent.getStringExtra("Username")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@StaffManagement,ManagerStaffPortal::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@StaffManagement,OrderDetails::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@StaffManagement,CustomerActivity::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@StaffManagement,CheckRoomOccupancy::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@StaffManagement,Login::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
-                Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

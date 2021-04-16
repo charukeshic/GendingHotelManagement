@@ -70,6 +70,7 @@ class UserModel : Parcelable {
     }
 
 
+    //comment
     companion object {
         val CREATOR: Parcelable.Creator<UserModel?> = object : Parcelable.Creator<UserModel?> {
             override fun createFromParcel(`in`: Parcel): UserModel? {

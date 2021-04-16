@@ -145,13 +145,17 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val conPassword = txtConPassword.text.toString().trim();
         val role = staffRole.text.toString().trim();
 
+        //firebaseUserID.trim()
+//        firebaseUserID = mAuth.currentUser!!.uid
+//        val currentFirebaseUser = firebaseUserID
+        //firebaseUserID = uid
         if(email.isEmpty()){
 
             txtStaffID.error ="Please enter an email"
             return
 
         }
-
+        //val currentFirebaseUser = mAuth.getCurrentUser().getUid();
 
         databaseUser = FirebaseDatabase.getInstance().getReference("User");
 

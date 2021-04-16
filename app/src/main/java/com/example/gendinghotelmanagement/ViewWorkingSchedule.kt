@@ -38,32 +38,38 @@ class ViewWorkingSchedule : AppCompatActivity(), NavigationView.OnNavigationItem
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
+        val username=intent.getStringExtra("Username")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@ViewWorkingSchedule,ManagerStaffPortal::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@ViewWorkingSchedule,OrderDetails::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@ViewWorkingSchedule,CustomerActivity::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@ViewWorkingSchedule,CheckRoomOccupancy::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@ViewWorkingSchedule,Login::class.java)
+                intent.putExtra("Username",username)
                 startActivity(intent);
-                Toast.makeText(this,"{Sign out clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

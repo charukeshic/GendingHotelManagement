@@ -32,6 +32,7 @@ class ForgotPassword : AppCompatActivity() , NavigationView.OnNavigationItemSele
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+        val username=intent.getStringExtra("Username")
 
         val toggle = ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, 0, 0
