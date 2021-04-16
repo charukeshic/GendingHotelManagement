@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -124,10 +125,29 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
         btnPayment = findViewById(R.id.btnPayment);
         btnPayment.setOnClickListener { // Do some work here
             UpdatePayment()
-            val intent = Intent (this@Payment,Receipt::class.java)
-            intent.putExtra("Username",username)
-            intent.putExtra("OrderNO", orderID)
-            startActivity(intent);
+            val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog,null)
+            val mBuilder = AlertDialog.Builder(this)
+                    .setView(mDialogView)
+                    .setTitle("Confirmation")
+                    .setCancelable(false)
+            val mAlertDialog = mBuilder.show()
+            val dialogConfirmBtn = mDialogView.findViewById<Button>(R.id.dialogConfirmBtn)
+            val dialogCancelBtn = mDialogView.findViewById<Button>(R.id.dialogCancelBtn)
+
+            dialogConfirmBtn.setOnClickListener {
+
+                val intent = Intent (this@Payment,Receipt::class.java)
+                intent.putExtra("Username",username)
+                intent.putExtra("OrderNO", orderID)
+                startActivity(intent);
+                mAlertDialog.dismiss()
+
+            }
+            dialogCancelBtn.setOnClickListener{
+                mAlertDialog.dismiss()
+
+            }
+
         }
     }
     private fun UpdatePayment() {

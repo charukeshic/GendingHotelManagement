@@ -94,8 +94,9 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val noOfRoom= intent.getStringExtra("numberOfRoom").toString().toInt();
+                val stayingPeriod= intent.getStringExtra("StayingPeriod").toString().toInt();
                 val unitprice = snapshot.child("Price").getValue().toString().toInt();
-                Total = unitprice.times(noOfRoom);
+                Total = unitprice.times(noOfRoom).times(stayingPeriod);
                 txtToTal.setText("Total : RM "+Total);
             }
 
