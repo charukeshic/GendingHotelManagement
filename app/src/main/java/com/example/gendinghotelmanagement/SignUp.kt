@@ -13,8 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.gendinghotelmanagement.Model.UserModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +35,7 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     private var firebaseUserID:String = ""
     lateinit var databaseUser: DatabaseReference
     lateinit var signin: TextView
+
 
 
 
@@ -94,9 +94,9 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             Toast.makeText(this@SignUp, "con pwd is required!", Toast.LENGTH_LONG)
                     .show()
 
-        }else if (role.equals("")){
-            Toast.makeText(this@SignUp, "role is required!", Toast.LENGTH_LONG)
-                    .show()
+        }else if (staffRole.text != "Manager" || staffRole.text != "Staff") {
+            staffRole.error = "Please type in 'Manager' or 'Staff' "
+            return
 
         }else if (pwd != conPwd) {
             txtConPassword.error = "Confirm password must same with password"

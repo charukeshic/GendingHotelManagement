@@ -170,10 +170,10 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val username=intent.getStringExtra("Username")
 
-        if (name.isEmpty()) {
+            if (name.isEmpty()) {
             txtName.error = "Please enter a name"
             return
-        }
+            }
 
 
             databaseOrder = FirebaseDatabase.getInstance().getReference("Order");

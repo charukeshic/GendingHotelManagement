@@ -54,6 +54,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        val orderID=intent.getStringExtra("OrderID")
         UserName = findViewById(R.id.UserName)
         val username=intent.getStringExtra("Username")
         UserName.text = username
@@ -87,64 +88,75 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnCreateOrder.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
         btnCheckRoom = findViewById(R.id.btnCheckRoom);
         btnCheckRoom.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,CheckRoomOccupancy::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
         btnManageProfile = findViewById(R.id.btnManageProfile);
         btnManageProfile.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,EditProfile::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
         btnOrderHistory = findViewById(R.id.btnOrderHistory);
         btnOrderHistory.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal, AllOrderHistory::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
         btnCustomerActivity = findViewById(R.id.btnCustomerActivity);
         btnCustomerActivity.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,CustomerActivity::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
         btnManageStaff = findViewById(R.id.btnManageStaff);
         btnManageStaff.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,ManageSchedule::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
+        val orderID=intent.getStringExtra("OrderID")
         val username=intent.getStringExtra("Username")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@ManagerStaffPortal,ManagerStaffPortal::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@ManagerStaffPortal,CustomerActivity::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@ManagerStaffPortal,CheckRoomOccupancy::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
@@ -152,6 +164,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@ManagerStaffPortal,Login::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()
             }

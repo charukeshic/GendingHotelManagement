@@ -155,6 +155,7 @@ class Receipt : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         btnReceipt.setOnClickListener { // Do some work here
             val intent = Intent (this@Receipt,ManagerStaffPortal::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("OrderID",maxid)
             startActivity(intent);
         }
 

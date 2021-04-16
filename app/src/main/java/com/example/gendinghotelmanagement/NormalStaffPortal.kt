@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -25,6 +26,7 @@ class NormalStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var btnOrderHistory: Button
     lateinit var btnCustomerActivity: Button
     lateinit var btnViewShift: Button
+    lateinit var UserName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,12 @@ class NormalStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+        //val username=intent.getStringExtra("Username")
+
+        val orderID=intent.getStringExtra("OrderID")
+        UserName = findViewById(R.id.UserName)
         val username=intent.getStringExtra("Username")
+        UserName.text = username
 
         val toggle = ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, 0, 0
