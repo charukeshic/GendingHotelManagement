@@ -75,9 +75,9 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
 
                 txtEmail.setText(email);
                 txtRole.setText(role);
-                txtName.setText(name);
-                txtAddress.setText(address);
-                txtPhone.setText(phone);
+                txtName.setHint(name);
+                txtAddress.setHint(address);
+                txtPhone.setHint(phone);
             }
 
 
@@ -85,10 +85,8 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
 
         btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
         btnUpdateProfile.setOnClickListener { // Do some work here
-            val intent = Intent(this@EditProfile, ManagerStaffPortal::class.java)
-            intent.putExtra("Username", username)
-            startActivity(intent);
             saveProfile();
+
         }
     }
 
@@ -112,20 +110,24 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
             txtRole.error ="Please enter an email"
             return
         }else if(name.isEmpty()){
-            txtName.error ="Please enter an email"
+            txtName.error ="Please enter a name"
             return
         }else if(address.isEmpty()){
-            txtAddress.error ="Please enter an email"
+            txtAddress.error ="Please enter a address"
             return
         }else if(phone.isEmpty()){
-            txtPhone.error ="Please enter an email"
+            txtPhone.error ="Please enter a phone numberca"
             return
         }else{
+            val username=intent.getStringExtra("Username")
             reff.child("email").setValue(email)
             reff.child("role").setValue(role)
             reff.child("name").setValue(name)
             reff.child("address").setValue(address)
             reff.child("phone").setValue(phone)
+            val intent = Intent(this@EditProfile, ManagerStaffPortal::class.java)
+            intent.putExtra("Username", username)
+            startActivity(intent);
         }
 
     }
