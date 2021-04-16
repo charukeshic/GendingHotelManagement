@@ -124,7 +124,7 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
 
         btnPayment = findViewById(R.id.btnPayment);
         btnPayment.setOnClickListener { // Do some work here
-            UpdatePayment()
+
             val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog,null)
             val mBuilder = AlertDialog.Builder(this)
                     .setView(mDialogView)
@@ -136,6 +136,7 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
 
             dialogConfirmBtn.setOnClickListener {
 
+                UpdatePayment()
                 val intent = Intent (this@Payment,Receipt::class.java)
                 intent.putExtra("Username",username)
                 intent.putExtra("OrderNO", orderID)

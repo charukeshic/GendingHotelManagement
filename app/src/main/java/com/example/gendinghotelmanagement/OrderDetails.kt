@@ -183,12 +183,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val orderNO = databaseOrder.push().key
 
             //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-            val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
-            if (orderNO != null) {
-                databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
-                    Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
-                }
-            }
+
 
             val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog,null)
             val mBuilder = AlertDialog.Builder(this)
@@ -201,6 +196,12 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             dialogConfirmBtn.setOnClickListener {
 
+                val order = CreateOrderModel(name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
+                if (orderNO != null) {
+                    databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
+                        Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
+                    }
+                }
                 val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
                 intent.putExtra("Username",username)
                 intent.putExtra("OrderNO", orderNO)
@@ -251,7 +252,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey)
         if (ic != null) {
             databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
-                Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
             }
         }
     }
