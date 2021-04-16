@@ -2,7 +2,6 @@ package com.example.gendinghotelmanagement.Model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.google.firebase.database.DataSnapshot
 
 class PaymentModel : Parcelable {
 
@@ -10,6 +9,7 @@ class PaymentModel : Parcelable {
 //    var OrderStatus: String? = null
     var OrderID: String? = null
     var PaymentMethod: String? = null
+    var Total: Int? = null
 
 
     constructor() {}
@@ -17,7 +17,8 @@ class PaymentModel : Parcelable {
 //           OrderID: String?,
 //            OrderStatus: String?,
             OrderID: String?,
-            PaymentMethod: String?
+            PaymentMethod: String?,
+            Total: Int?
 
 
     ) {
@@ -25,6 +26,7 @@ class PaymentModel : Parcelable {
 //        this.OrderStatus= OrderStatus
         this.OrderID= OrderID
         this.PaymentMethod= PaymentMethod
+        this.Total= Total
 
     }
 
@@ -34,6 +36,7 @@ class PaymentModel : Parcelable {
 //        OrderStatus = `in`.readString()
         OrderID = `in`.readString()
         PaymentMethod = `in`.readString()
+        Total = `in`.readInt()
 
     }
 
@@ -43,6 +46,7 @@ class PaymentModel : Parcelable {
 //        dest.writeString(OrderStatus)
         dest.writeString(OrderID)
         dest.writeString(PaymentMethod)
+        Total?.let { dest.writeInt(it) }
 
     }
 
