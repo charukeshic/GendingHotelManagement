@@ -82,7 +82,6 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val role = staffRole?.getText().toString().trim();
 
 
-
         if(email.equals("")){
             Toast.makeText(this@SignUp, "Email is required!", Toast.LENGTH_LONG)
                     .show()
@@ -103,15 +102,15 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             mAuth.createUserWithEmailAndPassword(email, pwd)
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful){
-
                             firebaseUserID = mAuth.currentUser!!.uid
                             refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
                             val userHashMap = HashMap<String,Any>()
+
                             userHashMap["uid"] = firebaseUserID
-                            userHashMap["email"] = txtStaffID
-                            userHashMap["pwd"] = txtPassword
-                            userHashMap["conPwd"] = txtConPassword
-                            userHashMap["role"] = staffRole
+                            userHashMap["email"] = email
+                            userHashMap["pwd"] = pwd
+                            userHashMap["conPwd"] = conPwd
+                            userHashMap["role"] = role
 
                             refUsers.updateChildren(userHashMap)
                                     .addOnCompleteListener{
@@ -140,11 +139,13 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         val txtPassword = findViewById<TextView>(R.id.txtPassword)
         val txtConPassword = findViewById<TextView>(R.id.txtConPassword)
         val staffRole = findViewById<TextView>(R.id.staffRole)
-        val email = txtStaffID.text.toString().trim();
+        val email = txtStaffID.text.toString().replace('.','-').trim();
         val password = txtPassword.text.toString().trim();
         val conPassword = txtConPassword.text.toString().trim();
         val role = staffRole.text.toString().trim();
-
+        val name = ""
+        val phone = ""
+        val address = ""
         //firebaseUserID.trim()
 //        firebaseUserID = mAuth.currentUser!!.uid
 //        val currentFirebaseUser = firebaseUserID
@@ -161,16 +162,17 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
         val userID = databaseUser.push().key
 
-        val user = UserModel(conPassword, email, password, role, userID)
+        //val user = UserModel(conPassword, email, password, role, userID)
+        val user = UserModel(email, role, name, address, password, conPassword, phone, userID)
         if (userID != null) {
-            databaseUser.child(userID).setValue(user).addOnCompleteListener{
+            databaseUser.child(email).setValue(user).addOnCompleteListener{
                 Toast.makeText(this@SignUp,"Account is successfully created",Toast.LENGTH_LONG).show()
             }
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
         when (item.itemId) {
             R.id.sign_in -> {
                 Toast.makeText(this, "Sign in clicked", Toast.LENGTH_SHORT).show()

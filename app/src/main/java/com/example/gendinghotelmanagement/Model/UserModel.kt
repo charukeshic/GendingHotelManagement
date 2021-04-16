@@ -5,10 +5,13 @@ import android.os.Parcelable
 
 class UserModel : Parcelable {
 
-    var conPassword: String? = null
     var email: String? = null
-    var password: String? = null
     var role: String? = null
+    var name: String? = null
+    var address: String? = null
+    var password: String? = null
+    var conPassword: String? = null
+    var phone: String? = null
     var userID: String? = null
 //    var StaffName: String? = null
 //    var PhoneNO: Int? = null
@@ -18,10 +21,13 @@ class UserModel : Parcelable {
 
     constructor() {}
     constructor(
-            conPassword: String?,
             email: String?,
-            password: String?,
             role: String?,
+            name: String?,
+            address: String,
+            password: String?,
+            conPassword: String?,
+            phone: String?,
             userID: String?
 //            StaffName: String?,
 //            PhoneNO: Int?,
@@ -30,10 +36,13 @@ class UserModel : Parcelable {
 
 
     ) {
-        this.conPassword = conPassword
         this.email = email
-        this.password = password
         this.role = role
+        this.name = name
+        this.address = address
+        this.password = password
+        this.conPassword = conPassword
+        this.phone = phone
         this.userID = userID
 //        this.StaffName = StaffName
 //        this.PhoneNO = PhoneNO
@@ -42,10 +51,13 @@ class UserModel : Parcelable {
     }
 
     protected constructor(`in`: Parcel) {
-        conPassword = `in`.readString()
         email = `in`.readString()
-        password = `in`.readString()
         role = `in`.readString()
+        name = `in`.readString()
+        address = `in`.readString()
+        password = `in`.readString()
+        conPassword = `in`.readString()
+        phone = `in`.readString()
         userID = `in`.readString()
 //        StaffName = `in`.readString()
 //        PhoneNO = `in`.readInt()
@@ -54,10 +66,13 @@ class UserModel : Parcelable {
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeString(conPassword)
         dest.writeString(email)
-        dest.writeString(password)
         dest.writeString(role)
+        dest.writeString(name)
+        dest.writeString(address)
+        dest.writeString(password)
+        dest.writeString(conPassword)
+        dest.writeString(phone)
         dest.writeString(userID)
 //        dest.writeString(StaffName)
 //        PhoneNO?.let { dest.writeInt(it) }
