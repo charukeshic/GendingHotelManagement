@@ -90,9 +90,11 @@ class Receipt : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
             override fun onDataChange(snapshot: DataSnapshot) {
 //                val orderID = snapshot.child("customerName").getValue().toString();
                 val PaymentMethod = snapshot.child("paymentMethod" ).getValue().toString();
+                val Total = snapshot.child("total" ).getValue().toString();
 
 
                 txtPaymentMethod.setText("Payment Method : "+PaymentMethod);
+                txtToTal.setText("Total : RM "+Total)
 
             }
 

@@ -170,6 +170,8 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
             intent.putExtra("Username",username)
             intent.putExtra("OrderNO", orderNO)
+            intent.putExtra("RoomType", roomType)
+            intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
             startActivity(intent);
         }
 

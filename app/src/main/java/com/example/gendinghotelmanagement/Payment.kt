@@ -52,6 +52,7 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
         val username=intent.getStringExtra("Username")
+        val total=intent.getStringExtra("Total")
 
         txtBookingID=findViewById(R.id.txtBookingID);
         txtCheckInDay=findViewById(R.id.txtCheckInDay);
@@ -110,6 +111,7 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
                 txtCheckOutMonth.setText(checkOutMonth);
                 txtCheckOutYear.setText(checkOutYear);
                 txtCustName.setText("Customer Name : "+CustName);
+                txtToTal.setText("Total : RM "+total);
 
             }
 
@@ -138,9 +140,9 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
         databasePayment = FirebaseDatabase.getInstance().getReference("Payment");
 
         //val payID = databasePayment.push().key
-
+        val total=intent.getStringExtra("Total").toString().toInt()
         //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
-        val payment = PaymentModel(orderID,PaymentMethod)
+        val payment = PaymentModel(orderID,PaymentMethod,total)
         if (orderID != null) {
 
             databasePayment.child(orderID).setValue(payment).addOnCompleteListener{

@@ -41,7 +41,10 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var txtExtraServices: TextView
     lateinit var txtToTal: TextView
     var Total: Int? = null
+   // var noOfRoom: Int = 0
+//    var unitprice: Int = 0
     lateinit var reff: DatabaseReference
+    lateinit var reff1: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +82,26 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
         txtExtraServices=findViewById(R.id.txtExtraServices);
         txtToTal=findViewById(R.id.txtToTal);
         val maxid=intent.getStringExtra("OrderNO")
+        val roomType=intent.getStringExtra("RoomType")
+
+        reff1 = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!;
+        reff1.equalTo(roomType)
+        reff1.addValueEventListener(object: ValueEventListener {
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val noOfRoom= intent.getStringExtra("numberOfRoom").toString().toInt();
+                val unitprice = snapshot.child("Price").getValue().toString().toInt();
+                Total = unitprice.times(noOfRoom);
+                txtToTal.setText("Total : RM "+Total);
+            }
+
+
+
+        });
 
 
         reff = maxid?.let { FirebaseDatabase.getInstance().getReference("Order").child(it) }!!;
@@ -102,9 +125,10 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val CustAddress = snapshot.child("address").getValue().toString();
                 val RoomType = snapshot.child("roomType").getValue().toString();
                 val NoOfPerson = snapshot.child("noOfPerson").getValue().toString();
-                val NoOfRoom = snapshot.child("noOfRoom").getValue().toString();
+                val NoOfRoom = snapshot.child("noOfRoom").getValue().toString().toInt();
                 val ExtraServices = snapshot.child("extraServices").getValue().toString();
 //                Total = 1 * NoOfRoom;
+
 
 //                val ToTal = snapshot.child("roomType").getValue().toString();
 //                    val Newname = snapshot.child("customerName").value.toString()
@@ -125,6 +149,7 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 txtNoOfRoom.setText("No Of Room : "+NoOfRoom);
                 txtExtraServices.setText("Extra Services : "+ExtraServices);
 
+
             }
 
 
@@ -136,6 +161,7 @@ class OrderConfirmation : AppCompatActivity(), NavigationView.OnNavigationItemSe
             val intent = Intent(this@OrderConfirmation, Payment::class.java)
             intent.putExtra("Username",username)
             intent.putExtra("OrderNO", maxid)
+            intent.putExtra("Total", Total.toString())
             startActivity(intent);
 
         }
