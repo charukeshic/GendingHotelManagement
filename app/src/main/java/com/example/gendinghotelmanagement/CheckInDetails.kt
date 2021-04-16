@@ -2,9 +2,7 @@ package com.example.gendinghotelmanagement
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
@@ -12,12 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+
 
 class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
@@ -61,14 +61,26 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             val dialog = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.check_in_dialog,null)
-            val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName)
-            val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey)
+            //val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
+            //intent.putExtra("Staff", staffName)
+            //val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
+            //intent.putExtra("RoomNo", roomKey)
             dialog.setView(dialogView)
             dialog.setCancelable(false)
             dialog.setPositiveButton("Confirm",{dialogInterface: DialogInterface, i:Int -> })
             val customDialog = dialog.create()
             customDialog.show()
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+
+                val customer = intent.getStringExtra("CustomerID")
+                val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
+                //intent.putExtra("Staff", staffName)
+                val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
+                //intent.putExtra("RoomNo", roomKey)
+
+                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
+                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
+
                 Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
                 customDialog.dismiss()
             }
@@ -88,7 +100,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         //checkInData = FirebaseDatabase.getInstance().getReference("CheckIn").child(customer)
 
-        checkInData = customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it) }!!;
+        checkInData = customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it) }!!
         checkInData.addValueEventListener(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
