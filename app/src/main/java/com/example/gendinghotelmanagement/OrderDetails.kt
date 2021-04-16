@@ -234,8 +234,9 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val checkOutMonth = checkOutDate.month.toString().trim()
         val checkOutYear = checkOutDate.year.toString().trim()
         val roomType = roomType.selectedItem.toString().trim()
-        val staffName = "testing"
-        val roomKey = "101"
+        val staffName = "Unassigned"
+        val roomKey = "Unassigned"
+        val roomStatus = "Pending"
 
 
         if(name.isEmpty()){
@@ -249,7 +250,9 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //val orderNO = databaseOrder.push().key
 
         val order = CheckInModel(name,ic,phone,address,noOfPeople, noOfRoom, extraServices,roomType,checkInDay,checkInMonth,
-                checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey)
+                checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey, roomStatus)
+        intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
+
         if (ic != null) {
             databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
                 //Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
