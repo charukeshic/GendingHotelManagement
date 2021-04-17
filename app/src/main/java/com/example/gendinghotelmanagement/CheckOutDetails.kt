@@ -120,6 +120,7 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 val roomType = snapshot.child("roomType").getValue().toString()
                 intent.putExtra("typeOfRoom",roomType)
                 val noOfRoom = snapshot.child("noOfRoom").getValue().toString()
+                intent.putExtra("howManyRoom",noOfRoom)
                 val extraServices = snapshot.child("extraServices").getValue().toString()
                 val roomStatus = snapshot.child("roomStatus").getValue().toString()
                 val roomNum = snapshot.child("roomKey").getValue().toString()
@@ -146,6 +147,7 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
     private fun UpdateRoom() {
 
         val roomType = intent.getStringExtra("typeOfRoom")
+        val howManyRoom = intent.getStringExtra("howManyRoom").toString().toInt()
         roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
         roomData.addListenerForSingleValueEvent(object: ValueEventListener {
 
@@ -155,9 +157,9 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val available = snapshot.child("Available").getValue().toString().toInt()
-                val currentAvailable = available.plus(1)
+                val currentAvailable = available.plus(howManyRoom)
                 val occupied = snapshot.child("Occupied").getValue().toString().toInt()
-                val currentOccupied = occupied.minus(1)
+                val currentOccupied = occupied.minus(howManyRoom)
 
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Available").setValue(currentAvailable) }!!
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Occupied").setValue(currentOccupied) }!!

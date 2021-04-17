@@ -77,11 +77,11 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
 
-                if(roomKey.trim().length == null) {
+                if(roomKey.trim().length <= 1) {
                     Toast.makeText(baseContext, "Please enter room key", Toast.LENGTH_SHORT).show()
 
                 }
-                if(staffName.trim().length == null) {
+                if(staffName.trim().length <= 1) {
                     Toast.makeText(baseContext, "Please enter staff in charge", Toast.LENGTH_SHORT).show()
                 }
                 else {
@@ -137,7 +137,8 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val phone = snapshot.child("phone").getValue().toString()
                 val roomType = snapshot.child("roomType").getValue().toString()
                 intent.putExtra("typeOfRoom",roomType)
-                val noOfRoom = snapshot.child("noOfRoom").getValue().toString();
+                val noOfRoom = snapshot.child("noOfRoom").getValue().toString()
+                intent.putExtra("howManyRoom",noOfRoom)
                 val extraServices = snapshot.child("extraServices").getValue().toString()
                 val roomStatus = snapshot.child("roomStatus").getValue().toString()
                 val roomNum = snapshot.child("roomKey").getValue().toString()
@@ -165,6 +166,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     private fun UpdateRoom() {
 
         val roomType = intent.getStringExtra("typeOfRoom")
+        val howManyRoom = intent.getStringExtra("howManyRoom").toString().toInt()
         roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
         roomData.addListenerForSingleValueEvent(object: ValueEventListener {
 
@@ -174,9 +176,9 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val available = snapshot.child("Available").getValue().toString().toInt()
-                val currentAvailable = available.minus(1)
+                val currentAvailable = available.minus(howManyRoom)
                 val occupied = snapshot.child("Occupied").getValue().toString().toInt()
-                val currentOccupied = occupied.plus(1)
+                val currentOccupied = occupied.plus(howManyRoom)
 
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Available").setValue(currentAvailable) }!!
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Occupied").setValue(currentOccupied) }!!
