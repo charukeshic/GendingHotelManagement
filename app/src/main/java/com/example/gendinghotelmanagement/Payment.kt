@@ -173,28 +173,33 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
     }
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         val username=intent.getStringExtra("Username")
+        val roomType=intent.getStringExtra("RoomType")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@Payment,ManagerStaffPortal::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@Payment,OrderDetails::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@Payment,CustomerActivity::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@Payment,CheckRoomOccupancy::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
@@ -202,6 +207,7 @@ class Payment : AppCompatActivity() , NavigationView.OnNavigationItemSelectedLis
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@Payment,Login::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()
             }

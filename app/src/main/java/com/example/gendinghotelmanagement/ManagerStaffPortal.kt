@@ -83,11 +83,12 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
 //                    })
 //        }
 
-
+        val roomType=intent.getStringExtra("RoomType")
         btnCreateOrder = findViewById(R.id.btnCreateOrder);
         btnCreateOrder.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -95,6 +96,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnCheckRoom.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,CheckRoomOccupancy::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -102,6 +104,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnManageProfile.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,EditProfile::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -109,6 +112,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnOrderHistory.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal, AllOrderHistory::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -116,6 +120,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnCustomerActivity.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,CustomerActivity::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -123,6 +128,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         btnManageStaff.setOnClickListener { // Do some work here
             val intent = Intent (this@ManagerStaffPortal,ArrangeShift::class.java)
             intent.putExtra("Username",username)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);
         }
@@ -131,10 +137,12 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         val orderID=intent.getStringExtra("OrderID")
         val username=intent.getStringExtra("Username")
+        val roomType=intent.getStringExtra("RoomType")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@ManagerStaffPortal,ManagerStaffPortal::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
@@ -142,6 +150,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_booking -> {
                 val intent = Intent (this@ManagerStaffPortal,OrderDetails::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
@@ -149,6 +158,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_activity -> {
                 val intent = Intent (this@ManagerStaffPortal,CustomerActivity::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
@@ -156,6 +166,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_operation -> {
                 val intent = Intent (this@ManagerStaffPortal,CheckRoomOccupancy::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
@@ -164,6 +175,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@ManagerStaffPortal,Login::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("OrderID",orderID)
                 startActivity(intent);
                 Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()

@@ -40,15 +40,19 @@ class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        val roomType=intent.getStringExtra("RoomType")
+
         btnCheckIn = findViewById(R.id.btnCheckIn);
         btnCheckIn.setOnClickListener { // Do some work here
             val intent = Intent (this@CustomerActivity, CheckInForm::class.java)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("Username",username)
             startActivity(intent);
         }
         btnCheckOut = findViewById(R.id.btnCheckOut);
         btnCheckOut.setOnClickListener { // Do some work here
             val intent = Intent (this@CustomerActivity,CheckOutForm::class.java)
+            intent.putExtra("RoomType", roomType)
             intent.putExtra("Username",username)
             startActivity(intent);
         }
@@ -56,34 +60,40 @@ class CustomerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         val username=intent.getStringExtra("Username")
+        val roomType=intent.getStringExtra("RoomType")
         when (item.itemId){
             R.id.ic_profile -> {
                 val intent = Intent (this@CustomerActivity,ManagerStaffPortal::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Profile clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_booking -> {
                 val intent = Intent (this@CustomerActivity,OrderDetails::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Booking clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_activity -> {
                 val intent = Intent (this@CustomerActivity,CustomerActivity::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Customer Activity clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_operation -> {
                 val intent = Intent (this@CustomerActivity,CheckRoomOccupancy::class.java)
                 intent.putExtra("Username",username)
+                intent.putExtra("RoomType", roomType)
                 startActivity(intent);
                 Toast.makeText(this,"{Operation clicked",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut();
                 val intent = Intent (this@CustomerActivity,Login::class.java)
+                intent.putExtra("RoomType", roomType)
                 intent.putExtra("Username",username)
                 startActivity(intent);
                 Toast.makeText(this,"{You are successfully sign out",Toast.LENGTH_SHORT).show()
