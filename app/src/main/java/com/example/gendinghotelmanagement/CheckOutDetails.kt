@@ -33,6 +33,7 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     lateinit var btnCheckOutRoomDetails: Button
     lateinit var checkInData: DatabaseReference
+    lateinit var roomData: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,11 +69,19 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
             dialogConfirmBtn.setOnClickListener {
 
+                val customer = intent.getStringExtra("CustomerID")
+                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).removeValue() }!!
+
+                //UpdateRoom()
+
+
+                mAlertDialog.dismiss()
+
+                Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
+
                 val intent = Intent (this@CheckOutDetails,CustomerActivity::class.java)
                 intent.putExtra("Username",username)
                 startActivity(intent);
-                mAlertDialog.dismiss()
-                Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
 
             }
             dialogCancelBtn.setOnClickListener{
@@ -132,9 +141,33 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
         })
 
 
+    }
+
+    private fun UpdateRoom() {
+
+        val roomType = txtRoomType.text.toString()
+        roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
+        roomData.addValueEventListener(object: ValueEventListener {
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(baseContext, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val available = snapshot.child("Available").getValue().toString().toInt()
+                val currentAvailable = available.plus(1)
+                val occupied = snapshot.child("Occupied").getValue().toString().toInt()
+                val currentOccupied = occupied.minus(1)
+
+                roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Available").setValue(currentAvailable) }!!
+                roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Occupied").setValue(currentOccupied) }!!
 
 
 
+            }
+
+
+        })
 
 
     }

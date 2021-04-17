@@ -164,9 +164,9 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val available = snapshot.child("Available").getValue().toString().toInt()
-                val currentAvailable = available - 1
+                val currentAvailable = available.minus(1)
                 val occupied = snapshot.child("Occupied").getValue().toString().toInt()
-                val currentOccupied = occupied + 1
+                val currentOccupied = occupied.plus(1)
 
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Available").setValue(currentAvailable) }!!
                 roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Occupied").setValue(currentOccupied) }!!
