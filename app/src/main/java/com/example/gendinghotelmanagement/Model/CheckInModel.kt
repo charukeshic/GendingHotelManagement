@@ -53,7 +53,7 @@ class CheckInModel : Parcelable {
         this.Phone= Phone
         this.Address= Address
         this.NoOfPerson= NoOfPerson
-        this.NoOfRoom= NoOfPerson
+        this.NoOfRoom= NoOfRoom
         this.ExtraServices= ExtraServices
         this.RoomType= RoomType
         this.CheckInDay=  CheckInDay

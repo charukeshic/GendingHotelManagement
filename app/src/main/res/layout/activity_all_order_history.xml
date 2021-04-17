@@ -78,20 +78,20 @@
 
 <!--                    </com.google.android.material.tabs.TabLayout>-->
 
-                    <TextView
-                        android:id="@+id/txtBookingID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:paddingLeft="15sp"
-                        android:paddingTop="15sp"
-                        android:paddingRight="15sp"
-                        android:paddingBottom="15sp"
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="parent"
-                        tools:text="Order ID" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/txtBookingID"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="30dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:paddingLeft="15sp"-->
+<!--                        android:paddingTop="15sp"-->
+<!--                        android:paddingRight="15sp"-->
+<!--                        android:paddingBottom="15sp"-->
+<!--                        android:textSize="18sp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="parent"-->
+<!--                        tools:text="Order ID" />-->
 
 <!--                    <TextView-->
 <!--                        android:id="@+id/txtOrderStatus"-->
@@ -194,27 +194,19 @@
 <!--                        app:layout_constraintTop_toBottomOf="@+id/txtTotalAmount"-->
 <!--                        app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />-->
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/order_list"
+                        android:layout_width="412dp"
+                        android:layout_height="674dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

@@ -75,6 +75,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
 
+
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Checked In") }!!

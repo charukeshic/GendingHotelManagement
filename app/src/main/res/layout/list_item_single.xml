@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    layout_height=""
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginRight="10sp"
+    android:layout_marginBottom="10sp"
+    card_view:cardBackgroundColor="#2A03A9F4"
+    card_view:cardCornerRadius="25dp"
+    card_view:cardElevation="3dp"
+    card_view:contentPaddingBottom="15sp"
+    card_view:contentPaddingTop="15sp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtBookingID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    tools:text="Order ID" />
+
+                <TextView
+                    android:id="@+id/txtCheckInDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="5sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtBookingID"
+                    tools:text="Check In Day" />
+
+                <TextView
+                    android:id="@+id/txtCheckOutDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="5sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCheckInDay"
+                    tools:text="Check Out Day" />
+
+                <TextView
+                    android:id="@+id/txtCustName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCheckOutDay"
+                    tools:text="Customer Name" />
+
+                <TextView
+                    android:id="@+id/txtCustPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCustIC"
+                    tools:text="Customer Phone Number" />
+
+                <TextView
+                    android:id="@+id/txtCustIC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCustName"
+                    tools:text="Customer IC" />
+
+                <TextView
+                    android:id="@+id/txtRoomType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCustAddress"
+                    tools:text="Room Type" />
+
+                <TextView
+                    android:id="@+id/txtNoOfPerson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtRoomType"
+                    tools:text="Number Of Person" />
+
+                <TextView
+                    android:id="@+id/txtNoOfRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtNoOfPerson"
+                    tools:text="Number Of Room" />
+
+                <TextView
+                    android:id="@+id/txtExtraServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtNoOfRoom"
+                    tools:text="Extra Services" />
+
+                <!--    <TextView-->
+                <!--        android:id="@+id/txtToTal"-->
+                <!--        android:layout_width="wrap_content"-->
+                <!--        android:layout_height="wrap_content"-->
+                <!--        android:layout_marginTop="5dp"-->
+                <!--        android:paddingLeft="15sp"-->
+                <!--        android:paddingTop="15sp"-->
+                <!--        android:paddingRight="15sp"-->
+                <!--        android:paddingBottom="15sp"-->
+                <!--        android:textSize="18sp"-->
+                <!--        app:layout_constraintStart_toStartOf="parent"-->
+                <!--        app:layout_constraintTop_toBottomOf="@+id/txtExtraServices"-->
+                <!--        tools:text="Total Amount" />-->
+
+                <TextView
+                    android:id="@+id/txtCustAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="15sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCustPhone"
+                    tools:text="Customer Address" />
+
+                <TextView
+                    android:id="@+id/txtCheckInMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:paddingLeft="0sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="5sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toEndOf="@+id/txtCheckInDay"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    tools:text="Check In Month" />
+
+                <TextView
+                    android:id="@+id/txtCheckInYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:paddingLeft="0sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toEndOf="@+id/txtCheckInMonth"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    tools:text="Check In Year" />
+
+                <TextView
+                    android:id="@+id/txtCheckOutMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="0sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="5sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toEndOf="@+id/txtCheckOutDay"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCheckInMonth"
+                    tools:text="Check Out Month" />
+
+                <TextView
+                    android:id="@+id/txtCheckOutYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="0sp"
+                    android:paddingTop="0sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="0sp"
+                    android:textSize="18sp"
+                    card_view:layout_constraintStart_toEndOf="@+id/txtCheckOutMonth"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txtCheckInYear"
+                    tools:text="Check Out Year" />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txtStaffName"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:paddingLeft="15sp"-->
+<!--                    android:paddingTop="0sp"-->
+<!--                    android:paddingRight="15sp"-->
+<!--                    android:paddingBottom="0sp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    card_view:layout_constraintStart_toStartOf="parent"-->
+<!--                    card_view:layout_constraintTop_toBottomOf="@+id/txtExtraServices"-->
+<!--                    tools:text="Staff Name" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txtRoomKey"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:paddingLeft="15sp"-->
+<!--                    android:paddingTop="0sp"-->
+<!--                    android:paddingRight="15sp"-->
+<!--                    android:paddingBottom="0sp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    card_view:layout_constraintStart_toStartOf="parent"-->
+<!--                    card_view:layout_constraintTop_toBottomOf="@+id/txtStaffName"-->
+<!--                    tools:text="Room Key" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txtRoomStatus"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:paddingLeft="15sp"-->
+<!--                    android:paddingTop="0sp"-->
+<!--                    android:paddingRight="15sp"-->
+<!--                    android:paddingBottom="0sp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    card_view:layout_constraintStart_toStartOf="parent"-->
+<!--                    card_view:layout_constraintTop_toBottomOf="@+id/txtRoomKey"-->
+<!--                    tools:text="Room Status" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

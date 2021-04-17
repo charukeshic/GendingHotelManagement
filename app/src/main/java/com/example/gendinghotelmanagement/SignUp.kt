@@ -94,9 +94,9 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             Toast.makeText(this@SignUp, "con pwd is required!", Toast.LENGTH_LONG)
                     .show()
 
-        }else if (staffRole.text != "Manager" || staffRole.text != "Staff") {
-            staffRole.error = "Please type in 'Manager' or 'Staff' "
-            return
+//        }else if (staffRole.text != "Manager" || staffRole.text != "Staff") {
+//            staffRole.error = "Please type in 'Manager' or 'Staff' "
+//            return
 
         }else if (pwd != conPwd) {
             txtConPassword.error = "Confirm password must same with password"
