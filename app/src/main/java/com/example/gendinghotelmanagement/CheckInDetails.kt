@@ -34,6 +34,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var txtExtraServices: TextView
     lateinit var txtRoomStatus: TextView
     lateinit var txtRoomNum: TextView
+    lateinit var txtStaffName: TextView
 
 
     lateinit var btnCheckInRoom: Button
@@ -119,6 +120,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         txtExtraServices = findViewById(R.id.txtExtraServices)
         txtRoomStatus = findViewById(R.id.txtRoomStatus)
         txtRoomNum = findViewById(R.id.txtRoomNum)
+        txtStaffName = findViewById(R.id.txtStaffName)
 
         val customer = intent.getStringExtra("CustomerID")
 
@@ -142,6 +144,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val extraServices = snapshot.child("extraServices").getValue().toString()
                 val roomStatus = snapshot.child("roomStatus").getValue().toString()
                 val roomNum = snapshot.child("roomKey").getValue().toString()
+                val staff = snapshot.child("staffName").getValue().toString()
 
                 txtCustName.setText("Customer Name : " + name)
                 txtCustIC.setText("Customer ID : " +  ic)
@@ -151,6 +154,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 txtExtraServices.setText("Extra Services : "+ extraServices)
                 txtRoomStatus.setText("Room Status : "+ roomStatus)
                 txtRoomNum.setText("Room No. : "+ roomNum)
+                txtStaffName.setText("Staff In Charge : "+ staff)
 
 
 

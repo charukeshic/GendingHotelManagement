@@ -239,14 +239,6 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val roomStatus = "Pending"
 
 
-
-
-        if(name.isEmpty()){
-            txtName.error = "Please enter a name"
-            return
-        }
-
-
         databaseCheckIn = FirebaseDatabase.getInstance().getReference("CheckIn");
 
         //val orderNO = databaseOrder.push().key
