@@ -118,7 +118,7 @@ class Login : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
                                     Toast.makeText(this@Login, "You are successfully login!", Toast.LENGTH_LONG)
                                         .show()
                                     finish()
-                                }else{
+                                }else if(role.equals("Staff")){
                                     val intent = Intent (this@Login,NormalStaffPortal::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                     intent.putExtra("Username",email)
