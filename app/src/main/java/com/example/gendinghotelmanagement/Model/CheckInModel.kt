@@ -23,6 +23,7 @@ class CheckInModel : Parcelable {
     var CheckOutYear: String? = null
     var StaffName: String? = null
     var RoomKey: String? = null
+    var RoomStatus: String? = null
 
 
 
@@ -43,8 +44,8 @@ class CheckInModel : Parcelable {
             CheckOutMonth: String?,
             CheckOutYear: String?,
             StaffName: String?,
-            RoomKey: String?
-
+            RoomKey: String?,
+            RoomStatus: String?
     ) {
 
         this.CustomerName= CustomerName
@@ -63,6 +64,7 @@ class CheckInModel : Parcelable {
         this.CheckOutYear= CheckOutYear
         this.StaffName= StaffName
         this.RoomKey= RoomKey
+        this.RoomStatus= RoomKey
 
 
     }
@@ -85,6 +87,7 @@ class CheckInModel : Parcelable {
         CheckOutYear = `in`.readString()
         StaffName = `in`.readString()
         RoomKey = `in`.readString()
+        RoomStatus = `in`.readString()
 
     }
 
@@ -106,6 +109,7 @@ class CheckInModel : Parcelable {
         dest.writeString(CheckOutYear)
         dest.writeString(StaffName)
         dest.writeString(RoomKey)
+        dest.writeString(RoomStatus)
 
 
     }

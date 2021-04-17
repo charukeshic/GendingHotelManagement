@@ -32,6 +32,8 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var txtRoomType: TextView
     lateinit var txtNoOfRoom: TextView
     lateinit var txtExtraServices: TextView
+    lateinit var txtRoomStatus: TextView
+    lateinit var txtRoomNum: TextView
 
     lateinit var btnCheckInRoomDetails: Button
     lateinit var checkInData: DatabaseReference
@@ -61,29 +63,32 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             val dialog = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.check_in_dialog,null)
-            //val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
-            //intent.putExtra("Staff", staffName)
-            //val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
-            //intent.putExtra("RoomNo", roomKey)
             dialog.setView(dialogView)
             dialog.setCancelable(false)
             dialog.setPositiveButton("Confirm",{dialogInterface: DialogInterface, i:Int -> })
+            dialog.setNegativeButton("Cancel", {dialogInterface: DialogInterface, i:Int -> })
             val customDialog = dialog.create()
             customDialog.show()
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
 
                 val customer = intent.getStringExtra("CustomerID")
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
-                //intent.putExtra("Staff", staffName)
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
-                //intent.putExtra("RoomNo", roomKey)
 
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
+                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Checked In") }!!
 
                 Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
                 customDialog.dismiss()
+                this.recreate()
+                //btnCheckInRoomDetails.isEnabled = false
+
             }
+            customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
+                customDialog.dismiss()
+            }
+
 
         }
 
@@ -93,8 +98,10 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         txtCustIC = findViewById(R.id.txtCustIC)
         txtCustPhone = findViewById(R.id.txtCustPhone)
         txtRoomType = findViewById(R.id.txtRoomType)
-        txtNoOfRoom = findViewById(R.id.txtNoOfRoom);
-        txtExtraServices = findViewById(R.id.txtExtraServices);
+        txtNoOfRoom = findViewById(R.id.txtNoOfRoom)
+        txtExtraServices = findViewById(R.id.txtExtraServices)
+        txtRoomStatus = findViewById(R.id.txtRoomStatus)
+        txtRoomNum = findViewById(R.id.txtRoomNum)
 
         val customer = intent.getStringExtra("CustomerID")
 
@@ -114,6 +121,8 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val roomType = snapshot.child("roomType").getValue().toString()
                 val noOfRoom = snapshot.child("noOfRoom").getValue().toString();
                 val extraServices = snapshot.child("extraServices").getValue().toString()
+                val roomStatus = snapshot.child("roomStatus").getValue().toString()
+                val roomNum = snapshot.child("roomKey").getValue().toString()
 
                 txtCustName.setText("Customer Name : " + name)
                 txtCustIC.setText("Customer ID : " +  ic)
@@ -121,6 +130,10 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 txtRoomType.setText("Room Type : " + roomType)
                 txtNoOfRoom.setText("No Of Room : "+ noOfRoom)
                 txtExtraServices.setText("Extra Services : "+ extraServices)
+                txtRoomStatus.setText("Room Status : "+ roomStatus)
+                txtRoomNum.setText("Room No. : "+ roomNum)
+
+
 
             }
 
@@ -167,7 +180,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val intent = Intent (this@CheckInDetails, Login::class.java)
                 intent.putExtra("Username",username)
                 startActivity(intent);
-                Toast.makeText(this,"You are successfully sign out",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"You have successfully sign out",Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
