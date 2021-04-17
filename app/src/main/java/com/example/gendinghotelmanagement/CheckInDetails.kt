@@ -35,8 +35,10 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var txtRoomStatus: TextView
     lateinit var txtRoomNum: TextView
 
+
     lateinit var btnCheckInRoom: Button
     lateinit var checkInData: DatabaseReference
+    lateinit var roomData: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +80,9 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
-                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Checked In") }!!
+                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Occupied") }!!
+
+                //UpdateRoom()
 
                 Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
                 //this.recreate()
@@ -146,9 +150,37 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
 
+    }
+
+    private fun UpdateRoom() {
+
+        val roomType = intent.getStringExtra("RoomType")
+        roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
+        roomData.addValueEventListener(object: ValueEventListener {
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(baseContext, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val available = snapshot.child("Available").getValue().toString().toInt()
+                val currentAvailable = available - 1
+                val occupied = snapshot.child("Occupied").getValue().toString().toInt()
+                val currentOccupied = occupied + 1
+
+                roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Available").setValue(currentAvailable) }!!
+                roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it).child("Occupied").setValue(currentOccupied) }!!
+
+
+
+            }
+
+
+        })
 
 
     }
+
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         val username=intent.getStringExtra("Username")

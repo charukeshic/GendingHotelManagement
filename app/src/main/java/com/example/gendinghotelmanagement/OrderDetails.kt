@@ -239,6 +239,8 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val roomStatus = "Pending"
 
 
+
+
         if(name.isEmpty()){
             txtName.error = "Please enter a name"
             return
@@ -251,11 +253,13 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val order = CheckInModel(name,ic,phone,address,noOfPeople, noOfRoom, extraServices,roomType,checkInDay,checkInMonth,
                 checkInYear,checkOutDay,checkOutMonth,checkOutYear,staffName,roomKey, roomStatus)
+        intent.putExtra("RoomType", roomType)
         intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
 
         if (ic != null) {
             databaseCheckIn.child(ic).setValue(order).addOnCompleteListener{
                 //Toast.makeText(applicationContext,"Data is saved",Toast.LENGTH_LONG).show()
+
             }
         }
     }

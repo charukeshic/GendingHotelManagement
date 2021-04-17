@@ -64,7 +64,7 @@ class CheckInModel : Parcelable {
         this.CheckOutYear= CheckOutYear
         this.StaffName= StaffName
         this.RoomKey= RoomKey
-        this.RoomStatus= RoomKey
+        this.RoomStatus= RoomStatus
 
 
     }
