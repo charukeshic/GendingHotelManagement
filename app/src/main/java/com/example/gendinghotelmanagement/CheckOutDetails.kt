@@ -72,8 +72,7 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 val customer = intent.getStringExtra("CustomerID")
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).removeValue() }!!
 
-                //UpdateRoom()
-
+                UpdateRoom()
 
                 mAlertDialog.dismiss()
 
@@ -119,7 +118,8 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 val ic = snapshot.child("customerID").getValue().toString()
                 val phone = snapshot.child("phone").getValue().toString()
                 val roomType = snapshot.child("roomType").getValue().toString()
-                val noOfRoom = snapshot.child("noOfRoom").getValue().toString();
+                intent.putExtra("typeOfRoom",roomType)
+                val noOfRoom = snapshot.child("noOfRoom").getValue().toString()
                 val extraServices = snapshot.child("extraServices").getValue().toString()
                 val roomStatus = snapshot.child("roomStatus").getValue().toString()
                 val roomNum = snapshot.child("roomKey").getValue().toString()
@@ -145,9 +145,9 @@ class CheckOutDetails : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     private fun UpdateRoom() {
 
-        val roomType = txtRoomType.text.toString()
+        val roomType = intent.getStringExtra("typeOfRoom")
         roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
-        roomData.addValueEventListener(object: ValueEventListener {
+        roomData.addListenerForSingleValueEvent(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(baseContext, "Something went wrong", Toast.LENGTH_SHORT).show()

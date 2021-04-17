@@ -60,8 +60,6 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         btnCheckInRoom = findViewById(R.id.btnCheckInRoom);
         btnCheckInRoom.setOnClickListener { // Do some work here
-            //val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
-            //startActivity(intent);
 
             val dialog = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.check_in_dialog,null)
@@ -71,26 +69,37 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             dialog.setNegativeButton("Cancel", {dialogInterface: DialogInterface, i:Int -> })
             val customDialog = dialog.create()
             customDialog.show()
+
+
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
 
                 val customer = intent.getStringExtra("CustomerID")
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
 
+                if(roomKey.trim().length == null) {
+                    Toast.makeText(baseContext, "Please enter room key", Toast.LENGTH_SHORT).show()
 
-                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
-                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
-                customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Occupied") }!!
-
-                //UpdateRoom()
-
-                Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
-                //this.recreate()
-                customDialog.dismiss()
-                val intent = Intent (this@CheckInDetails, ManagerStaffPortal::class.java)
-                startActivity(intent)
+                }
+                if(staffName.trim().length == null) {
+                    Toast.makeText(baseContext, "Please enter staff in charge", Toast.LENGTH_SHORT).show()
+                }
+                else {
 
 
+                    customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
+                    customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
+                    customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Occupied") }!!
+
+                    UpdateRoom()
+
+                    Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
+
+                    customDialog.dismiss()
+                    val intent = Intent(this@CheckInDetails, ManagerStaffPortal::class.java)
+                    startActivity(intent)
+
+                }
 
             }
             customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
@@ -127,6 +136,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val ic = snapshot.child("customerID").getValue().toString()
                 val phone = snapshot.child("phone").getValue().toString()
                 val roomType = snapshot.child("roomType").getValue().toString()
+                intent.putExtra("typeOfRoom",roomType)
                 val noOfRoom = snapshot.child("noOfRoom").getValue().toString();
                 val extraServices = snapshot.child("extraServices").getValue().toString()
                 val roomStatus = snapshot.child("roomStatus").getValue().toString()
@@ -154,9 +164,9 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     private fun UpdateRoom() {
 
-        val roomType = intent.getStringExtra("RoomType")
+        val roomType = intent.getStringExtra("typeOfRoom")
         roomData = roomType?.let { FirebaseDatabase.getInstance().getReference("Room").child(it) }!!
-        roomData.addValueEventListener(object: ValueEventListener {
+        roomData.addListenerForSingleValueEvent(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(baseContext, "Something went wrong", Toast.LENGTH_SHORT).show()
