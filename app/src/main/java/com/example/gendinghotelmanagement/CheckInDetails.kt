@@ -81,7 +81,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     Toast.makeText(baseContext, "Please enter room key", Toast.LENGTH_SHORT).show()
 
                 }
-                if(staffName.trim().length <= 1) {
+                else if(staffName.trim().length <= 1) {
                     Toast.makeText(baseContext, "Please enter staff in charge", Toast.LENGTH_SHORT).show()
                 }
                 else {

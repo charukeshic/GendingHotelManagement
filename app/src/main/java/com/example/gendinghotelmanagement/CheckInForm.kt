@@ -50,15 +50,30 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         btnCheckInForm = findViewById(R.id.btnCheckInForm);
         btnCheckInForm.setOnClickListener { // Do some work here
 
-            val intent = Intent (this@CheckInForm, CheckInDetails::class.java)
-
             txtName = findViewById(R.id.txtName)
             txtIC = findViewById(R.id.txtIC)
             txtPhone = findViewById(R.id.txtPhone)
             val custIC = txtIC.text.toString()
-            intent.putExtra("Username",username)
-            intent.putExtra("CustomerID", custIC)
-            startActivity(intent);
+            val custName = txtName.text.toString()
+            val custPhone = txtPhone.text.toString()
+
+            if(custName.trim().length <= 4) {
+                Toast.makeText(baseContext, "Please enter correct customer name", Toast.LENGTH_SHORT).show()
+            }
+            else if(custIC.trim().length <= 4) {
+                Toast.makeText(baseContext, "Please enter correct customer ID", Toast.LENGTH_SHORT).show()
+            }
+            else if(custPhone.trim().length <= 4) {
+                Toast.makeText(baseContext, "Please enter correct customer phone number", Toast.LENGTH_SHORT).show()
+            }
+            else {
+
+                val intent = Intent(this@CheckInForm, CheckInDetails::class.java)
+                intent.putExtra("Username",username)
+                intent.putExtra("CustomerID", custIC)
+                startActivity(intent)
+
+            }
 
 
         }
