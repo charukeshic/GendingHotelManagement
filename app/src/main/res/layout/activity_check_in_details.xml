@@ -212,7 +212,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btnCheckInRoomDetails"
+                            android:id="@+id/btnCheckInRoom"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="15dp"
