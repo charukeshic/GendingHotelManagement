@@ -75,9 +75,9 @@ class EditProfile : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
 
                 txtEmail.setText(email);
                 txtRole.setText(role);
-                txtName.setHint(name);
-                txtAddress.setHint(address);
-                txtPhone.setHint(phone);
+                txtName.setText(name);
+                txtAddress.setText(address);
+                txtPhone.setText(phone);
             }
 
 

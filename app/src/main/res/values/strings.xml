@@ -15,6 +15,11 @@
     <string name="staff_sign_up">Staff Sign Up</string>
     <string name="staff_email">Staff Email</string>
     <string name="already_have_account">Already have account.</string>
+    <string-array name="shift">
+        <item>Morning Shift</item>
+        <item>Night Shift</item>
+        <item>Off Day</item>
+    </string-array>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

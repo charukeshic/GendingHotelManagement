@@ -121,7 +121,7 @@ class ManagerStaffPortal : AppCompatActivity(), NavigationView.OnNavigationItemS
         }
         btnManageStaff = findViewById(R.id.btnManageStaff);
         btnManageStaff.setOnClickListener { // Do some work here
-            val intent = Intent (this@ManagerStaffPortal,ManageSchedule::class.java)
+            val intent = Intent (this@ManagerStaffPortal,ArrangeShift::class.java)
             intent.putExtra("Username",username)
             intent.putExtra("OrderID",orderID)
             startActivity(intent);

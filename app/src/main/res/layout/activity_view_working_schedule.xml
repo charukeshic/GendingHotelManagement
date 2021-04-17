@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,7 +84,7 @@
                         tools:text="UserName"/>
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/textMon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
@@ -92,22 +92,74 @@
                         android:paddingRight="15dp"
                         android:paddingBottom="15dp"
                         android:textSize="15dp"
-                        tools:text="Time Range Weekly" />
+                        tools:text="Monday" />
 
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/textTue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="15dp"
-                        android:textSize="15sp"
-                        tools:text="Off Day Period" />
+                        android:textSize="15dp"
+                        tools:text="Tuesday" />
 
-                    <ListView
+                    <TextView
+                        android:id="@+id/textWed"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="15dp"
+                        tools:text="Wednesday" />
+
+                    <TextView
+                        android:id="@+id/textThu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="15dp"
+                        tools:text="Thursday" />
+
+                    <TextView
+                        android:id="@+id/textFri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="15dp"
+                        tools:text="Friday" />
+
+                    <TextView
+                        android:id="@+id/textSat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="15dp"
+                        tools:text="Saturday" />
+
+                    <TextView
+                        android:id="@+id/textSun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="15dp"
+                        tools:text="Sunday" />
+
 
 
                 </LinearLayout>
