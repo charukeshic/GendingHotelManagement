@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -19,6 +20,10 @@ class CheckOutForm : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
+
+    lateinit var txtName: EditText
+    lateinit var txtIC: EditText
+    lateinit var txtPhone: EditText
 
     lateinit var btnCheckOutForm: Button
 
@@ -44,7 +49,12 @@ class CheckOutForm : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnCheckOutForm = findViewById(R.id.btnCheckOutForm);
         btnCheckOutForm.setOnClickListener { // Do some work here
             val intent = Intent (this@CheckOutForm,CheckOutDetails::class.java)
+            txtName = findViewById(R.id.txtName)
+            txtIC = findViewById(R.id.txtIC)
+            txtPhone = findViewById(R.id.txtPhone)
+            val custIC = txtIC.text.toString()
             intent.putExtra("Username",username)
+            intent.putExtra("CustomerID", custIC)
             startActivity(intent);
         }
     }

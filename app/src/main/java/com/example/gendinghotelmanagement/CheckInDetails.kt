@@ -35,7 +35,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var txtRoomStatus: TextView
     lateinit var txtRoomNum: TextView
 
-    lateinit var btnCheckInRoomDetails: Button
+    lateinit var btnCheckInRoom: Button
     lateinit var checkInData: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +56,8 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        btnCheckInRoomDetails = findViewById(R.id.btnCheckInRoomDetails);
-        btnCheckInRoomDetails.setOnClickListener { // Do some work here
+        btnCheckInRoom = findViewById(R.id.btnCheckInRoom);
+        btnCheckInRoom.setOnClickListener { // Do some work here
             //val intent = Intent (this@CheckInDetails, CustomerActivity::class.java)
             //startActivity(intent);
 
@@ -81,9 +81,12 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Checked In") }!!
 
                 Toast.makeText(baseContext, "Room Status Updated", Toast.LENGTH_SHORT).show()
+                //this.recreate()
                 customDialog.dismiss()
-                this.recreate()
-                //btnCheckInRoomDetails.isEnabled = false
+                val intent = Intent (this@CheckInDetails, ManagerStaffPortal::class.java)
+                startActivity(intent)
+
+
 
             }
             customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
@@ -139,8 +142,6 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
 
 
-//            val intent = Intent (this@OrderConfirmation,Payment::class.java)
-//            startActivity(intent);
         })
 
 
