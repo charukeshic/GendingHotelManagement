@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="end">
+    tools:openDrawer="start">
 
     <LinearLayout
         android:orientation="vertical"
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:ems="10"
-                        android:inputType="textLongMessage|textPersonName"
+                        android:inputType="textLongMessage|text|phone"
                         android:labelFor="@id/TextView8"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
@@ -142,7 +142,6 @@
                         android:layout_width="380dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:inputType="textLongMessage|textPostalAddress"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
                         android:paddingRight="15dp"
@@ -157,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:ems="10"
-                        android:inputType="textLongMessage|textPersonName"
+                        android:inputType="textLongMessage|text|phone"
                         android:labelFor="@id/TextView8"
                         android:paddingLeft="15dp"
                         android:paddingTop="15dp"
