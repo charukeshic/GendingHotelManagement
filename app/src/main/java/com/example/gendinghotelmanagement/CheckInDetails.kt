@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.time.LocalDateTime
 
 
 class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -77,6 +78,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val customer = intent.getStringExtra("CustomerID")
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
+                val currentDateTime = LocalDateTime.now()
 
                 if(roomKey.trim().length <= 1) {
                     Toast.makeText(baseContext, "Please enter room key", Toast.LENGTH_SHORT).show()
@@ -90,7 +92,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
                     customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomKey").setValue(roomKey) }!!
                     customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("staffName").setValue(staffName) }!!
-                    customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Occupied") }!!
+                    customer?.let { FirebaseDatabase.getInstance().getReference("CheckIn").child(it).child("roomStatus").setValue("Checked In on " + currentDateTime) }!!
 
                     UpdateRoom()
 

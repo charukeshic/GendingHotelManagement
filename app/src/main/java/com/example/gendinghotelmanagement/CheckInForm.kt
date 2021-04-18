@@ -57,13 +57,13 @@ class CheckInForm : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             val custName = txtName.text.toString()
             val custPhone = txtPhone.text.toString()
 
-            if(custName.trim().length <= 4) {
+            if(custName.trim().length <= 3) {
                 Toast.makeText(baseContext, "Please enter correct customer name", Toast.LENGTH_SHORT).show()
             }
-            else if(custIC.trim().length <= 4) {
+            else if(custIC.trim().length <= 3) {
                 Toast.makeText(baseContext, "Please enter correct customer ID", Toast.LENGTH_SHORT).show()
             }
-            else if(custPhone.trim().length <= 4) {
+            else if(custPhone.trim().length <= 3) {
                 Toast.makeText(baseContext, "Please enter correct customer phone number", Toast.LENGTH_SHORT).show()
             }
             else {
