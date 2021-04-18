@@ -161,19 +161,28 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val noOfRoom = txtNumOfRoom.text.toString().trim().toInt()
         val extraServices = extraService.selectedItem.toString().trim()
         val checkInDay = checkInDate.dayOfMonth.toString().trim()
-        val checkInMonth = (checkInDate.month+ 1).toString().trim()
+        val checkInMonth = (checkInDate.month + 1).toString().trim()
         val checkInYear = checkInDate.year.toString().trim()
         val checkOutDay = checkOutDate.dayOfMonth.toString().trim()
         val checkOutMonth = (checkOutDate.month + 1).toString().trim()
         val checkOutYear = checkOutDate.year.toString().trim()
         val roomType = roomType.selectedItem.toString().trim()
 
-        val username=intent.getStringExtra("Username")
+        val username = intent.getStringExtra("Username")
 
-            if (name.isEmpty()) {
+        if (name.isEmpty()) {
             txtName.error = "Please enter a name"
             return
-            }
+        } else if (ic.isEmpty()) {
+            txtIC.error = "Please enter a customer ID"
+            return
+        } else if (phone.isEmpty()) {
+            txtPhone.error = "Please enter a phone number"
+            return
+        } else if (address.isEmpty()) {
+            txtAddress.error = "Please enter aa address"
+            return
+        } else {
 
 
             databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
@@ -185,7 +194,7 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //val order = OrderModel(CheckInDate,CheckOutDate,name,ic,extraServices,noOfPeople,OrderID,OrderStatus,QuantityOfRooms,RoomNo,RoomType,StaffName,Total)
 
 
-            val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog,null)
+            val mDialogView = layoutInflater.inflate(R.layout.confirm_dialog, null)
             val mBuilder = AlertDialog.Builder(this)
                     .setView(mDialogView)
                     .setTitle("Confirmation")
@@ -196,28 +205,28 @@ class OrderDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             dialogConfirmBtn.setOnClickListener {
 
-                val order = CreateOrderModel(orderNO,name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
+                val order = CreateOrderModel(orderNO, name, ic, phone, address, noOfPeople, noOfRoom, extraServices, roomType, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear)
                 if (orderNO != null) {
                     databaseOrder.child(orderNO).setValue(order).addOnCompleteListener {
                         Toast.makeText(applicationContext, "Data is saved", Toast.LENGTH_LONG).show()
                     }
                 }
                 val intent = Intent(this@OrderDetails, OrderConfirmation::class.java)
-                intent.putExtra("Username",username)
+                intent.putExtra("Username", username)
                 intent.putExtra("OrderNO", orderNO)
                 intent.putExtra("RoomType", roomType)
-                intent.putExtra("numberOfRoom",txtNumOfRoom.text.toString())
-                intent.putExtra("StayingPeriod",txtStayingPeriod.text)
+                intent.putExtra("numberOfRoom", txtNumOfRoom.text.toString())
+                intent.putExtra("StayingPeriod", txtStayingPeriod.text)
                 startActivity(intent);
                 mAlertDialog.dismiss()
 
             }
-            dialogCancelBtn.setOnClickListener{
-            mAlertDialog.dismiss()
+            dialogCancelBtn.setOnClickListener {
+                mAlertDialog.dismiss()
 
             }
         }
-
+    }
     private fun UpdateCheckIn() {
 
         val name = txtName.text.toString().trim()

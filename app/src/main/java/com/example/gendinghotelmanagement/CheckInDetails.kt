@@ -2,12 +2,14 @@ package com.example.gendinghotelmanagement
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var checkInData: DatabaseReference
     lateinit var roomData: DatabaseReference
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_in_details)
@@ -75,6 +78,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
 
+                val username=intent.getStringExtra("Username")
                 val customer = intent.getStringExtra("CustomerID")
                 val staffName = dialogView.findViewById<EditText>(R.id.dialogStaffName).text.toString()
                 val roomKey = dialogView.findViewById<EditText>(R.id.dialogRoomKey).text.toString()
@@ -100,6 +104,7 @@ class CheckInDetails : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
                     customDialog.dismiss()
                     val intent = Intent(this@CheckInDetails, ManagerStaffPortal::class.java)
+                    intent.putExtra("Username",username)
                     startActivity(intent)
 
                 }

@@ -66,6 +66,8 @@ class ForgotPassword : AppCompatActivity() , NavigationView.OnNavigationItemSele
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.sign_in -> {
+                val intent = Intent (this@ForgotPassword,Login::class.java)
+                startActivity(intent);
                 Toast.makeText(this, "Sign in clicked", Toast.LENGTH_SHORT).show()
             }
 

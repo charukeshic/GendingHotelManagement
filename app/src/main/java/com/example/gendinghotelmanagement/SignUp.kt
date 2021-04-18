@@ -187,6 +187,8 @@ class SignUp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.sign_in -> {
+                val intent = Intent (this@SignUp,Login::class.java)
+                startActivity(intent);
                 Toast.makeText(this, "Sign in clicked", Toast.LENGTH_SHORT).show()
             }
 
