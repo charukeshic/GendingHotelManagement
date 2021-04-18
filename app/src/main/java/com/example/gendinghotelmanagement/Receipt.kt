@@ -42,6 +42,7 @@ class Receipt : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
     var Total: Int? = null
     lateinit var reff: DatabaseReference
     lateinit var reff1: DatabaseReference
+    lateinit var reff2: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -151,15 +152,43 @@ class Receipt : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
 
         });
 
-        btnReceipt = findViewById(R.id.btnReceipt);
-        btnReceipt.setOnClickListener { // Do some work here
-            val intent = Intent (this@Receipt,ManagerStaffPortal::class.java)
-            intent.putExtra("Username",username)
-            intent.putExtra("OrderID",maxid)
-            startActivity(intent);
-        }
+        val usernameNew = username?.replace('.', '-')
+        reff2 = usernameNew?.let { FirebaseDatabase.getInstance().getReference("User").child(it) }!!;
+        reff2.addValueEventListener(object: ValueEventListener {
 
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+//                val orderID = snapshot.child("customerName").getValue().toString();
+                val role = snapshot.child("role").getValue().toString();
+
+                if (role.equals("Manager")) {
+                    btnReceipt = findViewById(R.id.btnReceipt);
+                    btnReceipt.setOnClickListener { // Do some work here
+                        val intent = Intent(this@Receipt, ManagerStaffPortal::class.java)
+                        intent.putExtra("Username", username)
+                        intent.putExtra("OrderID", maxid)
+                        startActivity(intent);
+                    }
+
+                } else if (role.equals("Staff")) {
+                    btnReceipt = findViewById(R.id.btnReceipt);
+                    btnReceipt.setOnClickListener { // Do some work here
+                        val intent = Intent(this@Receipt, NormalStaffPortal::class.java)
+                        intent.putExtra("Username", username)
+                        intent.putExtra("OrderID", maxid)
+                        startActivity(intent);
+                    }
+
+                }
+
+
+            }
+        });
     }
+
     override fun onNavigationItemSelected(item: MenuItem):Boolean{
         val username=intent.getStringExtra("Username")
         val roomType=intent.getStringExtra("RoomType")
